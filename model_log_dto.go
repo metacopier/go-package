@@ -24,12 +24,15 @@ type LogDTO struct {
 	Acknowledged  *bool   `json:"acknowledged,omitempty"`
 	CustomerEmail *string `json:"customerEmail,omitempty"`
 	// ISO 8601
-	Date      *time.Time `json:"date,omitempty"`
-	Id        *int64     `json:"id,omitempty"`
-	LogType   *string    `json:"logType,omitempty"`
-	ProjectId *string    `json:"projectId,omitempty"`
-	Text      *string    `json:"text,omitempty"`
+	Date                 *time.Time `json:"date,omitempty"`
+	Id                   *int64     `json:"id,omitempty"`
+	LogType              *string    `json:"logType,omitempty"`
+	ProjectId            *string    `json:"projectId,omitempty"`
+	Text                 *string    `json:"text,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _LogDTO LogDTO
 
 // NewLogDTO instantiates a new LogDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -338,7 +341,40 @@ func (o LogDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Text) {
 		toSerialize["text"] = o.Text
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *LogDTO) UnmarshalJSON(data []byte) (err error) {
+	varLogDTO := _LogDTO{}
+
+	err = json.Unmarshal(data, &varLogDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LogDTO(varLogDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "acknowledged")
+		delete(additionalProperties, "customerEmail")
+		delete(additionalProperties, "date")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "logType")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "text")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableLogDTO struct {

@@ -19,10 +19,13 @@ var _ MappedNullable = &ForecastDTO{}
 
 // ForecastDTO struct for ForecastDTO
 type ForecastDTO struct {
-	Currency  *CurrencyTypeDTO `json:"currency,omitempty"`
-	Positions []string         `json:"positions,omitempty"`
-	Total     *float32         `json:"total,omitempty"`
+	Currency             *CurrencyTypeDTO `json:"currency,omitempty"`
+	Positions            []string         `json:"positions,omitempty"`
+	Total                *float32         `json:"total,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ForecastDTO ForecastDTO
 
 // NewForecastDTO instantiates a new ForecastDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -156,7 +159,35 @@ func (o ForecastDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ForecastDTO) UnmarshalJSON(data []byte) (err error) {
+	varForecastDTO := _ForecastDTO{}
+
+	err = json.Unmarshal(data, &varForecastDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ForecastDTO(varForecastDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "positions")
+		delete(additionalProperties, "total")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableForecastDTO struct {

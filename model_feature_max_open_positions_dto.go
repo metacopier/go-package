@@ -26,8 +26,11 @@ type FeatureMaxOpenPositionsDTO struct {
 	// Defines the maximum number of open positions per symbol. The total number of open positions across all symbols is subject to the general maxOpenPositions limit.
 	SymbolsConfiguration *map[string]FeatureMaxOpenPositionsDTO `json:"symbolsConfiguration,omitempty"`
 	// Time window in seconds for the position throttling. Works together with maxPositionsInTimeWindow to limit how many positions can be opened in a given time period. For example, with maxPositionsInTimeWindow=1 and timeWindowSeconds=120, only 1 position can be opened every 2 minutes. Works at both copier and account levels.
-	TimeWindowSeconds *int32 `json:"timeWindowSeconds,omitempty"`
+	TimeWindowSeconds    *int32 `json:"timeWindowSeconds,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureMaxOpenPositionsDTO FeatureMaxOpenPositionsDTO
 
 // NewFeatureMaxOpenPositionsDTO instantiates a new FeatureMaxOpenPositionsDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -208,7 +211,36 @@ func (o FeatureMaxOpenPositionsDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TimeWindowSeconds) {
 		toSerialize["timeWindowSeconds"] = o.TimeWindowSeconds
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureMaxOpenPositionsDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureMaxOpenPositionsDTO := _FeatureMaxOpenPositionsDTO{}
+
+	err = json.Unmarshal(data, &varFeatureMaxOpenPositionsDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureMaxOpenPositionsDTO(varFeatureMaxOpenPositionsDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "maxOpenPositions")
+		delete(additionalProperties, "maxPositionsInTimeWindow")
+		delete(additionalProperties, "symbolsConfiguration")
+		delete(additionalProperties, "timeWindowSeconds")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureMaxOpenPositionsDTO struct {

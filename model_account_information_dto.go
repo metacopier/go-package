@@ -60,19 +60,22 @@ type AccountInformationDTO struct {
 	// Number of pending orders (buy limit, sell limit, etc)
 	PendingOrdersCount *int32 `json:"pendingOrdersCount,omitempty"`
 	// Indicates that the open positions between the master and slave accounts are not synchronized due to failed open or close operations
-	PositionMismatch    *bool                   `json:"positionMismatch,omitempty"`
-	ProfitTargetsStatus []ProfitTargetStatusDTO `json:"profitTargetsStatus,omitempty"`
-	ProfitThisMonth     *float32                `json:"profitThisMonth,omitempty"`
-	ProfitThisWeek      *float32                `json:"profitThisWeek,omitempty"`
-	ProfitToday         *float32                `json:"profitToday,omitempty"`
-	Proxy               *ProxyDTO               `json:"proxy,omitempty"`
-	RiskLimitsStatus    []RiskLimitStatusDTO    `json:"riskLimitsStatus,omitempty"`
-	Status              *string                 `json:"status,omitempty"`
-	UnrealizedProfit    *float32                `json:"unrealizedProfit,omitempty"`
-	UsedMargin          *float32                `json:"usedMargin,omitempty"`
-	WalletBalances      []WalletDTO             `json:"walletBalances,omitempty"`
-	WrongCredentials    *bool                   `json:"wrongCredentials,omitempty"`
+	PositionMismatch     *bool                   `json:"positionMismatch,omitempty"`
+	ProfitTargetsStatus  []ProfitTargetStatusDTO `json:"profitTargetsStatus,omitempty"`
+	ProfitThisMonth      *float32                `json:"profitThisMonth,omitempty"`
+	ProfitThisWeek       *float32                `json:"profitThisWeek,omitempty"`
+	ProfitToday          *float32                `json:"profitToday,omitempty"`
+	Proxy                *ProxyDTO               `json:"proxy,omitempty"`
+	RiskLimitsStatus     []RiskLimitStatusDTO    `json:"riskLimitsStatus,omitempty"`
+	Status               *string                 `json:"status,omitempty"`
+	UnrealizedProfit     *float32                `json:"unrealizedProfit,omitempty"`
+	UsedMargin           *float32                `json:"usedMargin,omitempty"`
+	WalletBalances       []WalletDTO             `json:"walletBalances,omitempty"`
+	WrongCredentials     *bool                   `json:"wrongCredentials,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AccountInformationDTO AccountInformationDTO
 
 // NewAccountInformationDTO instantiates a new AccountInformationDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -1396,7 +1399,69 @@ func (o AccountInformationDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.WrongCredentials) {
 		toSerialize["wrongCredentials"] = o.WrongCredentials
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AccountInformationDTO) UnmarshalJSON(data []byte) (err error) {
+	varAccountInformationDTO := _AccountInformationDTO{}
+
+	err = json.Unmarshal(data, &varAccountInformationDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AccountInformationDTO(varAccountInformationDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountDuplicationInProjectDetected")
+		delete(additionalProperties, "accountMode")
+		delete(additionalProperties, "avgDrawdown")
+		delete(additionalProperties, "balance")
+		delete(additionalProperties, "brokeTimeOffsetToUtc")
+		delete(additionalProperties, "configuredProxy")
+		delete(additionalProperties, "connected")
+		delete(additionalProperties, "credit")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "drawdown")
+		delete(additionalProperties, "equity")
+		delete(additionalProperties, "fallbackMode")
+		delete(additionalProperties, "freeMargin")
+		delete(additionalProperties, "isHyperactive")
+		delete(additionalProperties, "isInvestorPassword")
+		delete(additionalProperties, "isNative")
+		delete(additionalProperties, "latencyInMs")
+		delete(additionalProperties, "leverage")
+		delete(additionalProperties, "maxDrawdown")
+		delete(additionalProperties, "missingSymbolMappings")
+		delete(additionalProperties, "openPositions")
+		delete(additionalProperties, "openPositionsCount")
+		delete(additionalProperties, "pendingApprovals")
+		delete(additionalProperties, "pendingOrders")
+		delete(additionalProperties, "pendingOrdersCount")
+		delete(additionalProperties, "positionMismatch")
+		delete(additionalProperties, "profitTargetsStatus")
+		delete(additionalProperties, "profitThisMonth")
+		delete(additionalProperties, "profitThisWeek")
+		delete(additionalProperties, "profitToday")
+		delete(additionalProperties, "proxy")
+		delete(additionalProperties, "riskLimitsStatus")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "unrealizedProfit")
+		delete(additionalProperties, "usedMargin")
+		delete(additionalProperties, "walletBalances")
+		delete(additionalProperties, "wrongCredentials")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAccountInformationDTO struct {

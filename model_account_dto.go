@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -59,8 +58,9 @@ type AccountDTO struct {
 	Status              *AccountStatusDTO `json:"status,omitempty"`
 	StatusMessage       *string           `json:"statusMessage,omitempty"`
 	// When enabled, puts the account in read-only mode, preventing any new trades from being opened or existing trades from being modified or closed. Use this when you want to use the account as a read-only master.
-	TradingDisabled *bool          `json:"tradingDisabled,omitempty"`
-	Type            AccountTypeDTO `json:"type"`
+	TradingDisabled      *bool          `json:"tradingDisabled,omitempty"`
+	Type                 AccountTypeDTO `json:"type"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AccountDTO AccountDTO
@@ -947,6 +947,11 @@ func (o AccountDTO) ToMap() (map[string]interface{}, error) {
 		toSerialize["tradingDisabled"] = o.TradingDisabled
 	}
 	toSerialize["type"] = o.Type
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -977,14 +982,44 @@ func (o *AccountDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varAccountDTO := _AccountDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varAccountDTO)
+	err = json.Unmarshal(data, &varAccountDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AccountDTO(varAccountDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountInformation")
+		delete(additionalProperties, "alias")
+		delete(additionalProperties, "closeUnmanagedPositions")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "ctraderClientId")
+		delete(additionalProperties, "ctraderClientSecret")
+		delete(additionalProperties, "dedicatedIp")
+		delete(additionalProperties, "deleted")
+		delete(additionalProperties, "failIfAccountExistsInProject")
+		delete(additionalProperties, "hasActiveCopiers")
+		delete(additionalProperties, "hasDisabledCopiers")
+		delete(additionalProperties, "hasMonitorOnlyCopiers")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "loginAccountNumber")
+		delete(additionalProperties, "loginAccountPassword")
+		delete(additionalProperties, "loginServer")
+		delete(additionalProperties, "myHomeIp")
+		delete(additionalProperties, "nativeMode")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "skipCredentialCheck")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "statusMessage")
+		delete(additionalProperties, "tradingDisabled")
+		delete(additionalProperties, "type")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

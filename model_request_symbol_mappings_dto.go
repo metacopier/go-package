@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -21,8 +20,9 @@ var _ MappedNullable = &RequestSymbolMappingsDTO{}
 
 // RequestSymbolMappingsDTO struct for RequestSymbolMappingsDTO
 type RequestSymbolMappingsDTO struct {
-	LoginServer *string  `json:"loginServer,omitempty"`
-	Symbols     []string `json:"symbols"`
+	LoginServer          *string  `json:"loginServer,omitempty"`
+	Symbols              []string `json:"symbols"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RequestSymbolMappingsDTO RequestSymbolMappingsDTO
@@ -115,6 +115,11 @@ func (o RequestSymbolMappingsDTO) ToMap() (map[string]interface{}, error) {
 		toSerialize["loginServer"] = o.LoginServer
 	}
 	toSerialize["symbols"] = o.Symbols
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -142,14 +147,21 @@ func (o *RequestSymbolMappingsDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varRequestSymbolMappingsDTO := _RequestSymbolMappingsDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varRequestSymbolMappingsDTO)
+	err = json.Unmarshal(data, &varRequestSymbolMappingsDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RequestSymbolMappingsDTO(varRequestSymbolMappingsDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "loginServer")
+		delete(additionalProperties, "symbols")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

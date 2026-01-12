@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,7 +25,8 @@ type ApprovalDTO struct {
 	// The ticket number of the position
 	Ticket int64 `json:"ticket"`
 	// You can override the volume (lots). If not specified, it will use the lot size specified by the copier
-	Volume *float32 `json:"volume,omitempty"`
+	Volume               *float32 `json:"volume,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ApprovalDTO ApprovalDTO
@@ -145,6 +145,11 @@ func (o ApprovalDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Volume) {
 		toSerialize["volume"] = o.Volume
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -173,14 +178,22 @@ func (o *ApprovalDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varApprovalDTO := _ApprovalDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varApprovalDTO)
+	err = json.Unmarshal(data, &varApprovalDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ApprovalDTO(varApprovalDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountFromId")
+		delete(additionalProperties, "ticket")
+		delete(additionalProperties, "volume")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

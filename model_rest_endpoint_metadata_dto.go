@@ -24,8 +24,11 @@ type RestEndpointMetadataDTO struct {
 	// Endpoint path pattern
 	Path *string `json:"path,omitempty"`
 	// Operation summary/description if available
-	Summary *string `json:"summary,omitempty"`
+	Summary              *string `json:"summary,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RestEndpointMetadataDTO RestEndpointMetadataDTO
 
 // NewRestEndpointMetadataDTO instantiates a new RestEndpointMetadataDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -159,7 +162,35 @@ func (o RestEndpointMetadataDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Summary) {
 		toSerialize["summary"] = o.Summary
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RestEndpointMetadataDTO) UnmarshalJSON(data []byte) (err error) {
+	varRestEndpointMetadataDTO := _RestEndpointMetadataDTO{}
+
+	err = json.Unmarshal(data, &varRestEndpointMetadataDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RestEndpointMetadataDTO(varRestEndpointMetadataDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "method")
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "summary")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRestEndpointMetadataDTO struct {

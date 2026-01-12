@@ -20,8 +20,11 @@ var _ MappedNullable = &FeatureOrderTypeFilterDTO{}
 // FeatureOrderTypeFilterDTO DTO for order type filter feature (copier)
 type FeatureOrderTypeFilterDTO struct {
 	// List of order types to copy. Only orders matching these types will be copied. If the list is empty or null, all order types will be copied. Available types: Buy, Sell, BuyLimit, SellLimit, BuyStop, SellStop.
-	AllowedOrderTypes []string `json:"allowedOrderTypes,omitempty"`
+	AllowedOrderTypes    []string `json:"allowedOrderTypes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureOrderTypeFilterDTO FeatureOrderTypeFilterDTO
 
 // NewFeatureOrderTypeFilterDTO instantiates a new FeatureOrderTypeFilterDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o FeatureOrderTypeFilterDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AllowedOrderTypes) {
 		toSerialize["allowedOrderTypes"] = o.AllowedOrderTypes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureOrderTypeFilterDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureOrderTypeFilterDTO := _FeatureOrderTypeFilterDTO{}
+
+	err = json.Unmarshal(data, &varFeatureOrderTypeFilterDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureOrderTypeFilterDTO(varFeatureOrderTypeFilterDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "allowedOrderTypes")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureOrderTypeFilterDTO struct {

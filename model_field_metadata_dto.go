@@ -26,8 +26,11 @@ type FieldMetadataDTO struct {
 	// Field name
 	FieldName *string `json:"fieldName,omitempty"`
 	// Field Java type
-	FieldType *string `json:"fieldType,omitempty"`
+	FieldType            *string `json:"fieldType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FieldMetadataDTO FieldMetadataDTO
 
 // NewFieldMetadataDTO instantiates a new FieldMetadataDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -196,7 +199,36 @@ func (o FieldMetadataDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FieldType) {
 		toSerialize["fieldType"] = o.FieldType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FieldMetadataDTO) UnmarshalJSON(data []byte) (err error) {
+	varFieldMetadataDTO := _FieldMetadataDTO{}
+
+	err = json.Unmarshal(data, &varFieldMetadataDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FieldMetadataDTO(varFieldMetadataDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "dtoClassName")
+		delete(additionalProperties, "fieldName")
+		delete(additionalProperties, "fieldType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFieldMetadataDTO struct {

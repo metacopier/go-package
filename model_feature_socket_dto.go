@@ -20,8 +20,11 @@ var _ MappedNullable = &FeatureSocketDTO{}
 // FeatureSocketDTO DTO to activate the socket feature (account) (PRO)
 type FeatureSocketDTO struct {
 	// Activate the socket. This property is always set to true.
-	ActivateSocket *bool `json:"activateSocket,omitempty"`
+	ActivateSocket       *bool `json:"activateSocket,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureSocketDTO FeatureSocketDTO
 
 // NewFeatureSocketDTO instantiates a new FeatureSocketDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o FeatureSocketDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ActivateSocket) {
 		toSerialize["activateSocket"] = o.ActivateSocket
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureSocketDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureSocketDTO := _FeatureSocketDTO{}
+
+	err = json.Unmarshal(data, &varFeatureSocketDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureSocketDTO(varFeatureSocketDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "activateSocket")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureSocketDTO struct {

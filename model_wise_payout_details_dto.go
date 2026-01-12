@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &WisePayoutDetailsDTO{}
 // WisePayoutDetailsDTO Wise payout details
 type WisePayoutDetailsDTO struct {
 	// Wise email address
-	Email string `json:"email"`
+	Email                string `json:"email"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _WisePayoutDetailsDTO WisePayoutDetailsDTO
@@ -80,6 +80,11 @@ func (o WisePayoutDetailsDTO) MarshalJSON() ([]byte, error) {
 func (o WisePayoutDetailsDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["email"] = o.Email
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,14 +112,20 @@ func (o *WisePayoutDetailsDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varWisePayoutDetailsDTO := _WisePayoutDetailsDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varWisePayoutDetailsDTO)
+	err = json.Unmarshal(data, &varWisePayoutDetailsDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = WisePayoutDetailsDTO(varWisePayoutDetailsDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "email")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -28,8 +28,11 @@ type FeatureMonthlyProfitTargetDTO struct {
 	// Enter a monthly relative profit target in account currency. If the target is reached, all positions will be closed (unless 'pauseInsteadOfClose' is enabled) and new ones will be blocked until the next month. Set to 0 to deactivate.
 	MonthlyRelativeProfitTarget *float32 `json:"monthlyRelativeProfitTarget,omitempty"`
 	// If set to 'true', when the profit target is reached, the copier will pause and stop opening new positions instead of closing all existing positions. The open positions will remain active. If set to 'false', all positions will be closed when the target is reached.
-	PauseInsteadOfClose *bool `json:"pauseInsteadOfClose,omitempty"`
+	PauseInsteadOfClose  *bool `json:"pauseInsteadOfClose,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureMonthlyProfitTargetDTO FeatureMonthlyProfitTargetDTO
 
 // NewFeatureMonthlyProfitTargetDTO instantiates a new FeatureMonthlyProfitTargetDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -253,7 +256,37 @@ func (o FeatureMonthlyProfitTargetDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PauseInsteadOfClose) {
 		toSerialize["pauseInsteadOfClose"] = o.PauseInsteadOfClose
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureMonthlyProfitTargetDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureMonthlyProfitTargetDTO := _FeatureMonthlyProfitTargetDTO{}
+
+	err = json.Unmarshal(data, &varFeatureMonthlyProfitTargetDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureMonthlyProfitTargetDTO(varFeatureMonthlyProfitTargetDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "autoResetIfBalanceIsBelow")
+		delete(additionalProperties, "monthlyAbsoluteProfitTarget")
+		delete(additionalProperties, "monthlyProfitTarget")
+		delete(additionalProperties, "monthlyRelativeProfitTarget")
+		delete(additionalProperties, "pauseInsteadOfClose")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureMonthlyProfitTargetDTO struct {

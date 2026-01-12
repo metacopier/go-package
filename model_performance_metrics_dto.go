@@ -81,8 +81,11 @@ type PerformanceMetricsDTO struct {
 	// Trade count per symbol - key: symbol name (e.g. EURUSD, GBPUSD), value: number of trades (count)
 	TradesPerSymbol *map[string]int32 `json:"tradesPerSymbol,omitempty"`
 	// Win rate in percentage [0..100] (%)
-	WinRate *float32 `json:"winRate,omitempty"`
+	WinRate              *float32 `json:"winRate,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PerformanceMetricsDTO PerformanceMetricsDTO
 
 // NewPerformanceMetricsDTO instantiates a new PerformanceMetricsDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -1231,7 +1234,64 @@ func (o PerformanceMetricsDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.WinRate) {
 		toSerialize["winRate"] = o.WinRate
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PerformanceMetricsDTO) UnmarshalJSON(data []byte) (err error) {
+	varPerformanceMetricsDTO := _PerformanceMetricsDTO{}
+
+	err = json.Unmarshal(data, &varPerformanceMetricsDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PerformanceMetricsDTO(varPerformanceMetricsDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountType")
+		delete(additionalProperties, "avgDrawdown")
+		delete(additionalProperties, "avgHoldingTimeSeconds")
+		delete(additionalProperties, "avgNetProfitPerTrade")
+		delete(additionalProperties, "avgProfitPerMonth")
+		delete(additionalProperties, "avgRiskReward")
+		delete(additionalProperties, "broker")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "dailyBalance")
+		delete(additionalProperties, "dailyBalanceTransactions")
+		delete(additionalProperties, "dailyEquity")
+		delete(additionalProperties, "expectancy")
+		delete(additionalProperties, "firstTradeAt")
+		delete(additionalProperties, "largestLoss")
+		delete(additionalProperties, "largestWin")
+		delete(additionalProperties, "lastTradeAt")
+		delete(additionalProperties, "longestLossStreak")
+		delete(additionalProperties, "longestWinStreak")
+		delete(additionalProperties, "maxDrawdown")
+		delete(additionalProperties, "monthsActive")
+		delete(additionalProperties, "profitAmountPerMonth")
+		delete(additionalProperties, "profitFactor")
+		delete(additionalProperties, "profitPercentagePerMonth")
+		delete(additionalProperties, "score")
+		delete(additionalProperties, "scoreBreakdown")
+		delete(additionalProperties, "totalCommissions")
+		delete(additionalProperties, "totalLotSize")
+		delete(additionalProperties, "totalNetProfit")
+		delete(additionalProperties, "totalTrades")
+		delete(additionalProperties, "tradesPerDay")
+		delete(additionalProperties, "tradesPerSymbol")
+		delete(additionalProperties, "winRate")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePerformanceMetricsDTO struct {

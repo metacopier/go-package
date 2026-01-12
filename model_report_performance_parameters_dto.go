@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -29,7 +28,8 @@ type ReportPerformanceParametersDTO struct {
 	// Start date for the reporting period.
 	Start time.Time `json:"start"`
 	// End date for the reporting period.
-	Stop time.Time `json:"stop"`
+	Stop                 time.Time `json:"stop"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ReportPerformanceParametersDTO ReportPerformanceParametersDTO
@@ -165,6 +165,11 @@ func (o ReportPerformanceParametersDTO) ToMap() (map[string]interface{}, error) 
 	toSerialize["idType"] = o.IdType
 	toSerialize["start"] = o.Start
 	toSerialize["stop"] = o.Stop
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -195,14 +200,23 @@ func (o *ReportPerformanceParametersDTO) UnmarshalJSON(data []byte) (err error) 
 
 	varReportPerformanceParametersDTO := _ReportPerformanceParametersDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varReportPerformanceParametersDTO)
+	err = json.Unmarshal(data, &varReportPerformanceParametersDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ReportPerformanceParametersDTO(varReportPerformanceParametersDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "idType")
+		delete(additionalProperties, "start")
+		delete(additionalProperties, "stop")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

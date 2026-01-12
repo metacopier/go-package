@@ -23,7 +23,10 @@ type FeatureMaximumLotDTO struct {
 	MaximumLot *float32 `json:"maximumLot,omitempty"`
 	// Defines the maximum lot size per symbol.
 	SymbolsConfiguration *map[string]FeatureMaximumLotDTO `json:"symbolsConfiguration,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureMaximumLotDTO FeatureMaximumLotDTO
 
 // NewFeatureMaximumLotDTO instantiates a new FeatureMaximumLotDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -126,7 +129,34 @@ func (o FeatureMaximumLotDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SymbolsConfiguration) {
 		toSerialize["symbolsConfiguration"] = o.SymbolsConfiguration
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureMaximumLotDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureMaximumLotDTO := _FeatureMaximumLotDTO{}
+
+	err = json.Unmarshal(data, &varFeatureMaximumLotDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureMaximumLotDTO(varFeatureMaximumLotDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "maximumLot")
+		delete(additionalProperties, "symbolsConfiguration")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureMaximumLotDTO struct {

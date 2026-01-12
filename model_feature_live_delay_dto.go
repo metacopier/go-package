@@ -25,7 +25,10 @@ type FeatureLiveDelayDTO struct {
 	SkipOrdersCount *int32 `json:"skipOrdersCount,omitempty"`
 	// Defines the live delay configuration per symbol. Each symbol can have its own skip count and reset interval.
 	SymbolsConfiguration *map[string]FeatureLiveDelayDTO `json:"symbolsConfiguration,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureLiveDelayDTO FeatureLiveDelayDTO
 
 // NewFeatureLiveDelayDTO instantiates a new FeatureLiveDelayDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -167,7 +170,35 @@ func (o FeatureLiveDelayDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SymbolsConfiguration) {
 		toSerialize["symbolsConfiguration"] = o.SymbolsConfiguration
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureLiveDelayDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureLiveDelayDTO := _FeatureLiveDelayDTO{}
+
+	err = json.Unmarshal(data, &varFeatureLiveDelayDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureLiveDelayDTO(varFeatureLiveDelayDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "resetIntervalMinutes")
+		delete(additionalProperties, "skipOrdersCount")
+		delete(additionalProperties, "symbolsConfiguration")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureLiveDelayDTO struct {

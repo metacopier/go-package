@@ -26,8 +26,11 @@ type FeatureProgressiveTradeSizingDTO struct {
 	// Defines the number of days to consider when evaluating past trades. For example, if set to 5, the system will look back at trades opened by the copier over the last 5 days to determine if the most recent trade closed with a loss.
 	LookBackInDays *int32 `json:"lookBackInDays,omitempty"`
 	// Specifies the multiplier to apply when increasing trade volume after a loss. The default multiplier is 2.000, meaning the volume of the next trade will be doubled after a loss.
-	Multiplier *float32 `json:"multiplier,omitempty"`
+	Multiplier           *float32 `json:"multiplier,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureProgressiveTradeSizingDTO FeatureProgressiveTradeSizingDTO
 
 // NewFeatureProgressiveTradeSizingDTO instantiates a new FeatureProgressiveTradeSizingDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -212,7 +215,36 @@ func (o FeatureProgressiveTradeSizingDTO) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Multiplier) {
 		toSerialize["multiplier"] = o.Multiplier
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureProgressiveTradeSizingDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureProgressiveTradeSizingDTO := _FeatureProgressiveTradeSizingDTO{}
+
+	err = json.Unmarshal(data, &varFeatureProgressiveTradeSizingDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureProgressiveTradeSizingDTO(varFeatureProgressiveTradeSizingDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "lastLossGreaterThanInPercentage")
+		delete(additionalProperties, "limitLevels")
+		delete(additionalProperties, "lookBackInDays")
+		delete(additionalProperties, "multiplier")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureProgressiveTradeSizingDTO struct {

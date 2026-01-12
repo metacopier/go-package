@@ -35,18 +35,21 @@ type PositionDTO struct {
 	NetProfit   *float32   `json:"netProfit,omitempty"`
 	OpenPrice   *float32   `json:"openPrice,omitempty"`
 	// ISO 8601
-	OpenTime   *time.Time `json:"openTime,omitempty"`
-	OrderType  *string    `json:"orderType,omitempty"`
-	PlacedType *string    `json:"placedType,omitempty"`
-	Profit     *float32   `json:"profit,omitempty"`
-	RequestId  *string    `json:"requestId,omitempty"`
-	State      *string    `json:"state,omitempty"`
-	StopLoss   *float32   `json:"stopLoss,omitempty"`
-	Swap       *float32   `json:"swap,omitempty"`
-	Symbol     *string    `json:"symbol,omitempty"`
-	TakeProfit *float32   `json:"takeProfit,omitempty"`
-	Volume     *float32   `json:"volume,omitempty"`
+	OpenTime             *time.Time `json:"openTime,omitempty"`
+	OrderType            *string    `json:"orderType,omitempty"`
+	PlacedType           *string    `json:"placedType,omitempty"`
+	Profit               *float32   `json:"profit,omitempty"`
+	RequestId            *string    `json:"requestId,omitempty"`
+	State                *string    `json:"state,omitempty"`
+	StopLoss             *float32   `json:"stopLoss,omitempty"`
+	Swap                 *float32   `json:"swap,omitempty"`
+	Symbol               *string    `json:"symbol,omitempty"`
+	TakeProfit           *float32   `json:"takeProfit,omitempty"`
+	Volume               *float32   `json:"volume,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PositionDTO PositionDTO
 
 // NewPositionDTO instantiates a new PositionDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -845,7 +848,54 @@ func (o PositionDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Volume) {
 		toSerialize["volume"] = o.Volume
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PositionDTO) UnmarshalJSON(data []byte) (err error) {
+	varPositionDTO := _PositionDTO{}
+
+	err = json.Unmarshal(data, &varPositionDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PositionDTO(varPositionDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "brokerTimeClose")
+		delete(additionalProperties, "brokerTimeOpen")
+		delete(additionalProperties, "closePrice")
+		delete(additionalProperties, "closeTime")
+		delete(additionalProperties, "comment")
+		delete(additionalProperties, "commission")
+		delete(additionalProperties, "dealType")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "magicNumber")
+		delete(additionalProperties, "netProfit")
+		delete(additionalProperties, "openPrice")
+		delete(additionalProperties, "openTime")
+		delete(additionalProperties, "orderType")
+		delete(additionalProperties, "placedType")
+		delete(additionalProperties, "profit")
+		delete(additionalProperties, "requestId")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "stopLoss")
+		delete(additionalProperties, "swap")
+		delete(additionalProperties, "symbol")
+		delete(additionalProperties, "takeProfit")
+		delete(additionalProperties, "volume")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePositionDTO struct {

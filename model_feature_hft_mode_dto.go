@@ -20,8 +20,11 @@ var _ MappedNullable = &FeatureHftModeDTO{}
 // FeatureHftModeDTO DTO to activate the hft mode feature (account) (PRO)
 type FeatureHftModeDTO struct {
 	// Activate the hft mode. This property is always set to true.
-	ActivateHftMode *bool `json:"activateHftMode,omitempty"`
+	ActivateHftMode      *bool `json:"activateHftMode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureHftModeDTO FeatureHftModeDTO
 
 // NewFeatureHftModeDTO instantiates a new FeatureHftModeDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o FeatureHftModeDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ActivateHftMode) {
 		toSerialize["activateHftMode"] = o.ActivateHftMode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureHftModeDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureHftModeDTO := _FeatureHftModeDTO{}
+
+	err = json.Unmarshal(data, &varFeatureHftModeDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureHftModeDTO(varFeatureHftModeDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "activateHftMode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureHftModeDTO struct {

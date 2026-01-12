@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -21,8 +20,9 @@ var _ MappedNullable = &AccountTypeDTO{}
 
 // AccountTypeDTO Select allowed account types for the white-label solution. If not specified, all account types are allowed.
 type AccountTypeDTO struct {
-	Id   int32   `json:"id"`
-	Name *string `json:"name,omitempty"`
+	Id                   int32   `json:"id"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AccountTypeDTO AccountTypeDTO
@@ -115,6 +115,11 @@ func (o AccountTypeDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -142,14 +147,21 @@ func (o *AccountTypeDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varAccountTypeDTO := _AccountTypeDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varAccountTypeDTO)
+	err = json.Unmarshal(data, &varAccountTypeDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AccountTypeDTO(varAccountTypeDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

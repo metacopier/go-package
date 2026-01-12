@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -28,7 +27,8 @@ type TelegramNotificationDTO struct {
 	// Use alias instead of UUID for identification
 	UseAlias *bool `json:"useAlias,omitempty"`
 	// Enter the Telegram username (e.g. @john98734)
-	Username string `json:"username"`
+	Username             string `json:"username"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TelegramNotificationDTO TelegramNotificationDTO
@@ -217,6 +217,11 @@ func (o TelegramNotificationDTO) ToMap() (map[string]interface{}, error) {
 		toSerialize["useAlias"] = o.UseAlias
 	}
 	toSerialize["username"] = o.Username
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -245,14 +250,24 @@ func (o *TelegramNotificationDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varTelegramNotificationDTO := _TelegramNotificationDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varTelegramNotificationDTO)
+	err = json.Unmarshal(data, &varTelegramNotificationDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TelegramNotificationDTO(varTelegramNotificationDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountIds")
+		delete(additionalProperties, "aliasMapping")
+		delete(additionalProperties, "logLevel")
+		delete(additionalProperties, "useAlias")
+		delete(additionalProperties, "username")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

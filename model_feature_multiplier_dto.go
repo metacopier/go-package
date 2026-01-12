@@ -30,7 +30,10 @@ type FeatureMultiplierDTO struct {
 	ScaleType  *ScaleTypeDTO `json:"scaleType,omitempty"`
 	// Defines the multiplier for each symbol.
 	SymbolsConfiguration *map[string]FeatureMultiplierDTO `json:"symbolsConfiguration,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureMultiplierDTO FeatureMultiplierDTO
 
 // NewFeatureMultiplierDTO instantiates a new FeatureMultiplierDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -285,7 +288,38 @@ func (o FeatureMultiplierDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SymbolsConfiguration) {
 		toSerialize["symbolsConfiguration"] = o.SymbolsConfiguration
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureMultiplierDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureMultiplierDTO := _FeatureMultiplierDTO{}
+
+	err = json.Unmarshal(data, &varFeatureMultiplierDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureMultiplierDTO(varFeatureMultiplierDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "fixMasterBalanceAndEquity")
+		delete(additionalProperties, "fixSlaveBalanceAndEquity")
+		delete(additionalProperties, "fixedLotSize")
+		delete(additionalProperties, "multiplier")
+		delete(additionalProperties, "scaleType")
+		delete(additionalProperties, "symbolsConfiguration")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureMultiplierDTO struct {

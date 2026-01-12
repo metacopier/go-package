@@ -22,8 +22,11 @@ type FeaturePermittedSymbolsDTO struct {
 	// Blacklist regex (case insensitive). If multiple regex are specified, they are combined using an OR condition. The regex is applied to the master symbol's name.
 	Blacklist []string `json:"blacklist,omitempty"`
 	// Whitelist regex (case insensitive). If multiple regex are specified, they are combined using an OR condition. The regex is applied to the master symbol's name.
-	Whitelist []string `json:"whitelist,omitempty"`
+	Whitelist            []string `json:"whitelist,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeaturePermittedSymbolsDTO FeaturePermittedSymbolsDTO
 
 // NewFeaturePermittedSymbolsDTO instantiates a new FeaturePermittedSymbolsDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o FeaturePermittedSymbolsDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Whitelist) {
 		toSerialize["whitelist"] = o.Whitelist
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeaturePermittedSymbolsDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeaturePermittedSymbolsDTO := _FeaturePermittedSymbolsDTO{}
+
+	err = json.Unmarshal(data, &varFeaturePermittedSymbolsDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeaturePermittedSymbolsDTO(varFeaturePermittedSymbolsDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "blacklist")
+		delete(additionalProperties, "whitelist")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeaturePermittedSymbolsDTO struct {

@@ -24,8 +24,11 @@ type FrontendFeatureDTO struct {
 	// Feature enum name
 	Id *string `json:"id,omitempty"`
 	// Feature display name
-	Name *string `json:"name,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FrontendFeatureDTO FrontendFeatureDTO
 
 // NewFrontendFeatureDTO instantiates a new FrontendFeatureDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -159,7 +162,35 @@ func (o FrontendFeatureDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FrontendFeatureDTO) UnmarshalJSON(data []byte) (err error) {
+	varFrontendFeatureDTO := _FrontendFeatureDTO{}
+
+	err = json.Unmarshal(data, &varFrontendFeatureDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FrontendFeatureDTO(varFrontendFeatureDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFrontendFeatureDTO struct {

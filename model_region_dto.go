@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -21,8 +20,9 @@ var _ MappedNullable = &RegionDTO{}
 
 // RegionDTO A list of allowed regions to which the account can be moved if an error or issue occurs. When an account is moved, another IP address will be assigned to it. If the list is empty, all regions are allowed.
 type RegionDTO struct {
-	Id   int32   `json:"id"`
-	Name *string `json:"name,omitempty"`
+	Id                   int32   `json:"id"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RegionDTO RegionDTO
@@ -115,6 +115,11 @@ func (o RegionDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -142,14 +147,21 @@ func (o *RegionDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varRegionDTO := _RegionDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varRegionDTO)
+	err = json.Unmarshal(data, &varRegionDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RegionDTO(varRegionDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

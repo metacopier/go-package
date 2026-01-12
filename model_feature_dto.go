@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -30,9 +29,10 @@ type FeatureDTO struct {
 	Created *time.Time `json:"created,omitempty"`
 	Id      *string    `json:"id,omitempty"`
 	// You have to set it during resource creation, after that, it is only read-only
-	ProjectId *string           `json:"projectId,omitempty"`
-	Setting   FeatureSettingDTO `json:"setting"`
-	Type      FeatureTypeDTO    `json:"type"`
+	ProjectId            *string           `json:"projectId,omitempty"`
+	Setting              FeatureSettingDTO `json:"setting"`
+	Type                 FeatureTypeDTO    `json:"type"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FeatureDTO FeatureDTO
@@ -291,6 +291,11 @@ func (o FeatureDTO) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["setting"] = o.Setting
 	toSerialize["type"] = o.Type
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -319,14 +324,26 @@ func (o *FeatureDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureDTO := _FeatureDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureDTO)
+	err = json.Unmarshal(data, &varFeatureDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureDTO(varFeatureDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "copierId")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "setting")
+		delete(additionalProperties, "type")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

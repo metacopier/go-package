@@ -20,11 +20,14 @@ var _ MappedNullable = &RiskLimitStatusDTO{}
 
 // RiskLimitStatusDTO struct for RiskLimitStatusDTO
 type RiskLimitStatusDTO struct {
-	BalanceLastUpdate *time.Time `json:"balanceLastUpdate,omitempty"`
-	LimitIsHit        *bool      `json:"limitIsHit,omitempty"`
-	ReferenceBalance  *float32   `json:"referenceBalance,omitempty"`
-	RiskLimitId       *string    `json:"riskLimitId,omitempty"`
+	BalanceLastUpdate    *time.Time `json:"balanceLastUpdate,omitempty"`
+	LimitIsHit           *bool      `json:"limitIsHit,omitempty"`
+	ReferenceBalance     *float32   `json:"referenceBalance,omitempty"`
+	RiskLimitId          *string    `json:"riskLimitId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RiskLimitStatusDTO RiskLimitStatusDTO
 
 // NewRiskLimitStatusDTO instantiates a new RiskLimitStatusDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -193,7 +196,36 @@ func (o RiskLimitStatusDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RiskLimitId) {
 		toSerialize["riskLimitId"] = o.RiskLimitId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RiskLimitStatusDTO) UnmarshalJSON(data []byte) (err error) {
+	varRiskLimitStatusDTO := _RiskLimitStatusDTO{}
+
+	err = json.Unmarshal(data, &varRiskLimitStatusDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RiskLimitStatusDTO(varRiskLimitStatusDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "balanceLastUpdate")
+		delete(additionalProperties, "limitIsHit")
+		delete(additionalProperties, "referenceBalance")
+		delete(additionalProperties, "riskLimitId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRiskLimitStatusDTO struct {

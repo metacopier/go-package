@@ -26,8 +26,11 @@ type FeatureBreakEvenDTO struct {
 	// Defines the break-even per symbol.
 	SymbolsConfiguration *map[string]FeatureBreakEvenDTO `json:"symbolsConfiguration,omitempty"`
 	// Specifies the number of points required for the trade to trigger the break-even logic. Once the profit reaches this value, the stop loss will be adjusted. A value of 0 disables the trigger.
-	TriggerInPoints *int32 `json:"triggerInPoints,omitempty"`
+	TriggerInPoints      *int32 `json:"triggerInPoints,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureBreakEvenDTO FeatureBreakEvenDTO
 
 // NewFeatureBreakEvenDTO instantiates a new FeatureBreakEvenDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -208,7 +211,36 @@ func (o FeatureBreakEvenDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TriggerInPoints) {
 		toSerialize["triggerInPoints"] = o.TriggerInPoints
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureBreakEvenDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureBreakEvenDTO := _FeatureBreakEvenDTO{}
+
+	err = json.Unmarshal(data, &varFeatureBreakEvenDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureBreakEvenDTO(varFeatureBreakEvenDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "reverse")
+		delete(additionalProperties, "stopLossInPoints")
+		delete(additionalProperties, "symbolsConfiguration")
+		delete(additionalProperties, "triggerInPoints")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureBreakEvenDTO struct {

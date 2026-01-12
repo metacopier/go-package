@@ -20,8 +20,11 @@ var _ MappedNullable = &ReportPerformanceDTO{}
 // ReportPerformanceDTO DTO representing requested performance metrics for a list of accounts.
 type ReportPerformanceDTO struct {
 	// List of performance metrics for each account, as defined in AccountPerformanceDTO.
-	Accounts []AccountPerformanceDTO `json:"accounts,omitempty"`
+	Accounts             []AccountPerformanceDTO `json:"accounts,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ReportPerformanceDTO ReportPerformanceDTO
 
 // NewReportPerformanceDTO instantiates a new ReportPerformanceDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ReportPerformanceDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Accounts) {
 		toSerialize["accounts"] = o.Accounts
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ReportPerformanceDTO) UnmarshalJSON(data []byte) (err error) {
+	varReportPerformanceDTO := _ReportPerformanceDTO{}
+
+	err = json.Unmarshal(data, &varReportPerformanceDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ReportPerformanceDTO(varReportPerformanceDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accounts")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableReportPerformanceDTO struct {

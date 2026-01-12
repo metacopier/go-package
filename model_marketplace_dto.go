@@ -19,8 +19,11 @@ var _ MappedNullable = &MarketplaceDTO{}
 
 // MarketplaceDTO struct for MarketplaceDTO
 type MarketplaceDTO struct {
-	Signals []FeatureDTO `json:"signals,omitempty"`
+	Signals              []FeatureDTO `json:"signals,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _MarketplaceDTO MarketplaceDTO
 
 // NewMarketplaceDTO instantiates a new MarketplaceDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -84,7 +87,33 @@ func (o MarketplaceDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Signals) {
 		toSerialize["signals"] = o.Signals
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *MarketplaceDTO) UnmarshalJSON(data []byte) (err error) {
+	varMarketplaceDTO := _MarketplaceDTO{}
+
+	err = json.Unmarshal(data, &varMarketplaceDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MarketplaceDTO(varMarketplaceDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "signals")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableMarketplaceDTO struct {

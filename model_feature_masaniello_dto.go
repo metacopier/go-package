@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -85,6 +84,7 @@ type FeatureMasanielloDTO struct {
 	WinThresholdBase string `json:"winThresholdBase"`
 	// Trade counts as WIN if profit >= winThresholdPercentage% of base (risk or notional), depending on winThresholdBase.
 	WinThresholdPercentage *float32 `json:"winThresholdPercentage,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _FeatureMasanielloDTO FeatureMasanielloDTO
@@ -1321,6 +1321,11 @@ func (o FeatureMasanielloDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.WinThresholdPercentage) {
 		toSerialize["winThresholdPercentage"] = o.WinThresholdPercentage
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -1353,14 +1358,52 @@ func (o *FeatureMasanielloDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureMasanielloDTO := _FeatureMasanielloDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureMasanielloDTO)
+	err = json.Unmarshal(data, &varFeatureMasanielloDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureMasanielloDTO(varFeatureMasanielloDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "assumedPointRisk")
+		delete(additionalProperties, "autoResetOnSeriesComplete")
+		delete(additionalProperties, "autoTuneBoundsValid")
+		delete(additionalProperties, "bankrollBase")
+		delete(additionalProperties, "bankrollPercentage")
+		delete(additionalProperties, "cooldownAfterResetMinutes")
+		delete(additionalProperties, "excludeBreakEvenTrades")
+		delete(additionalProperties, "expectedLossRMultiple")
+		delete(additionalProperties, "expectedPayoutFactor")
+		delete(additionalProperties, "expectedRMultiple")
+		delete(additionalProperties, "expectedWins")
+		delete(additionalProperties, "expectedWinsValid")
+		delete(additionalProperties, "lotRoundingMode")
+		delete(additionalProperties, "lotStep")
+		delete(additionalProperties, "maxConsecutiveLosses")
+		delete(additionalProperties, "maxExpectedWins")
+		delete(additionalProperties, "maximumLotSize")
+		delete(additionalProperties, "minExpectedWins")
+		delete(additionalProperties, "minimumLotSize")
+		delete(additionalProperties, "minimumTradesForHistoricalWinRate")
+		delete(additionalProperties, "outcomePolicy")
+		delete(additionalProperties, "partialWinPolicy")
+		delete(additionalProperties, "payoutModel")
+		delete(additionalProperties, "resetOnBankrollDepleted")
+		delete(additionalProperties, "resetOnTargetReached")
+		delete(additionalProperties, "statisticsLookBackDays")
+		delete(additionalProperties, "symbolsConfiguration")
+		delete(additionalProperties, "targetProfitPercentage")
+		delete(additionalProperties, "totalEvents")
+		delete(additionalProperties, "useHistoricalWinRate")
+		delete(additionalProperties, "winRateSmoothingFactor")
+		delete(additionalProperties, "winThresholdBase")
+		delete(additionalProperties, "winThresholdPercentage")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

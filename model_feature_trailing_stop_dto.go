@@ -30,8 +30,11 @@ type FeatureTrailingStopDTO struct {
 	// Defines the trailing stop configuration per symbol.
 	SymbolsConfiguration *map[string]FeatureTrailingStopDTO `json:"symbolsConfiguration,omitempty"`
 	// Defines the step distance in points at which the trailing stop will move as the trade progresses.
-	TrailingStepPoints *int32 `json:"trailingStepPoints,omitempty"`
+	TrailingStepPoints   *int32 `json:"trailingStepPoints,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureTrailingStopDTO FeatureTrailingStopDTO
 
 // NewFeatureTrailingStopDTO instantiates a new FeatureTrailingStopDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -290,7 +293,38 @@ func (o FeatureTrailingStopDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TrailingStepPoints) {
 		toSerialize["trailingStepPoints"] = o.TrailingStepPoints
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureTrailingStopDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureTrailingStopDTO := _FeatureTrailingStopDTO{}
+
+	err = json.Unmarshal(data, &varFeatureTrailingStopDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureTrailingStopDTO(varFeatureTrailingStopDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "activationThresholdPercentage")
+		delete(additionalProperties, "activationThresholdPoints")
+		delete(additionalProperties, "initialStopLossPoints")
+		delete(additionalProperties, "minimumDistancePoints")
+		delete(additionalProperties, "symbolsConfiguration")
+		delete(additionalProperties, "trailingStepPoints")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureTrailingStopDTO struct {

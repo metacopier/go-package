@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -21,8 +20,9 @@ var _ MappedNullable = &CurrencyTypeDTO{}
 
 // CurrencyTypeDTO You have only to set the id e.g 1 for USD, 2 for EUR, 3 for CHF. Example: {id:1}
 type CurrencyTypeDTO struct {
-	Id   int32   `json:"id"`
-	Name *string `json:"name,omitempty"`
+	Id                   int32   `json:"id"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CurrencyTypeDTO CurrencyTypeDTO
@@ -115,6 +115,11 @@ func (o CurrencyTypeDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -142,14 +147,21 @@ func (o *CurrencyTypeDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varCurrencyTypeDTO := _CurrencyTypeDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varCurrencyTypeDTO)
+	err = json.Unmarshal(data, &varCurrencyTypeDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CurrencyTypeDTO(varCurrencyTypeDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

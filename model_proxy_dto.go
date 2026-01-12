@@ -19,11 +19,14 @@ var _ MappedNullable = &ProxyDTO{}
 
 // ProxyDTO Read-only. The system will reserve the proxy servers per region and list them in this field.
 type ProxyDTO struct {
-	Id             *int32          `json:"id,omitempty"`
-	IpAddress      *string         `json:"ipAddress,omitempty"`
-	Region         *ProxyRegionDTO `json:"region,omitempty"`
-	UsedByAccounts []string        `json:"usedByAccounts,omitempty"`
+	Id                   *int32          `json:"id,omitempty"`
+	IpAddress            *string         `json:"ipAddress,omitempty"`
+	Region               *ProxyRegionDTO `json:"region,omitempty"`
+	UsedByAccounts       []string        `json:"usedByAccounts,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProxyDTO ProxyDTO
 
 // NewProxyDTO instantiates a new ProxyDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -192,7 +195,36 @@ func (o ProxyDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UsedByAccounts) {
 		toSerialize["usedByAccounts"] = o.UsedByAccounts
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProxyDTO) UnmarshalJSON(data []byte) (err error) {
+	varProxyDTO := _ProxyDTO{}
+
+	err = json.Unmarshal(data, &varProxyDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProxyDTO(varProxyDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "usedByAccounts")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProxyDTO struct {

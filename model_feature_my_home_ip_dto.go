@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -30,7 +29,8 @@ type FeatureMyHomeIpDTO struct {
 	// The port number for SOCKS proxy.
 	SocksPort *int32 `json:"socksPort,omitempty"`
 	// The username for SOCKS/HTTP authentication.
-	Username string `json:"username"`
+	Username             string `json:"username"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FeatureMyHomeIpDTO FeatureMyHomeIpDTO
@@ -210,6 +210,11 @@ func (o FeatureMyHomeIpDTO) ToMap() (map[string]interface{}, error) {
 		toSerialize["socksPort"] = o.SocksPort
 	}
 	toSerialize["username"] = o.Username
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -239,14 +244,24 @@ func (o *FeatureMyHomeIpDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureMyHomeIpDTO := _FeatureMyHomeIpDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureMyHomeIpDTO)
+	err = json.Unmarshal(data, &varFeatureMyHomeIpDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureMyHomeIpDTO(varFeatureMyHomeIpDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "host")
+		delete(additionalProperties, "httpPort")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "socksPort")
+		delete(additionalProperties, "username")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

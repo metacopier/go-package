@@ -37,7 +37,10 @@ type FeatureTpSlManagementDTO struct {
 	RemoveTp *bool `json:"removeTp,omitempty"`
 	// Defines TP/SL management per symbol. Symbol configuration has priority over the general configuration.
 	SymbolsConfiguration *map[string]FeatureTpSlManagementDTO `json:"symbolsConfiguration,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureTpSlManagementDTO FeatureTpSlManagementDTO
 
 // NewFeatureTpSlManagementDTO instantiates a new FeatureTpSlManagementDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -397,7 +400,41 @@ func (o FeatureTpSlManagementDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SymbolsConfiguration) {
 		toSerialize["symbolsConfiguration"] = o.SymbolsConfiguration
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureTpSlManagementDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureTpSlManagementDTO := _FeatureTpSlManagementDTO{}
+
+	err = json.Unmarshal(data, &varFeatureTpSlManagementDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureTpSlManagementDTO(varFeatureTpSlManagementDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "additionalSlPoints")
+		delete(additionalProperties, "additionalTpPoints")
+		delete(additionalProperties, "adjustWithMasterDistance")
+		delete(additionalProperties, "fixedSlInPoints")
+		delete(additionalProperties, "fixedTpInPoints")
+		delete(additionalProperties, "lockTpSl")
+		delete(additionalProperties, "removeSl")
+		delete(additionalProperties, "removeTp")
+		delete(additionalProperties, "symbolsConfiguration")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureTpSlManagementDTO struct {

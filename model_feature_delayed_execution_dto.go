@@ -29,7 +29,10 @@ type FeatureDelayedExecutionDTO struct {
 	MinDelayOpen *float32 `json:"minDelayOpen,omitempty"`
 	// Defines the delay execution per symbol.
 	SymbolsConfiguration *map[string]FeatureDelayedExecutionDTO `json:"symbolsConfiguration,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureDelayedExecutionDTO FeatureDelayedExecutionDTO
 
 // NewFeatureDelayedExecutionDTO instantiates a new FeatureDelayedExecutionDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -249,7 +252,37 @@ func (o FeatureDelayedExecutionDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SymbolsConfiguration) {
 		toSerialize["symbolsConfiguration"] = o.SymbolsConfiguration
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureDelayedExecutionDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureDelayedExecutionDTO := _FeatureDelayedExecutionDTO{}
+
+	err = json.Unmarshal(data, &varFeatureDelayedExecutionDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureDelayedExecutionDTO(varFeatureDelayedExecutionDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "maxDelayClose")
+		delete(additionalProperties, "maxDelayOpen")
+		delete(additionalProperties, "minDelayClose")
+		delete(additionalProperties, "minDelayOpen")
+		delete(additionalProperties, "symbolsConfiguration")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureDelayedExecutionDTO struct {

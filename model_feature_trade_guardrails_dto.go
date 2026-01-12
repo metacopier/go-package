@@ -29,7 +29,10 @@ type FeatureTradeGuardrailsDTO struct {
 	MaxOpenTimeSeconds *int32 `json:"maxOpenTimeSeconds,omitempty"`
 	// Defines the maximum lot size threshold per symbol. This allows for symbol-specific thresholds that override the global threshold.
 	SymbolsConfiguration *map[string]FeatureTradeGuardrailsDTO `json:"symbolsConfiguration,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureTradeGuardrailsDTO FeatureTradeGuardrailsDTO
 
 // NewFeatureTradeGuardrailsDTO instantiates a new FeatureTradeGuardrailsDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -249,7 +252,37 @@ func (o FeatureTradeGuardrailsDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SymbolsConfiguration) {
 		toSerialize["symbolsConfiguration"] = o.SymbolsConfiguration
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureTradeGuardrailsDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureTradeGuardrailsDTO := _FeatureTradeGuardrailsDTO{}
+
+	err = json.Unmarshal(data, &varFeatureTradeGuardrailsDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureTradeGuardrailsDTO(varFeatureTradeGuardrailsDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "aggregatePerSymbol")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "maxLotSizeThreshold")
+		delete(additionalProperties, "maxOpenTimeSeconds")
+		delete(additionalProperties, "symbolsConfiguration")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureTradeGuardrailsDTO struct {

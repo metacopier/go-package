@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,9 +23,10 @@ type StrategyDTO struct {
 	Active bool    `json:"active"`
 	Id     *string `json:"id,omitempty"`
 	// You can define a positive number as key. This key will be saved in the \"magic number\" field for each trade
-	Key       int32  `json:"key"`
-	Name      string `json:"name"`
-	ProjectId string `json:"projectId"`
+	Key                  int32  `json:"key"`
+	Name                 string `json:"name"`
+	ProjectId            string `json:"projectId"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StrategyDTO StrategyDTO
@@ -197,6 +197,11 @@ func (o StrategyDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize["key"] = o.Key
 	toSerialize["name"] = o.Name
 	toSerialize["projectId"] = o.ProjectId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -227,14 +232,24 @@ func (o *StrategyDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varStrategyDTO := _StrategyDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varStrategyDTO)
+	err = json.Unmarshal(data, &varStrategyDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StrategyDTO(varStrategyDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "active")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

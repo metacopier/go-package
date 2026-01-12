@@ -24,7 +24,10 @@ type ProfitTargetStatusDTO struct {
 	ProfitTargetFeatureId *string    `json:"profitTargetFeatureId,omitempty"`
 	ProfitTargetIsHit     *bool      `json:"profitTargetIsHit,omitempty"`
 	ReferenceBalance      *float32   `json:"referenceBalance,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
+
+type _ProfitTargetStatusDTO ProfitTargetStatusDTO
 
 // NewProfitTargetStatusDTO instantiates a new ProfitTargetStatusDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -193,7 +196,36 @@ func (o ProfitTargetStatusDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ReferenceBalance) {
 		toSerialize["referenceBalance"] = o.ReferenceBalance
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProfitTargetStatusDTO) UnmarshalJSON(data []byte) (err error) {
+	varProfitTargetStatusDTO := _ProfitTargetStatusDTO{}
+
+	err = json.Unmarshal(data, &varProfitTargetStatusDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProfitTargetStatusDTO(varProfitTargetStatusDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "balanceLastUpdate")
+		delete(additionalProperties, "profitTargetFeatureId")
+		delete(additionalProperties, "profitTargetIsHit")
+		delete(additionalProperties, "referenceBalance")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProfitTargetStatusDTO struct {

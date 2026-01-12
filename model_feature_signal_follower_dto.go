@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -33,7 +32,8 @@ type FeatureSignalFollowerDTO struct {
 	// Name of the signal provider.
 	SignalProviderName *string `json:"signalProviderName,omitempty"`
 	// Specifies whether the follower is suspended (the copier is deactivated). This setting can only be changed by the signal provider and cannot be overridden by the follower.
-	Suspended *bool `json:"suspended,omitempty"`
+	Suspended            *bool `json:"suspended,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FeatureSignalFollowerDTO FeatureSignalFollowerDTO
@@ -313,6 +313,11 @@ func (o FeatureSignalFollowerDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Suspended) {
 		toSerialize["suspended"] = o.Suspended
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -340,14 +345,26 @@ func (o *FeatureSignalFollowerDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureSignalFollowerDTO := _FeatureSignalFollowerDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureSignalFollowerDTO)
+	err = json.Unmarshal(data, &varFeatureSignalFollowerDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureSignalFollowerDTO(varFeatureSignalFollowerDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "active")
+		delete(additionalProperties, "copier")
+		delete(additionalProperties, "monitorOnly")
+		delete(additionalProperties, "signalProviderAvailable")
+		delete(additionalProperties, "signalProviderId")
+		delete(additionalProperties, "signalProviderName")
+		delete(additionalProperties, "suspended")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

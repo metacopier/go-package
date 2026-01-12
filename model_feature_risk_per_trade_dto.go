@@ -33,7 +33,10 @@ type FeatureRiskPerTradeDTO struct {
 	TickValue *float32 `json:"tickValue,omitempty"`
 	// Enable automatic detection of the point-value in account currency from live trades. When true, the system overrides `tickValue` with the detected value at runtime.
 	TickValueAutomaticAdjustement *bool `json:"tickValueAutomaticAdjustement,omitempty"`
+	AdditionalProperties          map[string]interface{}
 }
+
+type _FeatureRiskPerTradeDTO FeatureRiskPerTradeDTO
 
 // NewFeatureRiskPerTradeDTO instantiates a new FeatureRiskPerTradeDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -331,7 +334,39 @@ func (o FeatureRiskPerTradeDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TickValueAutomaticAdjustement) {
 		toSerialize["tickValueAutomaticAdjustement"] = o.TickValueAutomaticAdjustement
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureRiskPerTradeDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureRiskPerTradeDTO := _FeatureRiskPerTradeDTO{}
+
+	err = json.Unmarshal(data, &varFeatureRiskPerTradeDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureRiskPerTradeDTO(varFeatureRiskPerTradeDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "absoluteRisk")
+		delete(additionalProperties, "aggregateRiskPerSymbol")
+		delete(additionalProperties, "correctLotSizeBasedOnTheStopLoss")
+		delete(additionalProperties, "relativeRisk")
+		delete(additionalProperties, "symbolsConfiguration")
+		delete(additionalProperties, "tickValue")
+		delete(additionalProperties, "tickValueAutomaticAdjustement")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureRiskPerTradeDTO struct {

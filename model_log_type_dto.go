@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -21,8 +20,9 @@ var _ MappedNullable = &LogTypeDTO{}
 
 // LogTypeDTO You have only to set the id e.g 1 for Telegram. Example: {id:1}
 type LogTypeDTO struct {
-	Id   int32   `json:"id"`
-	Name *string `json:"name,omitempty"`
+	Id                   int32   `json:"id"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _LogTypeDTO LogTypeDTO
@@ -115,6 +115,11 @@ func (o LogTypeDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -142,14 +147,21 @@ func (o *LogTypeDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varLogTypeDTO := _LogTypeDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varLogTypeDTO)
+	err = json.Unmarshal(data, &varLogTypeDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = LogTypeDTO(varLogTypeDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

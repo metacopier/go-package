@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -30,15 +29,16 @@ type InvoiceDTO struct {
 	DescriptionPosition *string         `json:"descriptionPosition,omitempty"`
 	Discount            *float32        `json:"discount,omitempty"`
 	// ISO 8601
-	DueDate           *time.Time `json:"dueDate,omitempty"`
-	Id                *string    `json:"id,omitempty"`
-	InvoiceNumber     *string    `json:"invoiceNumber,omitempty"`
-	InvoicePaymentUrl *string    `json:"invoicePaymentUrl,omitempty"`
-	InvoicePdfUrl     *string    `json:"invoicePdfUrl,omitempty"`
-	ProjectId         *string    `json:"projectId,omitempty"`
-	ProjectName       *string    `json:"projectName,omitempty"`
-	Status            *string    `json:"status,omitempty"`
-	Tax               *TaxDTO    `json:"tax,omitempty"`
+	DueDate              *time.Time `json:"dueDate,omitempty"`
+	Id                   *string    `json:"id,omitempty"`
+	InvoiceNumber        *string    `json:"invoiceNumber,omitempty"`
+	InvoicePaymentUrl    *string    `json:"invoicePaymentUrl,omitempty"`
+	InvoicePdfUrl        *string    `json:"invoicePdfUrl,omitempty"`
+	ProjectId            *string    `json:"projectId,omitempty"`
+	ProjectName          *string    `json:"projectName,omitempty"`
+	Status               *string    `json:"status,omitempty"`
+	Tax                  *TaxDTO    `json:"tax,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _InvoiceDTO InvoiceDTO
@@ -586,6 +586,11 @@ func (o InvoiceDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Tax) {
 		toSerialize["tax"] = o.Tax
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -613,14 +618,34 @@ func (o *InvoiceDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varInvoiceDTO := _InvoiceDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varInvoiceDTO)
+	err = json.Unmarshal(data, &varInvoiceDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = InvoiceDTO(varInvoiceDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "amount")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "currencyType")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "descriptionPosition")
+		delete(additionalProperties, "discount")
+		delete(additionalProperties, "dueDate")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "invoiceNumber")
+		delete(additionalProperties, "invoicePaymentUrl")
+		delete(additionalProperties, "invoicePdfUrl")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "tax")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

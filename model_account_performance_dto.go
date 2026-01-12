@@ -39,8 +39,11 @@ type AccountPerformanceDTO struct {
 	// List of historical positions relevant to the account's performance as of the recorded date.
 	History []PositionDTO `json:"history,omitempty"`
 	// Monthly net profit data, where the key is the month (as an integer starting at 1 for January) and the value is the net profit earned in that month.
-	NetProfits *map[string]map[string]float32 `json:"netProfits,omitempty"`
+	NetProfits           *map[string]map[string]float32 `json:"netProfits,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AccountPerformanceDTO AccountPerformanceDTO
 
 // NewAccountPerformanceDTO instantiates a new AccountPerformanceDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -419,7 +422,42 @@ func (o AccountPerformanceDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetProfits) {
 		toSerialize["netProfits"] = o.NetProfits
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AccountPerformanceDTO) UnmarshalJSON(data []byte) (err error) {
+	varAccountPerformanceDTO := _AccountPerformanceDTO{}
+
+	err = json.Unmarshal(data, &varAccountPerformanceDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AccountPerformanceDTO(varAccountPerformanceDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "balance")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "currentDrawdown")
+		delete(additionalProperties, "customerEmail")
+		delete(additionalProperties, "date")
+		delete(additionalProperties, "deleted")
+		delete(additionalProperties, "equity")
+		delete(additionalProperties, "history")
+		delete(additionalProperties, "netProfits")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAccountPerformanceDTO struct {

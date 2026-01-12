@@ -19,13 +19,16 @@ var _ MappedNullable = &TaxBreakdownDTO{}
 
 // TaxBreakdownDTO struct for TaxBreakdownDTO
 type TaxBreakdownDTO struct {
-	Amount           *int64             `json:"amount,omitempty"`
-	Inclusive        *bool              `json:"inclusive,omitempty"`
-	TaxRateDetails   *TaxRateDetailsDTO `json:"taxRateDetails,omitempty"`
-	TaxabilityReason *string            `json:"taxabilityReason,omitempty"`
-	TaxableAmount    *int64             `json:"taxableAmount,omitempty"`
-	VatNumber        *string            `json:"vatNumber,omitempty"`
+	Amount               *int64             `json:"amount,omitempty"`
+	Inclusive            *bool              `json:"inclusive,omitempty"`
+	TaxRateDetails       *TaxRateDetailsDTO `json:"taxRateDetails,omitempty"`
+	TaxabilityReason     *string            `json:"taxabilityReason,omitempty"`
+	TaxableAmount        *int64             `json:"taxableAmount,omitempty"`
+	VatNumber            *string            `json:"vatNumber,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _TaxBreakdownDTO TaxBreakdownDTO
 
 // NewTaxBreakdownDTO instantiates a new TaxBreakdownDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -264,7 +267,38 @@ func (o TaxBreakdownDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VatNumber) {
 		toSerialize["vatNumber"] = o.VatNumber
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *TaxBreakdownDTO) UnmarshalJSON(data []byte) (err error) {
+	varTaxBreakdownDTO := _TaxBreakdownDTO{}
+
+	err = json.Unmarshal(data, &varTaxBreakdownDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TaxBreakdownDTO(varTaxBreakdownDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "amount")
+		delete(additionalProperties, "inclusive")
+		delete(additionalProperties, "taxRateDetails")
+		delete(additionalProperties, "taxabilityReason")
+		delete(additionalProperties, "taxableAmount")
+		delete(additionalProperties, "vatNumber")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableTaxBreakdownDTO struct {

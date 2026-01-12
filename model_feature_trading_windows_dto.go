@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -28,7 +27,8 @@ type FeatureTradingWindowsDTO struct {
 	// Indicates whether trades outside the defined windows are temporarily skipped until the next trading window starts. This option is only applicable to copiers.
 	TemporarilySkipUntilNextWindow *bool `json:"temporarilySkipUntilNextWindow,omitempty"`
 	// List of trading windows defined by the user.
-	TradingWindows []TradingWindowDTO `json:"tradingWindows"`
+	TradingWindows       []TradingWindowDTO `json:"tradingWindows"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FeatureTradingWindowsDTO FeatureTradingWindowsDTO
@@ -199,6 +199,11 @@ func (o FeatureTradingWindowsDTO) ToMap() (map[string]interface{}, error) {
 		toSerialize["temporarilySkipUntilNextWindow"] = o.TemporarilySkipUntilNextWindow
 	}
 	toSerialize["tradingWindows"] = o.TradingWindows
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -226,14 +231,23 @@ func (o *FeatureTradingWindowsDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureTradingWindowsDTO := _FeatureTradingWindowsDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureTradingWindowsDTO)
+	err = json.Unmarshal(data, &varFeatureTradingWindowsDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureTradingWindowsDTO(varFeatureTradingWindowsDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "closePositionsAtWindowEnd")
+		delete(additionalProperties, "symbolsConfiguration")
+		delete(additionalProperties, "temporarilySkipUntilNextWindow")
+		delete(additionalProperties, "tradingWindows")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

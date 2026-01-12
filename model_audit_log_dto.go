@@ -65,8 +65,11 @@ type AuditLogDTO struct {
 	// Timestamp when the operation was performed
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 	// User agent string from the client
-	UserAgent *string `json:"userAgent,omitempty"`
+	UserAgent            *string `json:"userAgent,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AuditLogDTO AuditLogDTO
 
 // NewAuditLogDTO instantiates a new AuditLogDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -900,7 +903,55 @@ func (o AuditLogDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserAgent) {
 		toSerialize["userAgent"] = o.UserAgent
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AuditLogDTO) UnmarshalJSON(data []byte) (err error) {
+	varAuditLogDTO := _AuditLogDTO{}
+
+	err = json.Unmarshal(data, &varAuditLogDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuditLogDTO(varAuditLogDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountAlias")
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "apiKeyAlias")
+		delete(additionalProperties, "apiKeyId")
+		delete(additionalProperties, "durationMs")
+		delete(additionalProperties, "endpoint")
+		delete(additionalProperties, "errorMessage")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "method")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "queryString")
+		delete(additionalProperties, "requestBody")
+		delete(additionalProperties, "requestBodySize")
+		delete(additionalProperties, "requestHeaders")
+		delete(additionalProperties, "responseBody")
+		delete(additionalProperties, "responseBodySize")
+		delete(additionalProperties, "serverHost")
+		delete(additionalProperties, "statusCode")
+		delete(additionalProperties, "success")
+		delete(additionalProperties, "timestamp")
+		delete(additionalProperties, "userAgent")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAuditLogDTO struct {

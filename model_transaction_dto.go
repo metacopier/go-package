@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -25,11 +24,12 @@ type TransactionDTO struct {
 	Amount       float32         `json:"amount"`
 	CurrencyType CurrencyTypeDTO `json:"currencyType"`
 	// ISO 8601
-	Date      *time.Time `json:"date,omitempty"`
-	Id        *int32     `json:"id,omitempty"`
-	ProjectId string     `json:"projectId"`
-	Reference string     `json:"reference"`
-	Remark    string     `json:"remark"`
+	Date                 *time.Time `json:"date,omitempty"`
+	Id                   *int32     `json:"id,omitempty"`
+	ProjectId            string     `json:"projectId"`
+	Reference            string     `json:"reference"`
+	Remark               string     `json:"remark"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TransactionDTO TransactionDTO
@@ -261,6 +261,11 @@ func (o TransactionDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["reference"] = o.Reference
 	toSerialize["remark"] = o.Remark
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -292,14 +297,26 @@ func (o *TransactionDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varTransactionDTO := _TransactionDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varTransactionDTO)
+	err = json.Unmarshal(data, &varTransactionDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TransactionDTO(varTransactionDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "amount")
+		delete(additionalProperties, "currencyType")
+		delete(additionalProperties, "date")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "reference")
+		delete(additionalProperties, "remark")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

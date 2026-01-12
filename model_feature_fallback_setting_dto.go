@@ -22,8 +22,11 @@ type FeatureFallbackSettingDTO struct {
 	// A list of allowed regions to which the account can be moved if an error or issue occurs. When an account is moved, another IP address will be assigned to it. If the list is empty, all regions are allowed.
 	AllowedRegions []RegionDTO `json:"allowedRegions,omitempty"`
 	// Indicates whether fallback behavior is disabled. If set to true, the account will not be moved to another region in case of errors or issues. If fallback is enabled, another IP address will be assigned to the account when it is moved.
-	NoFallback *bool `json:"noFallback,omitempty"`
+	NoFallback           *bool `json:"noFallback,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureFallbackSettingDTO FeatureFallbackSettingDTO
 
 // NewFeatureFallbackSettingDTO instantiates a new FeatureFallbackSettingDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -126,7 +129,34 @@ func (o FeatureFallbackSettingDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NoFallback) {
 		toSerialize["noFallback"] = o.NoFallback
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureFallbackSettingDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureFallbackSettingDTO := _FeatureFallbackSettingDTO{}
+
+	err = json.Unmarshal(data, &varFeatureFallbackSettingDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureFallbackSettingDTO(varFeatureFallbackSettingDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "allowedRegions")
+		delete(additionalProperties, "noFallback")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureFallbackSettingDTO struct {

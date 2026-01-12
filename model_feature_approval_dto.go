@@ -20,8 +20,11 @@ var _ MappedNullable = &FeatureApprovalDTO{}
 // FeatureApprovalDTO DTO for approval feature (copier) (PRO)
 type FeatureApprovalDTO struct {
 	// Activate the approval. This property is always set to true.
-	ActivateApproval *bool `json:"activateApproval,omitempty"`
+	ActivateApproval     *bool `json:"activateApproval,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureApprovalDTO FeatureApprovalDTO
 
 // NewFeatureApprovalDTO instantiates a new FeatureApprovalDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o FeatureApprovalDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ActivateApproval) {
 		toSerialize["activateApproval"] = o.ActivateApproval
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureApprovalDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureApprovalDTO := _FeatureApprovalDTO{}
+
+	err = json.Unmarshal(data, &varFeatureApprovalDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureApprovalDTO(varFeatureApprovalDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "activateApproval")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureApprovalDTO struct {

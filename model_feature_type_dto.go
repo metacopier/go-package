@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -21,9 +20,10 @@ var _ MappedNullable = &FeatureTypeDTO{}
 
 // FeatureTypeDTO You have only to set the id e.g 1 for Telegram. Example: {id:1}
 type FeatureTypeDTO struct {
-	Id       int32   `json:"id"`
-	Name     *string `json:"name,omitempty"`
-	PlanName *string `json:"planName,omitempty"`
+	Id                   int32   `json:"id"`
+	Name                 *string `json:"name,omitempty"`
+	PlanName             *string `json:"planName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FeatureTypeDTO FeatureTypeDTO
@@ -151,6 +151,11 @@ func (o FeatureTypeDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PlanName) {
 		toSerialize["planName"] = o.PlanName
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -178,14 +183,22 @@ func (o *FeatureTypeDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureTypeDTO := _FeatureTypeDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureTypeDTO)
+	err = json.Unmarshal(data, &varFeatureTypeDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureTypeDTO(varFeatureTypeDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "planName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

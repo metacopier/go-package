@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -45,8 +44,9 @@ type RiskLimitDTO struct {
 	// ISO 8601. Set the reset time for calculation (see riskType). Only used for 1-3 risk type. Only the time is considered, and the date is ignored.
 	ResetTime *time.Time `json:"resetTime,omitempty"`
 	// 0.215 for 21.5% (set to 0 to deactivate)
-	RiskLimit float32     `json:"riskLimit"`
-	RiskType  RiskTypeDTO `json:"riskType"`
+	RiskLimit            float32     `json:"riskLimit"`
+	RiskType             RiskTypeDTO `json:"riskType"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RiskLimitDTO RiskLimitDTO
@@ -582,6 +582,11 @@ func (o RiskLimitDTO) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["riskLimit"] = o.RiskLimit
 	toSerialize["riskType"] = o.RiskType
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -610,14 +615,33 @@ func (o *RiskLimitDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varRiskLimitDTO := _RiskLimitDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varRiskLimitDTO)
+	err = json.Unmarshal(data, &varRiskLimitDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RiskLimitDTO(varRiskLimitDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "absoluteRiskLimit")
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "active")
+		delete(additionalProperties, "closeAllOpenPositions")
+		delete(additionalProperties, "copierId")
+		delete(additionalProperties, "fallbackAbsoluteRiskLimit")
+		delete(additionalProperties, "fallbackRelativeRiskLimit")
+		delete(additionalProperties, "fallbackRiskLimit")
+		delete(additionalProperties, "fulfillSeconds")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "relativeRiskLimit")
+		delete(additionalProperties, "resetTime")
+		delete(additionalProperties, "riskLimit")
+		delete(additionalProperties, "riskType")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

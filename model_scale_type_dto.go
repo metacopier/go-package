@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -21,8 +20,9 @@ var _ MappedNullable = &ScaleTypeDTO{}
 
 // ScaleTypeDTO You have only to set the id e.g 1 for scale by balance. 1: Balance 2: Equity 3: Fixed lot size 4: No scaling. Example: {id:1}
 type ScaleTypeDTO struct {
-	Id   int32   `json:"id"`
-	Name *string `json:"name,omitempty"`
+	Id                   int32   `json:"id"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ScaleTypeDTO ScaleTypeDTO
@@ -115,6 +115,11 @@ func (o ScaleTypeDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -142,14 +147,21 @@ func (o *ScaleTypeDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varScaleTypeDTO := _ScaleTypeDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varScaleTypeDTO)
+	err = json.Unmarshal(data, &varScaleTypeDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ScaleTypeDTO(varScaleTypeDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

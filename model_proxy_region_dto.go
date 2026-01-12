@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -21,8 +20,9 @@ var _ MappedNullable = &ProxyRegionDTO{}
 
 // ProxyRegionDTO struct for ProxyRegionDTO
 type ProxyRegionDTO struct {
-	Id   int32   `json:"id"`
-	Name *string `json:"name,omitempty"`
+	Id                   int32   `json:"id"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProxyRegionDTO ProxyRegionDTO
@@ -115,6 +115,11 @@ func (o ProxyRegionDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -142,14 +147,21 @@ func (o *ProxyRegionDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varProxyRegionDTO := _ProxyRegionDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varProxyRegionDTO)
+	err = json.Unmarshal(data, &varProxyRegionDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProxyRegionDTO(varProxyRegionDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

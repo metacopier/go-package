@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -34,7 +33,8 @@ type SymbolMappingDTO struct {
 	Priority  int32   `json:"priority"`
 	ProjectId *string `json:"projectId,omitempty"`
 	// Enter a symbol e.g. GBPEUR (is not a regex)
-	To string `json:"to"`
+	To                   string `json:"to"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SymbolMappingDTO SymbolMappingDTO
@@ -301,6 +301,11 @@ func (o SymbolMappingDTO) ToMap() (map[string]interface{}, error) {
 		toSerialize["projectId"] = o.ProjectId
 	}
 	toSerialize["to"] = o.To
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -332,14 +337,27 @@ func (o *SymbolMappingDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varSymbolMappingDTO := _SymbolMappingDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varSymbolMappingDTO)
+	err = json.Unmarshal(data, &varSymbolMappingDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SymbolMappingDTO(varSymbolMappingDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "brokerFrom")
+		delete(additionalProperties, "brokerTo")
+		delete(additionalProperties, "brokerToSuggestion")
+		delete(additionalProperties, "from")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "priority")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "to")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

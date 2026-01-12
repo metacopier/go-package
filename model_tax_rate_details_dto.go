@@ -19,13 +19,16 @@ var _ MappedNullable = &TaxRateDetailsDTO{}
 
 // TaxRateDetailsDTO struct for TaxRateDetailsDTO
 type TaxRateDetailsDTO struct {
-	Country           *string `json:"country,omitempty"`
-	FlatAmount        *int64  `json:"flatAmount,omitempty"`
-	PercentageDecimal *string `json:"percentageDecimal,omitempty"`
-	RateType          *string `json:"rateType,omitempty"`
-	State             *string `json:"state,omitempty"`
-	TaxType           *string `json:"taxType,omitempty"`
+	Country              *string `json:"country,omitempty"`
+	FlatAmount           *int64  `json:"flatAmount,omitempty"`
+	PercentageDecimal    *string `json:"percentageDecimal,omitempty"`
+	RateType             *string `json:"rateType,omitempty"`
+	State                *string `json:"state,omitempty"`
+	TaxType              *string `json:"taxType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _TaxRateDetailsDTO TaxRateDetailsDTO
 
 // NewTaxRateDetailsDTO instantiates a new TaxRateDetailsDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -264,7 +267,38 @@ func (o TaxRateDetailsDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TaxType) {
 		toSerialize["taxType"] = o.TaxType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *TaxRateDetailsDTO) UnmarshalJSON(data []byte) (err error) {
+	varTaxRateDetailsDTO := _TaxRateDetailsDTO{}
+
+	err = json.Unmarshal(data, &varTaxRateDetailsDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TaxRateDetailsDTO(varTaxRateDetailsDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "country")
+		delete(additionalProperties, "flatAmount")
+		delete(additionalProperties, "percentageDecimal")
+		delete(additionalProperties, "rateType")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "taxType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableTaxRateDetailsDTO struct {

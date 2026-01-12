@@ -29,7 +29,10 @@ type FeatureWeeklyProfitTargetDTO struct {
 	WeeklyProfitTarget *float32 `json:"weeklyProfitTarget,omitempty"`
 	// Enter a weekly relative profit target in account currency. If the target is reached, all positions will be closed (unless 'pauseInsteadOfClose' is enabled) and new ones will be blocked until the next week. Set to 0 to deactivate.
 	WeeklyRelativeProfitTarget *float32 `json:"weeklyRelativeProfitTarget,omitempty"`
+	AdditionalProperties       map[string]interface{}
 }
+
+type _FeatureWeeklyProfitTargetDTO FeatureWeeklyProfitTargetDTO
 
 // NewFeatureWeeklyProfitTargetDTO instantiates a new FeatureWeeklyProfitTargetDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -253,7 +256,37 @@ func (o FeatureWeeklyProfitTargetDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.WeeklyRelativeProfitTarget) {
 		toSerialize["weeklyRelativeProfitTarget"] = o.WeeklyRelativeProfitTarget
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureWeeklyProfitTargetDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureWeeklyProfitTargetDTO := _FeatureWeeklyProfitTargetDTO{}
+
+	err = json.Unmarshal(data, &varFeatureWeeklyProfitTargetDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureWeeklyProfitTargetDTO(varFeatureWeeklyProfitTargetDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "autoResetIfBalanceIsBelow")
+		delete(additionalProperties, "pauseInsteadOfClose")
+		delete(additionalProperties, "weeklyAbsoluteProfitTarget")
+		delete(additionalProperties, "weeklyProfitTarget")
+		delete(additionalProperties, "weeklyRelativeProfitTarget")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureWeeklyProfitTargetDTO struct {

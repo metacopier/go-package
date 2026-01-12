@@ -19,9 +19,12 @@ var _ MappedNullable = &WalletDTO{}
 
 // WalletDTO struct for WalletDTO
 type WalletDTO struct {
-	Asset   *string  `json:"asset,omitempty"`
-	Balance *float32 `json:"balance,omitempty"`
+	Asset                *string  `json:"asset,omitempty"`
+	Balance              *float32 `json:"balance,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _WalletDTO WalletDTO
 
 // NewWalletDTO instantiates a new WalletDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -120,7 +123,34 @@ func (o WalletDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Balance) {
 		toSerialize["balance"] = o.Balance
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *WalletDTO) UnmarshalJSON(data []byte) (err error) {
+	varWalletDTO := _WalletDTO{}
+
+	err = json.Unmarshal(data, &varWalletDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = WalletDTO(varWalletDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "asset")
+		delete(additionalProperties, "balance")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableWalletDTO struct {

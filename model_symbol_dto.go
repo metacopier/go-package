@@ -19,18 +19,21 @@ var _ MappedNullable = &SymbolDTO{}
 
 // SymbolDTO struct for SymbolDTO
 type SymbolDTO struct {
-	BaseCurrency  *string  `json:"baseCurrency,omitempty"`
-	Digits        *int32   `json:"digits,omitempty"`
-	Disabled      *bool    `json:"disabled,omitempty"`
-	LotSize       *int32   `json:"lotSize,omitempty"`
-	MaximalVolume *float64 `json:"maximalVolume,omitempty"`
-	MinimalVolume *float64 `json:"minimalVolume,omitempty"`
-	Name          *string  `json:"name,omitempty"`
-	Points        *float64 `json:"points,omitempty"`
-	QuoteCurrency *string  `json:"quoteCurrency,omitempty"`
-	StepVolume    *float64 `json:"stepVolume,omitempty"`
-	TradeType     *string  `json:"tradeType,omitempty"`
+	BaseCurrency         *string  `json:"baseCurrency,omitempty"`
+	Digits               *int32   `json:"digits,omitempty"`
+	Disabled             *bool    `json:"disabled,omitempty"`
+	LotSize              *int32   `json:"lotSize,omitempty"`
+	MaximalVolume        *float64 `json:"maximalVolume,omitempty"`
+	MinimalVolume        *float64 `json:"minimalVolume,omitempty"`
+	Name                 *string  `json:"name,omitempty"`
+	Points               *float64 `json:"points,omitempty"`
+	QuoteCurrency        *string  `json:"quoteCurrency,omitempty"`
+	StepVolume           *float64 `json:"stepVolume,omitempty"`
+	TradeType            *string  `json:"tradeType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SymbolDTO SymbolDTO
 
 // NewSymbolDTO instantiates a new SymbolDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -444,7 +447,43 @@ func (o SymbolDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TradeType) {
 		toSerialize["tradeType"] = o.TradeType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SymbolDTO) UnmarshalJSON(data []byte) (err error) {
+	varSymbolDTO := _SymbolDTO{}
+
+	err = json.Unmarshal(data, &varSymbolDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SymbolDTO(varSymbolDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "baseCurrency")
+		delete(additionalProperties, "digits")
+		delete(additionalProperties, "disabled")
+		delete(additionalProperties, "lotSize")
+		delete(additionalProperties, "maximalVolume")
+		delete(additionalProperties, "minimalVolume")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "points")
+		delete(additionalProperties, "quoteCurrency")
+		delete(additionalProperties, "stepVolume")
+		delete(additionalProperties, "tradeType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSymbolDTO struct {

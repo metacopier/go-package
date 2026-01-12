@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,7 +25,8 @@ type FeatureKeepAliveTradeDTO struct {
 	// Cron expressions to trigger the trade (UTC time)
 	CronExpressions []string `json:"cronExpressions"`
 	// Define the symbol for which the trades will be opened. The opened lot size is the minimum size of the symbol.
-	Symbol string `json:"symbol"`
+	Symbol               string `json:"symbol"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FeatureKeepAliveTradeDTO FeatureKeepAliveTradeDTO
@@ -149,6 +149,11 @@ func (o FeatureKeepAliveTradeDTO) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["cronExpressions"] = o.CronExpressions
 	toSerialize["symbol"] = o.Symbol
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -177,14 +182,22 @@ func (o *FeatureKeepAliveTradeDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureKeepAliveTradeDTO := _FeatureKeepAliveTradeDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureKeepAliveTradeDTO)
+	err = json.Unmarshal(data, &varFeatureKeepAliveTradeDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureKeepAliveTradeDTO(varFeatureKeepAliveTradeDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "closeAfterInSeconds")
+		delete(additionalProperties, "cronExpressions")
+		delete(additionalProperties, "symbol")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

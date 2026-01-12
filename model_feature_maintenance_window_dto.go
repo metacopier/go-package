@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -30,7 +29,8 @@ type FeatureMaintenanceWindowDTO struct {
 	// End time of the maintenance window.
 	EndTime time.Time `json:"endTime"`
 	// Start time of the maintenance window.
-	StartTime time.Time `json:"startTime"`
+	StartTime            time.Time `json:"startTime"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FeatureMaintenanceWindowDTO FeatureMaintenanceWindowDTO
@@ -219,6 +219,11 @@ func (o FeatureMaintenanceWindowDTO) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["endTime"] = o.EndTime
 	toSerialize["startTime"] = o.StartTime
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -247,14 +252,24 @@ func (o *FeatureMaintenanceWindowDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureMaintenanceWindowDTO := _FeatureMaintenanceWindowDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureMaintenanceWindowDTO)
+	err = json.Unmarshal(data, &varFeatureMaintenanceWindowDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureMaintenanceWindowDTO(varFeatureMaintenanceWindowDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountType")
+		delete(additionalProperties, "broker")
+		delete(additionalProperties, "closeAllPositions")
+		delete(additionalProperties, "endTime")
+		delete(additionalProperties, "startTime")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

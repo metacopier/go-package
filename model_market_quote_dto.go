@@ -27,8 +27,11 @@ type MarketQuoteDTO struct {
 	// Symbol name
 	Symbol *string `json:"symbol,omitempty"`
 	// Quote timestamp (ISO 8601)
-	Timestamp *time.Time `json:"timestamp,omitempty"`
+	Timestamp            *time.Time `json:"timestamp,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _MarketQuoteDTO MarketQuoteDTO
 
 // NewMarketQuoteDTO instantiates a new MarketQuoteDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -197,7 +200,36 @@ func (o MarketQuoteDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *MarketQuoteDTO) UnmarshalJSON(data []byte) (err error) {
+	varMarketQuoteDTO := _MarketQuoteDTO{}
+
+	err = json.Unmarshal(data, &varMarketQuoteDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MarketQuoteDTO(varMarketQuoteDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ask")
+		delete(additionalProperties, "bid")
+		delete(additionalProperties, "symbol")
+		delete(additionalProperties, "timestamp")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableMarketQuoteDTO struct {

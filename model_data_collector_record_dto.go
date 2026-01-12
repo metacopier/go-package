@@ -30,8 +30,11 @@ type DataCollectorRecordDTO struct {
 	// Unique record identifier
 	Id *string `json:"id,omitempty"`
 	// Timestamp in milliseconds (Unix epoch) when this data was recorded
-	Timestamp *int64 `json:"timestamp,omitempty"`
+	Timestamp            *int64 `json:"timestamp,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DataCollectorRecordDTO DataCollectorRecordDTO
 
 // NewDataCollectorRecordDTO instantiates a new DataCollectorRecordDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -270,7 +273,38 @@ func (o DataCollectorRecordDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DataCollectorRecordDTO) UnmarshalJSON(data []byte) (err error) {
+	varDataCollectorRecordDTO := _DataCollectorRecordDTO{}
+
+	err = json.Unmarshal(data, &varDataCollectorRecordDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DataCollectorRecordDTO(varDataCollectorRecordDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "balance")
+		delete(additionalProperties, "equity")
+		delete(additionalProperties, "floatingPnL")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "timestamp")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDataCollectorRecordDTO struct {

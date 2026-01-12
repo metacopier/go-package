@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -59,6 +58,7 @@ type FeatureSignalProviderDTO struct {
 	Subscribers []string `json:"subscribers,omitempty"`
 	// Select this option to have MetaCopier manage payments on your behalf. When enabled, MetaCopier collects payments from followers, either through a subscription fee or profit-sharing arrangement, and transfers the funds to you. Please note that Metacopier retains a 30% service fee from each transaction.
 	UseMetaCopierAsPaymentProvider *bool `json:"useMetaCopierAsPaymentProvider,omitempty"`
+	AdditionalProperties           map[string]interface{}
 }
 
 type _FeatureSignalProviderDTO FeatureSignalProviderDTO
@@ -812,6 +812,11 @@ func (o FeatureSignalProviderDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseMetaCopierAsPaymentProvider) {
 		toSerialize["useMetaCopierAsPaymentProvider"] = o.UseMetaCopierAsPaymentProvider
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -840,14 +845,39 @@ func (o *FeatureSignalProviderDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureSignalProviderDTO := _FeatureSignalProviderDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureSignalProviderDTO)
+	err = json.Unmarshal(data, &varFeatureSignalProviderDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureSignalProviderDTO(varFeatureSignalProviderDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accessAllowed")
+		delete(additionalProperties, "allowCustomers")
+		delete(additionalProperties, "allowOverrideCopierSetting")
+		delete(additionalProperties, "allowReselling")
+		delete(additionalProperties, "allowedBrokers")
+		delete(additionalProperties, "billingModel")
+		delete(additionalProperties, "contact")
+		delete(additionalProperties, "copier")
+		delete(additionalProperties, "coverFollowerCosts")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "detailedDescription")
+		delete(additionalProperties, "isPublic")
+		delete(additionalProperties, "makeVisibleInMarketplace")
+		delete(additionalProperties, "minimumBalance")
+		delete(additionalProperties, "monthlySubscriptionFee")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "profileLink")
+		delete(additionalProperties, "profitSharingFee")
+		delete(additionalProperties, "subscribers")
+		delete(additionalProperties, "useMetaCopierAsPaymentProvider")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

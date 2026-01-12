@@ -23,7 +23,10 @@ type FeatureMinimumHoldingTimeDTO struct {
 	MinimumHoldSeconds *int32 `json:"minimumHoldSeconds,omitempty"`
 	// Defines the minimum holding time for each symbol.
 	SymbolsConfiguration *map[string]FeatureMinimumHoldingTimeDTO `json:"symbolsConfiguration,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureMinimumHoldingTimeDTO FeatureMinimumHoldingTimeDTO
 
 // NewFeatureMinimumHoldingTimeDTO instantiates a new FeatureMinimumHoldingTimeDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -126,7 +129,34 @@ func (o FeatureMinimumHoldingTimeDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SymbolsConfiguration) {
 		toSerialize["symbolsConfiguration"] = o.SymbolsConfiguration
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureMinimumHoldingTimeDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureMinimumHoldingTimeDTO := _FeatureMinimumHoldingTimeDTO{}
+
+	err = json.Unmarshal(data, &varFeatureMinimumHoldingTimeDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureMinimumHoldingTimeDTO(varFeatureMinimumHoldingTimeDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "minimumHoldSeconds")
+		delete(additionalProperties, "symbolsConfiguration")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureMinimumHoldingTimeDTO struct {

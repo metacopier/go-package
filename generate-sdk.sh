@@ -9,7 +9,7 @@ openapi-generator-cli generate \
   -i https://api.metacopier.io/rest/api/documentation/v3/api-docs \
   -g go \
   -o ./ \
-  --additional-properties packageName=metacopier,packageVersion=1.2.7,isGoSubmodule=false,withGoMod=true,structPrefix=false,useDefaultValuesForRequiredVars=false \
+  --additional-properties packageName=metacopier,packageVersion=1.2.7,isGoSubmodule=false,withGoMod=true,structPrefix=false,useDefaultValuesForRequiredVars=false,disallowAdditionalPropertiesIfNotPresent=false \
   --git-repo-id=go-package \
   --git-user-id=metacopier
 
@@ -21,6 +21,10 @@ echo "Fixing known OpenAPI Generator bugs..."
 echo "Removing invalid time.Time default values..."
 perl -i -pe 's/^\s*var \w+ time\.Time = ".*"\n//g' model_*.go
 perl -i -pe 's/^\s*this\.\w+ = &\w+\n//g if /resetTime/' model_*.go
+
+# Remove DisallowUnknownFields to allow API responses with extra fields
+echo "Removing DisallowUnknownFields() calls to allow unknown fields..."
+sed -i '' '/decoder.DisallowUnknownFields()/d' model_*.go
 
 echo "Running go fmt..."
 go fmt ./...

@@ -30,8 +30,11 @@ type CustomerDTO struct {
 	// Permission level for this customer in the project
 	PermissionType *string `json:"permissionType,omitempty"`
 	// ISO 8601
-	Tos *time.Time `json:"tos,omitempty"`
+	Tos                  *time.Time `json:"tos,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerDTO CustomerDTO
 
 // NewCustomerDTO instantiates a new CustomerDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -340,7 +343,40 @@ func (o CustomerDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Tos) {
 		toSerialize["tos"] = o.Tos
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CustomerDTO) UnmarshalJSON(data []byte) (err error) {
+	varCustomerDTO := _CustomerDTO{}
+
+	err = json.Unmarshal(data, &varCustomerDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerDTO(varCustomerDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "blocked")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "kyc")
+		delete(additionalProperties, "payoutMethod")
+		delete(additionalProperties, "permissionType")
+		delete(additionalProperties, "tos")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCustomerDTO struct {

@@ -27,7 +27,10 @@ type FeatureMaxLotSizeDTO struct {
 	SkipIfExceedsMax *bool `json:"skipIfExceedsMax,omitempty"`
 	// Defines the max lot size per symbol.
 	SymbolsConfiguration *map[string]FeatureMaxLotSizeDTO `json:"symbolsConfiguration,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureMaxLotSizeDTO FeatureMaxLotSizeDTO
 
 // NewFeatureMaxLotSizeDTO instantiates a new FeatureMaxLotSizeDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -208,7 +211,36 @@ func (o FeatureMaxLotSizeDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SymbolsConfiguration) {
 		toSerialize["symbolsConfiguration"] = o.SymbolsConfiguration
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureMaxLotSizeDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureMaxLotSizeDTO := _FeatureMaxLotSizeDTO{}
+
+	err = json.Unmarshal(data, &varFeatureMaxLotSizeDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureMaxLotSizeDTO(varFeatureMaxLotSizeDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "checkMasterLotSize")
+		delete(additionalProperties, "maxLotSize")
+		delete(additionalProperties, "skipIfExceedsMax")
+		delete(additionalProperties, "symbolsConfiguration")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureMaxLotSizeDTO struct {

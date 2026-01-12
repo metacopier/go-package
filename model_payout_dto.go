@@ -20,8 +20,11 @@ var _ MappedNullable = &PayoutDTO{}
 // PayoutDTO struct for PayoutDTO
 type PayoutDTO struct {
 	// Wise payout details
-	WiseDetails []WisePayoutDetailsDTO `json:"wiseDetails,omitempty"`
+	WiseDetails          []WisePayoutDetailsDTO `json:"wiseDetails,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PayoutDTO PayoutDTO
 
 // NewPayoutDTO instantiates a new PayoutDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o PayoutDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.WiseDetails) {
 		toSerialize["wiseDetails"] = o.WiseDetails
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PayoutDTO) UnmarshalJSON(data []byte) (err error) {
+	varPayoutDTO := _PayoutDTO{}
+
+	err = json.Unmarshal(data, &varPayoutDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PayoutDTO(varPayoutDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "wiseDetails")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePayoutDTO struct {

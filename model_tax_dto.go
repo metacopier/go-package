@@ -19,8 +19,11 @@ var _ MappedNullable = &TaxDTO{}
 
 // TaxDTO struct for TaxDTO
 type TaxDTO struct {
-	Breakdown []TaxBreakdownDTO `json:"breakdown,omitempty"`
+	Breakdown            []TaxBreakdownDTO `json:"breakdown,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _TaxDTO TaxDTO
 
 // NewTaxDTO instantiates a new TaxDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -84,7 +87,33 @@ func (o TaxDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Breakdown) {
 		toSerialize["breakdown"] = o.Breakdown
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *TaxDTO) UnmarshalJSON(data []byte) (err error) {
+	varTaxDTO := _TaxDTO{}
+
+	err = json.Unmarshal(data, &varTaxDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TaxDTO(varTaxDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "breakdown")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableTaxDTO struct {

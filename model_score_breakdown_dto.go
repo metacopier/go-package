@@ -52,8 +52,11 @@ type ScoreBreakdownDTO struct {
 	// Number of unique instruments traded
 	UniqueInstruments *int32 `json:"uniqueInstruments,omitempty"`
 	// Win rate score (0-8 points)
-	WinRateScore *float32 `json:"winRateScore,omitempty"`
+	WinRateScore         *float32 `json:"winRateScore,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ScoreBreakdownDTO ScoreBreakdownDTO
 
 // NewScoreBreakdownDTO instantiates a new ScoreBreakdownDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -677,7 +680,49 @@ func (o ScoreBreakdownDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.WinRateScore) {
 		toSerialize["winRateScore"] = o.WinRateScore
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ScoreBreakdownDTO) UnmarshalJSON(data []byte) (err error) {
+	varScoreBreakdownDTO := _ScoreBreakdownDTO{}
+
+	err = json.Unmarshal(data, &varScoreBreakdownDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ScoreBreakdownDTO(varScoreBreakdownDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountBalanceScore")
+		delete(additionalProperties, "accountTypeScore")
+		delete(additionalProperties, "consistencyScore")
+		delete(additionalProperties, "diversificationScore")
+		delete(additionalProperties, "expectancyScore")
+		delete(additionalProperties, "isLiveAccount")
+		delete(additionalProperties, "martingalePenalty")
+		delete(additionalProperties, "maxDrawdownScore")
+		delete(additionalProperties, "monthsActiveScore")
+		delete(additionalProperties, "overtradingPenalty")
+		delete(additionalProperties, "profitFactorScore")
+		delete(additionalProperties, "recoveryFactorScore")
+		delete(additionalProperties, "riskRewardScore")
+		delete(additionalProperties, "totalTradesScore")
+		delete(additionalProperties, "uniqueAssetClasses")
+		delete(additionalProperties, "uniqueInstruments")
+		delete(additionalProperties, "winRateScore")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableScoreBreakdownDTO struct {

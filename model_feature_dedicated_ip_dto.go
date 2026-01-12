@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,6 +22,7 @@ var _ MappedNullable = &FeatureDedicatedIpDTO{}
 type FeatureDedicatedIpDTO struct {
 	// Enter an dedicated proxy server id (see \"FeatureDedicatedIpPoolDTO\")
 	DedicatedProxyServerId int32 `json:"dedicatedProxyServerId"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _FeatureDedicatedIpDTO FeatureDedicatedIpDTO
@@ -80,6 +80,11 @@ func (o FeatureDedicatedIpDTO) MarshalJSON() ([]byte, error) {
 func (o FeatureDedicatedIpDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["dedicatedProxyServerId"] = o.DedicatedProxyServerId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,14 +112,20 @@ func (o *FeatureDedicatedIpDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureDedicatedIpDTO := _FeatureDedicatedIpDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureDedicatedIpDTO)
+	err = json.Unmarshal(data, &varFeatureDedicatedIpDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureDedicatedIpDTO(varFeatureDedicatedIpDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "dedicatedProxyServerId")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

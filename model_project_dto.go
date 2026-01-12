@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -33,11 +32,12 @@ type ProjectDTO struct {
 	Blocked                 *bool           `json:"blocked,omitempty"`
 	CurrencyType            CurrencyTypeDTO `json:"currencyType"`
 	// You have to set it during resource creation, after that, it is only read-only. See pricing on our webpage for more information
-	Dedicated     bool              `json:"dedicated"`
-	Id            *string           `json:"id,omitempty"`
-	Name          string            `json:"name"`
-	Owner         *CustomerDTO      `json:"owner,omitempty"`
-	PaymentMethod *PaymentMethodDTO `json:"paymentMethod,omitempty"`
+	Dedicated            bool              `json:"dedicated"`
+	Id                   *string           `json:"id,omitempty"`
+	Name                 string            `json:"name"`
+	Owner                *CustomerDTO      `json:"owner,omitempty"`
+	PaymentMethod        *PaymentMethodDTO `json:"paymentMethod,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectDTO ProjectDTO
@@ -532,6 +532,11 @@ func (o ProjectDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PaymentMethod) {
 		toSerialize["paymentMethod"] = o.PaymentMethod
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -569,14 +574,35 @@ func (o *ProjectDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectDTO := _ProjectDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varProjectDTO)
+	err = json.Unmarshal(data, &varProjectDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectDTO(varProjectDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "balance")
+		delete(additionalProperties, "billingCity")
+		delete(additionalProperties, "billingCompanyName")
+		delete(additionalProperties, "billingCountry")
+		delete(additionalProperties, "billingCountryIsoAlpha2")
+		delete(additionalProperties, "billingIdentification")
+		delete(additionalProperties, "billingName")
+		delete(additionalProperties, "billingPostcode")
+		delete(additionalProperties, "billingStreet")
+		delete(additionalProperties, "blocked")
+		delete(additionalProperties, "currencyType")
+		delete(additionalProperties, "dedicated")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "owner")
+		delete(additionalProperties, "paymentMethod")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

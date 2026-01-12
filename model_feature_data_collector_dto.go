@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -34,7 +33,8 @@ type FeatureDataCollectorDTO struct {
 	// If true, records floating PnL separately. This is the unrealized profit/loss from currently open positions.
 	RecordFloatingPnL bool `json:"recordFloatingPnL"`
 	// Data retention period in days. This is a fixed system value and cannot be modified by users.
-	RetentionDays *int32 `json:"retentionDays,omitempty"`
+	RetentionDays        *int32 `json:"retentionDays,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FeatureDataCollectorDTO FeatureDataCollectorDTO
@@ -269,6 +269,11 @@ func (o FeatureDataCollectorDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RetentionDays) {
 		toSerialize["retentionDays"] = o.RetentionDays
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -301,14 +306,26 @@ func (o *FeatureDataCollectorDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureDataCollectorDTO := _FeatureDataCollectorDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureDataCollectorDTO)
+	err = json.Unmarshal(data, &varFeatureDataCollectorDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureDataCollectorDTO(varFeatureDataCollectorDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "activateDataCollector")
+		delete(additionalProperties, "collectionIntervalSeconds")
+		delete(additionalProperties, "normalizeValues")
+		delete(additionalProperties, "recordBalance")
+		delete(additionalProperties, "recordEquity")
+		delete(additionalProperties, "recordFloatingPnL")
+		delete(additionalProperties, "retentionDays")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

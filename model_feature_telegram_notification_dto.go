@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &FeatureTelegramNotificationDTO{}
 // FeatureTelegramNotificationDTO DTO for telegram feature (project)
 type FeatureTelegramNotificationDTO struct {
 	// List of telegram notifications
-	Notifications []TelegramNotificationDTO `json:"notifications"`
+	Notifications        []TelegramNotificationDTO `json:"notifications"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FeatureTelegramNotificationDTO FeatureTelegramNotificationDTO
@@ -80,6 +80,11 @@ func (o FeatureTelegramNotificationDTO) MarshalJSON() ([]byte, error) {
 func (o FeatureTelegramNotificationDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["notifications"] = o.Notifications
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,14 +112,20 @@ func (o *FeatureTelegramNotificationDTO) UnmarshalJSON(data []byte) (err error) 
 
 	varFeatureTelegramNotificationDTO := _FeatureTelegramNotificationDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureTelegramNotificationDTO)
+	err = json.Unmarshal(data, &varFeatureTelegramNotificationDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureTelegramNotificationDTO(varFeatureTelegramNotificationDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "notifications")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

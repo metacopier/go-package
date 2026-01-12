@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -44,7 +43,8 @@ type FeatureWhiteLabelDTO struct {
 	// Sub-domain used for the white-label solution. Root domains are not allowed.
 	Subdomain string `json:"subdomain"`
 	// Select a theme for the white-label solution.
-	Theme *string `json:"theme,omitempty"`
+	Theme                *string `json:"theme,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FeatureWhiteLabelDTO FeatureWhiteLabelDTO
@@ -495,6 +495,11 @@ func (o FeatureWhiteLabelDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Theme) {
 		toSerialize["theme"] = o.Theme
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -525,14 +530,32 @@ func (o *FeatureWhiteLabelDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureWhiteLabelDTO := _FeatureWhiteLabelDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureWhiteLabelDTO)
+	err = json.Unmarshal(data, &varFeatureWhiteLabelDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureWhiteLabelDTO(varFeatureWhiteLabelDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountPriceDedicated")
+		delete(additionalProperties, "accountPriceDedicatedMin")
+		delete(additionalProperties, "accountPriceShared")
+		delete(additionalProperties, "accountTypes")
+		delete(additionalProperties, "ctraderClientId")
+		delete(additionalProperties, "ctraderClientSecret")
+		delete(additionalProperties, "featurePrice")
+		delete(additionalProperties, "layout")
+		delete(additionalProperties, "logo")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "stripeApiKey")
+		delete(additionalProperties, "subdomain")
+		delete(additionalProperties, "theme")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

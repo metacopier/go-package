@@ -31,8 +31,11 @@ type FeatureDailyProfitTargetDTO struct {
 	// If set to 'true', when the profit target is reached, the copier will pause and stop opening new positions instead of closing all existing positions. The open positions will remain active. If set to 'false', all positions will be closed when the target is reached.
 	PauseInsteadOfClose *bool `json:"pauseInsteadOfClose,omitempty"`
 	// ISO 8601. Set the reset time for the profit target. Only the time is considered, and the date is ignored.
-	ResetTime *time.Time `json:"resetTime,omitempty"`
+	ResetTime            *time.Time `json:"resetTime,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureDailyProfitTargetDTO FeatureDailyProfitTargetDTO
 
 // NewFeatureDailyProfitTargetDTO instantiates a new FeatureDailyProfitTargetDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -291,7 +294,38 @@ func (o FeatureDailyProfitTargetDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResetTime) {
 		toSerialize["resetTime"] = o.ResetTime
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureDailyProfitTargetDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureDailyProfitTargetDTO := _FeatureDailyProfitTargetDTO{}
+
+	err = json.Unmarshal(data, &varFeatureDailyProfitTargetDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureDailyProfitTargetDTO(varFeatureDailyProfitTargetDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "autoResetIfBalanceIsBelow")
+		delete(additionalProperties, "dailyAbsoluteProfitTarget")
+		delete(additionalProperties, "dailyProfitTarget")
+		delete(additionalProperties, "dailyRelativeProfitTarget")
+		delete(additionalProperties, "pauseInsteadOfClose")
+		delete(additionalProperties, "resetTime")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureDailyProfitTargetDTO struct {

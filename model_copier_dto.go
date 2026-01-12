@@ -84,8 +84,11 @@ type CopierDTO struct {
 	// You have to set it during resource creation, after that, it is only read-only
 	ToAccountId *string `json:"toAccountId,omitempty"`
 	// You have to set it during resource creation, after that, it is only read-only
-	ToStrategyId *string `json:"toStrategyId,omitempty"`
+	ToStrategyId         *string `json:"toStrategyId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CopierDTO CopierDTO
 
 // NewCopierDTO instantiates a new CopierDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -1439,7 +1442,67 @@ func (o CopierDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ToStrategyId) {
 		toSerialize["toStrategyId"] = o.ToStrategyId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CopierDTO) UnmarshalJSON(data []byte) (err error) {
+	varCopierDTO := _CopierDTO{}
+
+	err = json.Unmarshal(data, &varCopierDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CopierDTO(varCopierDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "active")
+		delete(additionalProperties, "copyMagicNumber")
+		delete(additionalProperties, "copyOpenPositions")
+		delete(additionalProperties, "copyOriginalComment")
+		delete(additionalProperties, "copyStopLoss")
+		delete(additionalProperties, "copyTakeProfit")
+		delete(additionalProperties, "customComment")
+		delete(additionalProperties, "customMagicNumber")
+		delete(additionalProperties, "fixMasterBalanceAndEquity")
+		delete(additionalProperties, "fixSlaveBalanceAndEquity")
+		delete(additionalProperties, "fixedLotSize")
+		delete(additionalProperties, "forceMinTrade")
+		delete(additionalProperties, "forcePositionLotSize")
+		delete(additionalProperties, "fromAccountAlias")
+		delete(additionalProperties, "fromAccountId")
+		delete(additionalProperties, "fromStrategyId")
+		delete(additionalProperties, "fromStrategyName")
+		delete(additionalProperties, "hideComment")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "ignoreContractSize")
+		delete(additionalProperties, "ignoreCurrency")
+		delete(additionalProperties, "martingaleStrategy")
+		delete(additionalProperties, "maxLotSize")
+		delete(additionalProperties, "maxOpenPositions")
+		delete(additionalProperties, "maxSlippage")
+		delete(additionalProperties, "maximumLot")
+		delete(additionalProperties, "monitorOnly")
+		delete(additionalProperties, "multiplier")
+		delete(additionalProperties, "openRetry")
+		delete(additionalProperties, "openRetryTimeoutInMinutes")
+		delete(additionalProperties, "reverse")
+		delete(additionalProperties, "scaleType")
+		delete(additionalProperties, "skipPendingOrders")
+		delete(additionalProperties, "toAccountId")
+		delete(additionalProperties, "toStrategyId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCopierDTO struct {

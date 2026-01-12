@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,7 +23,8 @@ type FeatureDedicatedIpPoolDTO struct {
 	// Read-only. The system will reserve the proxy servers per region and list them in this field.
 	DedicatedProxyServerIds *map[string][]ProxyDTO `json:"dedicatedProxyServerIds,omitempty"`
 	// Specify the number of dedicated proxy server (IPs) per region you want. Use \"FeatureDedicatedIpDTO\" to assign an proxy server (IP) to an account.
-	PoolSize map[string]int32 `json:"poolSize"`
+	PoolSize             map[string]int32 `json:"poolSize"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FeatureDedicatedIpPoolDTO FeatureDedicatedIpPoolDTO
@@ -117,6 +117,11 @@ func (o FeatureDedicatedIpPoolDTO) ToMap() (map[string]interface{}, error) {
 		toSerialize["dedicatedProxyServerIds"] = o.DedicatedProxyServerIds
 	}
 	toSerialize["poolSize"] = o.PoolSize
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -144,14 +149,21 @@ func (o *FeatureDedicatedIpPoolDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureDedicatedIpPoolDTO := _FeatureDedicatedIpPoolDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureDedicatedIpPoolDTO)
+	err = json.Unmarshal(data, &varFeatureDedicatedIpPoolDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureDedicatedIpPoolDTO(varFeatureDedicatedIpPoolDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "dedicatedProxyServerIds")
+		delete(additionalProperties, "poolSize")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

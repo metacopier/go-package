@@ -27,7 +27,10 @@ type FeatureSkipPositionDTO struct {
 	LogicOperatorTpSl *string `json:"logicOperatorTpSl,omitempty"`
 	// Defines skip position per symbol. Symbol configuration has priority over the general configuration.
 	SymbolsConfiguration *map[string]FeatureSkipPositionDTO `json:"symbolsConfiguration,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureSkipPositionDTO FeatureSkipPositionDTO
 
 // NewFeatureSkipPositionDTO instantiates a new FeatureSkipPositionDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -208,7 +211,36 @@ func (o FeatureSkipPositionDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SymbolsConfiguration) {
 		toSerialize["symbolsConfiguration"] = o.SymbolsConfiguration
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureSkipPositionDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureSkipPositionDTO := _FeatureSkipPositionDTO{}
+
+	err = json.Unmarshal(data, &varFeatureSkipPositionDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureSkipPositionDTO(varFeatureSkipPositionDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ifSlNotDefined")
+		delete(additionalProperties, "ifTpNotDefined")
+		delete(additionalProperties, "logicOperatorTpSl")
+		delete(additionalProperties, "symbolsConfiguration")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureSkipPositionDTO struct {

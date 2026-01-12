@@ -28,8 +28,11 @@ type ContactDTO struct {
 	// Additional website or social media link for contact purposes.
 	Website *string `json:"website,omitempty"`
 	// WhatsApp contact information. Include country code (e.g., +1234567890). This provides an additional channel for communication with subscribers.
-	Whatsapp *string `json:"whatsapp,omitempty"`
+	Whatsapp             *string `json:"whatsapp,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ContactDTO ContactDTO
 
 // NewContactDTO instantiates a new ContactDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,37 @@ func (o ContactDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Whatsapp) {
 		toSerialize["whatsapp"] = o.Whatsapp
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ContactDTO) UnmarshalJSON(data []byte) (err error) {
+	varContactDTO := _ContactDTO{}
+
+	err = json.Unmarshal(data, &varContactDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ContactDTO(varContactDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "discord")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "telegram")
+		delete(additionalProperties, "website")
+		delete(additionalProperties, "whatsapp")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableContactDTO struct {

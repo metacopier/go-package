@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,7 +23,8 @@ type FeatureExitSignalOverrideDTO struct {
 	// Specifies the number of seconds to wait before closing the trade. This is useful if you want the slave account to hold the position until the Take Profit (TP) level is reached. A value of 0 indicates that the exit signal will be ignored indefinitely.
 	IgnoreForSeconds *int32 `json:"ignoreForSeconds,omitempty"`
 	// Indicates whether the exit signal should only be ignored if both Take Profit (TP) and Stop Loss (SL) levels are set on the trade.
-	OnlyIfTpSlAreSet bool `json:"onlyIfTpSlAreSet"`
+	OnlyIfTpSlAreSet     bool `json:"onlyIfTpSlAreSet"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FeatureExitSignalOverrideDTO FeatureExitSignalOverrideDTO
@@ -123,6 +123,11 @@ func (o FeatureExitSignalOverrideDTO) ToMap() (map[string]interface{}, error) {
 		toSerialize["ignoreForSeconds"] = o.IgnoreForSeconds
 	}
 	toSerialize["onlyIfTpSlAreSet"] = o.OnlyIfTpSlAreSet
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -150,14 +155,21 @@ func (o *FeatureExitSignalOverrideDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varFeatureExitSignalOverrideDTO := _FeatureExitSignalOverrideDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varFeatureExitSignalOverrideDTO)
+	err = json.Unmarshal(data, &varFeatureExitSignalOverrideDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FeatureExitSignalOverrideDTO(varFeatureExitSignalOverrideDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ignoreForSeconds")
+		delete(additionalProperties, "onlyIfTpSlAreSet")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -20,16 +20,19 @@ var _ MappedNullable = &PaymentMethodDTO{}
 
 // PaymentMethodDTO struct for PaymentMethodDTO
 type PaymentMethodDTO struct {
-	Created        *time.Time `json:"created,omitempty"`
-	Currency       *string    `json:"currency,omitempty"`
-	ExpirationDate *string    `json:"expirationDate,omitempty"`
-	Id             *string    `json:"id,omitempty"`
-	Identifier     *string    `json:"identifier,omitempty"`
-	Number         *string    `json:"number,omitempty"`
-	Status         *bool      `json:"status,omitempty"`
-	StatusMessage  *string    `json:"statusMessage,omitempty"`
-	Type           *string    `json:"type,omitempty"`
+	Created              *time.Time `json:"created,omitempty"`
+	Currency             *string    `json:"currency,omitempty"`
+	ExpirationDate       *string    `json:"expirationDate,omitempty"`
+	Id                   *string    `json:"id,omitempty"`
+	Identifier           *string    `json:"identifier,omitempty"`
+	Number               *string    `json:"number,omitempty"`
+	Status               *bool      `json:"status,omitempty"`
+	StatusMessage        *string    `json:"statusMessage,omitempty"`
+	Type                 *string    `json:"type,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PaymentMethodDTO PaymentMethodDTO
 
 // NewPaymentMethodDTO instantiates a new PaymentMethodDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -373,7 +376,41 @@ func (o PaymentMethodDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PaymentMethodDTO) UnmarshalJSON(data []byte) (err error) {
+	varPaymentMethodDTO := _PaymentMethodDTO{}
+
+	err = json.Unmarshal(data, &varPaymentMethodDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaymentMethodDTO(varPaymentMethodDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "expirationDate")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "identifier")
+		delete(additionalProperties, "number")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "statusMessage")
+		delete(additionalProperties, "type")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePaymentMethodDTO struct {

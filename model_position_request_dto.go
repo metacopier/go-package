@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -38,7 +37,8 @@ type PositionRequestDTO struct {
 	// A value of 0 means no take profit
 	TakeProfit float32 `json:"takeProfit"`
 	// In lots. The volume will be automatically adjusted according to the symbol data.
-	Volume float32 `json:"volume"`
+	Volume               float32 `json:"volume"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PositionRequestDTO PositionRequestDTO
@@ -367,6 +367,11 @@ func (o PositionRequestDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize["symbol"] = o.Symbol
 	toSerialize["takeProfit"] = o.TakeProfit
 	toSerialize["volume"] = o.Volume
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -400,14 +405,29 @@ func (o *PositionRequestDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varPositionRequestDTO := _PositionRequestDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varPositionRequestDTO)
+	err = json.Unmarshal(data, &varPositionRequestDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PositionRequestDTO(varPositionRequestDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "comment")
+		delete(additionalProperties, "magicNumber")
+		delete(additionalProperties, "openPrice")
+		delete(additionalProperties, "orderType")
+		delete(additionalProperties, "relativeTpSl")
+		delete(additionalProperties, "requestId")
+		delete(additionalProperties, "stopLoss")
+		delete(additionalProperties, "symbol")
+		delete(additionalProperties, "takeProfit")
+		delete(additionalProperties, "volume")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

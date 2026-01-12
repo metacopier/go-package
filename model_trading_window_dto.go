@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -27,7 +26,8 @@ type TradingWindowDTO struct {
 	// End time of the trading window. Note: The date component is ignored.
 	EndTime time.Time `json:"endTime"`
 	// Start time of the trading window. Note: The date component is ignored.
-	StartTime time.Time `json:"startTime"`
+	StartTime            time.Time `json:"startTime"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TradingWindowDTO TradingWindowDTO
@@ -146,6 +146,11 @@ func (o TradingWindowDTO) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["endTime"] = o.EndTime
 	toSerialize["startTime"] = o.StartTime
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -174,14 +179,22 @@ func (o *TradingWindowDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varTradingWindowDTO := _TradingWindowDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varTradingWindowDTO)
+	err = json.Unmarshal(data, &varTradingWindowDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TradingWindowDTO(varTradingWindowDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "activeDays")
+		delete(additionalProperties, "endTime")
+		delete(additionalProperties, "startTime")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

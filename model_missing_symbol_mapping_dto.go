@@ -24,7 +24,10 @@ type MissingSymbolMappingDTO struct {
 	FromAccountId         *string `json:"fromAccountId,omitempty"`
 	LastTimestampDetected *int64  `json:"lastTimestampDetected,omitempty"`
 	Symbol                *string `json:"symbol,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
+
+type _MissingSymbolMappingDTO MissingSymbolMappingDTO
 
 // NewMissingSymbolMappingDTO instantiates a new MissingSymbolMappingDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -228,7 +231,37 @@ func (o MissingSymbolMappingDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Symbol) {
 		toSerialize["symbol"] = o.Symbol
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *MissingSymbolMappingDTO) UnmarshalJSON(data []byte) (err error) {
+	varMissingSymbolMappingDTO := _MissingSymbolMappingDTO{}
+
+	err = json.Unmarshal(data, &varMissingSymbolMappingDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MissingSymbolMappingDTO(varMissingSymbolMappingDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "copierId")
+		delete(additionalProperties, "fromAccount")
+		delete(additionalProperties, "fromAccountId")
+		delete(additionalProperties, "lastTimestampDetected")
+		delete(additionalProperties, "symbol")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableMissingSymbolMappingDTO struct {

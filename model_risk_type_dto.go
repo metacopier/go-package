@@ -11,7 +11,6 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -21,8 +20,9 @@ var _ MappedNullable = &RiskTypeDTO{}
 
 // RiskTypeDTO     You have to set it during resource creation, after that, it is only read-only.     You have only to set the id, e.g. 4 for actual drawdown.     1: Daily, 2: Weekly, 3: Monthly, 4: Actual, 5: Equity-equity daily, 6: Equity-equity weekly, 7: Equity-equity monthly, 8: Smart reference daily,     9: Smart reference weekly, 10: Smart reference monthly.      When you set a daily risk limit of 0.5 (50%), it means that if the ratio of the balance     at a specific timepoint (see resetTime) to equity reaches 50%, the copy trading will be     paused, and if specified, all trades will be closed (see closeAllOpenPositions).      The limit reference type depends on the selected risk type:     • Balance-based limits use the balance as reference.     • Equity-based limits use the equity as reference.     • Smart limits use the greater of balance and equity as reference.      Example: {id: 1}
 type RiskTypeDTO struct {
-	Id   int32   `json:"id"`
-	Name *string `json:"name,omitempty"`
+	Id                   int32   `json:"id"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RiskTypeDTO RiskTypeDTO
@@ -115,6 +115,11 @@ func (o RiskTypeDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -142,14 +147,21 @@ func (o *RiskTypeDTO) UnmarshalJSON(data []byte) (err error) {
 
 	varRiskTypeDTO := _RiskTypeDTO{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	err = decoder.Decode(&varRiskTypeDTO)
+	err = json.Unmarshal(data, &varRiskTypeDTO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RiskTypeDTO(varRiskTypeDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

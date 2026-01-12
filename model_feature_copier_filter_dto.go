@@ -22,8 +22,11 @@ type FeatureCopierFilterDTO struct {
 	// Regex (case insensitive) applied to the comment field to filter. If multiple filters are specified, they are combined using an OR condition.
 	Comment []string `json:"comment,omitempty"`
 	// Regex (case insensitive) applied to magic number field (MetaTrader -> magic number, DXtrade/TradeLocker/MatchTrader/Binance/Bybit -> no field and CTrader -> label) to filter. If multiple filters are specified, they are combined using an OR condition.
-	MagicNumber []string `json:"magicNumber,omitempty"`
+	MagicNumber          []string `json:"magicNumber,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FeatureCopierFilterDTO FeatureCopierFilterDTO
 
 // NewFeatureCopierFilterDTO instantiates a new FeatureCopierFilterDTO object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o FeatureCopierFilterDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MagicNumber) {
 		toSerialize["magicNumber"] = o.MagicNumber
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FeatureCopierFilterDTO) UnmarshalJSON(data []byte) (err error) {
+	varFeatureCopierFilterDTO := _FeatureCopierFilterDTO{}
+
+	err = json.Unmarshal(data, &varFeatureCopierFilterDTO)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FeatureCopierFilterDTO(varFeatureCopierFilterDTO)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "comment")
+		delete(additionalProperties, "magicNumber")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFeatureCopierFilterDTO struct {

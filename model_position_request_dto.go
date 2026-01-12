@@ -11,8 +11,8 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -27,14 +27,14 @@ type PositionRequestDTO struct {
 	MagicNumber *string `json:"magicNumber,omitempty"`
 	// Used for pending orders (buy limit, stop limit, ...). For buy or sell you can enter 0.
 	OpenPrice float32 `json:"openPrice"`
-	OrderType string `json:"orderType"`
+	OrderType string  `json:"orderType"`
 	// Indicates if stop loss and take profit are relative values in points when opening new positions (cTrader accounts only)
 	RelativeTpSl *bool `json:"relativeTpSl,omitempty"`
 	// A client request ID to avoid the request being executed multiple times due to network or client errors. The IDs start at 0 and increment up to 999, then begin again at 0.
 	RequestId int64 `json:"requestId"`
 	// A value of 0 means no stop loss
 	StopLoss float32 `json:"stopLoss"`
-	Symbol string `json:"symbol"`
+	Symbol   string  `json:"symbol"`
 	// A value of 0 means no take profit
 	TakeProfit float32 `json:"takeProfit"`
 	// In lots. The volume will be automatically adjusted according to the symbol data.
@@ -342,7 +342,7 @@ func (o *PositionRequestDTO) SetVolume(v float32) {
 }
 
 func (o PositionRequestDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -389,10 +389,10 @@ func (o *PositionRequestDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -448,5 +448,3 @@ func (v *NullablePositionRequestDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

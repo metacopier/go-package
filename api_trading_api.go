@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // TradingAPIAPIService TradingAPIAPI service
 type TradingAPIAPIService service
 
 type ApiCloseAllPositionsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TradingAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiCloseAllPositionsRequest) Execute() (*http.Response, error) {
@@ -36,24 +35,24 @@ func (r ApiCloseAllPositionsRequest) Execute() (*http.Response, error) {
 /*
 CloseAllPositions Close all account positions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiCloseAllPositionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiCloseAllPositionsRequest
 */
 func (a *TradingAPIAPIService) CloseAllPositions(ctx context.Context, accountId string) ApiCloseAllPositionsRequest {
 	return ApiCloseAllPositionsRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
 func (a *TradingAPIAPIService) CloseAllPositionsExecute(r ApiCloseAllPositionsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingAPIAPIService.CloseAllPositions")
@@ -128,9 +127,9 @@ func (a *TradingAPIAPIService) CloseAllPositionsExecute(r ApiCloseAllPositionsRe
 }
 
 type ApiClosePositionRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TradingAPIAPIService
-	accountId string
+	accountId  string
 	positionId string
 }
 
@@ -141,16 +140,16 @@ func (r ApiClosePositionRequest) Execute() (*http.Response, error) {
 /*
 ClosePosition Close an account position
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param positionId
- @return ApiClosePositionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param positionId
+	@return ApiClosePositionRequest
 */
 func (a *TradingAPIAPIService) ClosePosition(ctx context.Context, accountId string, positionId string) ApiClosePositionRequest {
 	return ApiClosePositionRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 		positionId: positionId,
 	}
 }
@@ -158,9 +157,9 @@ func (a *TradingAPIAPIService) ClosePosition(ctx context.Context, accountId stri
 // Execute executes the request
 func (a *TradingAPIAPIService) ClosePositionExecute(r ApiClosePositionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingAPIAPIService.ClosePosition")
@@ -236,11 +235,11 @@ func (a *TradingAPIAPIService) ClosePositionExecute(r ApiClosePositionRequest) (
 }
 
 type ApiGetHistoryPositionsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TradingAPIAPIService
-	accountId string
-	start *string
-	stop *string
+	accountId  string
+	start      *string
+	stop       *string
 }
 
 // ISO 8601
@@ -264,26 +263,27 @@ GetHistoryPositions Get account history positions
 
 The history is not updated in real-time. There may be a delay of up to 3 minutes
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetHistoryPositionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetHistoryPositionsRequest
 */
 func (a *TradingAPIAPIService) GetHistoryPositions(ctx context.Context, accountId string) ApiGetHistoryPositionsRequest {
 	return ApiGetHistoryPositionsRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []PositionDTO
+//
+//	@return []PositionDTO
 func (a *TradingAPIAPIService) GetHistoryPositionsExecute(r ApiGetHistoryPositionsRequest) ([]PositionDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []PositionDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []PositionDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingAPIAPIService.GetHistoryPositions")
@@ -375,9 +375,9 @@ func (a *TradingAPIAPIService) GetHistoryPositionsExecute(r ApiGetHistoryPositio
 }
 
 type ApiGetInformationRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TradingAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiGetInformationRequest) Execute() (*AccountInformationDTO, *http.Response, error) {
@@ -387,26 +387,27 @@ func (r ApiGetInformationRequest) Execute() (*AccountInformationDTO, *http.Respo
 /*
 GetInformation Get account information
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetInformationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetInformationRequest
 */
 func (a *TradingAPIAPIService) GetInformation(ctx context.Context, accountId string) ApiGetInformationRequest {
 	return ApiGetInformationRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return AccountInformationDTO
+//
+//	@return AccountInformationDTO
 func (a *TradingAPIAPIService) GetInformationExecute(r ApiGetInformationRequest) (*AccountInformationDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AccountInformationDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AccountInformationDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingAPIAPIService.GetInformation")
@@ -490,9 +491,9 @@ func (a *TradingAPIAPIService) GetInformationExecute(r ApiGetInformationRequest)
 }
 
 type ApiGetPositionsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TradingAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiGetPositionsRequest) Execute() ([]PositionDTO, *http.Response, error) {
@@ -502,26 +503,27 @@ func (r ApiGetPositionsRequest) Execute() ([]PositionDTO, *http.Response, error)
 /*
 GetPositions Get account positions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetPositionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetPositionsRequest
 */
 func (a *TradingAPIAPIService) GetPositions(ctx context.Context, accountId string) ApiGetPositionsRequest {
 	return ApiGetPositionsRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []PositionDTO
+//
+//	@return []PositionDTO
 func (a *TradingAPIAPIService) GetPositionsExecute(r ApiGetPositionsRequest) ([]PositionDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []PositionDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []PositionDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingAPIAPIService.GetPositions")
@@ -605,10 +607,10 @@ func (a *TradingAPIAPIService) GetPositionsExecute(r ApiGetPositionsRequest) ([]
 }
 
 type ApiGetQuoteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TradingAPIAPIService
-	accountId string
-	symbol string
+	accountId  string
+	symbol     string
 }
 
 func (r ApiGetQuoteRequest) Execute() (*MarketQuoteDTO, *http.Response, error) {
@@ -620,28 +622,29 @@ GetQuote Get market quote for a symbol
 
 Fetches the current bid price, ask price, and timestamp for a specific trading symbol. Note: Not all platforms support real-time quote fetching. If there is no response or an error is returned, it means the platform does not support this feature.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param symbol Symbol name (e.g., EURUSD, GBPJPY)
- @return ApiGetQuoteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param symbol Symbol name (e.g., EURUSD, GBPJPY)
+	@return ApiGetQuoteRequest
 */
 func (a *TradingAPIAPIService) GetQuote(ctx context.Context, accountId string, symbol string) ApiGetQuoteRequest {
 	return ApiGetQuoteRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		symbol: symbol,
+		ctx:        ctx,
+		accountId:  accountId,
+		symbol:     symbol,
 	}
 }
 
 // Execute executes the request
-//  @return MarketQuoteDTO
+//
+//	@return MarketQuoteDTO
 func (a *TradingAPIAPIService) GetQuoteExecute(r ApiGetQuoteRequest) (*MarketQuoteDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MarketQuoteDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MarketQuoteDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingAPIAPIService.GetQuote")
@@ -726,9 +729,9 @@ func (a *TradingAPIAPIService) GetQuoteExecute(r ApiGetQuoteRequest) (*MarketQuo
 }
 
 type ApiGetSymbolsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TradingAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiGetSymbolsRequest) Execute() ([]SymbolDTO, *http.Response, error) {
@@ -738,26 +741,27 @@ func (r ApiGetSymbolsRequest) Execute() ([]SymbolDTO, *http.Response, error) {
 /*
 GetSymbols Get account symbols
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetSymbolsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetSymbolsRequest
 */
 func (a *TradingAPIAPIService) GetSymbols(ctx context.Context, accountId string) ApiGetSymbolsRequest {
 	return ApiGetSymbolsRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []SymbolDTO
+//
+//	@return []SymbolDTO
 func (a *TradingAPIAPIService) GetSymbolsExecute(r ApiGetSymbolsRequest) ([]SymbolDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []SymbolDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []SymbolDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingAPIAPIService.GetSymbols")
@@ -841,10 +845,10 @@ func (a *TradingAPIAPIService) GetSymbolsExecute(r ApiGetSymbolsRequest) ([]Symb
 }
 
 type ApiModifyPositionRequest struct {
-	ctx context.Context
-	ApiService *TradingAPIAPIService
-	accountId string
-	positionId string
+	ctx                context.Context
+	ApiService         *TradingAPIAPIService
+	accountId          string
+	positionId         string
 	positionRequestDTO *PositionRequestDTO
 }
 
@@ -862,16 +866,16 @@ ModifyPosition Modify an account position
 
 For partial close you can use this endpoint. Only volume, open price, take profit, and stop loss can be modified.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param positionId
- @return ApiModifyPositionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param positionId
+	@return ApiModifyPositionRequest
 */
 func (a *TradingAPIAPIService) ModifyPosition(ctx context.Context, accountId string, positionId string) ApiModifyPositionRequest {
 	return ApiModifyPositionRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 		positionId: positionId,
 	}
 }
@@ -879,9 +883,9 @@ func (a *TradingAPIAPIService) ModifyPosition(ctx context.Context, accountId str
 // Execute executes the request
 func (a *TradingAPIAPIService) ModifyPositionExecute(r ApiModifyPositionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingAPIAPIService.ModifyPosition")
@@ -962,9 +966,9 @@ func (a *TradingAPIAPIService) ModifyPositionExecute(r ApiModifyPositionRequest)
 }
 
 type ApiOpenPositionRequest struct {
-	ctx context.Context
-	ApiService *TradingAPIAPIService
-	accountId string
+	ctx                context.Context
+	ApiService         *TradingAPIAPIService
+	accountId          string
 	positionRequestDTO *PositionRequestDTO
 }
 
@@ -980,24 +984,24 @@ func (r ApiOpenPositionRequest) Execute() (*http.Response, error) {
 /*
 OpenPosition Open an account position
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiOpenPositionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiOpenPositionRequest
 */
 func (a *TradingAPIAPIService) OpenPosition(ctx context.Context, accountId string) ApiOpenPositionRequest {
 	return ApiOpenPositionRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
 func (a *TradingAPIAPIService) OpenPositionExecute(r ApiOpenPositionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingAPIAPIService.OpenPosition")
@@ -1077,9 +1081,9 @@ func (a *TradingAPIAPIService) OpenPositionExecute(r ApiOpenPositionRequest) (*h
 }
 
 type ApiSendOrderRequest struct {
-	ctx context.Context
-	ApiService *TradingAPIAPIService
-	accountId string
+	ctx                context.Context
+	ApiService         *TradingAPIAPIService
+	accountId          string
 	positionRequestDTO *PositionRequestDTO
 }
 
@@ -1097,24 +1101,24 @@ SendOrder Send an account order
 
 Places an order and returns immediately. The endpoint does not wait for the trade to be executed and therefore does not confirm whether the execution was successful or not. To open positions, use the /positions endpoint.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiSendOrderRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiSendOrderRequest
 */
 func (a *TradingAPIAPIService) SendOrder(ctx context.Context, accountId string) ApiSendOrderRequest {
 	return ApiSendOrderRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
 func (a *TradingAPIAPIService) SendOrderExecute(r ApiSendOrderRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingAPIAPIService.SendOrder")

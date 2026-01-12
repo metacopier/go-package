@@ -11,10 +11,10 @@ package metacopier
 
 import (
 	"context"
+	openapiclient "github.com/metacopier/go-package"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/metacopier/go-package"
 )
 
 func Test_metacopier_TypeAPIAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_metacopier_TypeAPIAPIService(t *testing.T) {
 
 	t.Run("Test TypeAPIAPIService GetAccountTypes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TypeAPIAPI.GetAccountTypes(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_metacopier_TypeAPIAPIService(t *testing.T) {
 
 	t.Run("Test TypeAPIAPIService GetCurrencyTypes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TypeAPIAPI.GetCurrencyTypes(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_metacopier_TypeAPIAPIService(t *testing.T) {
 
 	t.Run("Test TypeAPIAPIService GetFeatureTypes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TypeAPIAPI.GetFeatureTypes(context.Background()).Execute()
 
@@ -60,7 +60,7 @@ func Test_metacopier_TypeAPIAPIService(t *testing.T) {
 
 	t.Run("Test TypeAPIAPIService GetLogTypes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TypeAPIAPI.GetLogTypes(context.Background()).Execute()
 
@@ -72,7 +72,7 @@ func Test_metacopier_TypeAPIAPIService(t *testing.T) {
 
 	t.Run("Test TypeAPIAPIService GetNotificationCategoryTypes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TypeAPIAPI.GetNotificationCategoryTypes(context.Background()).Execute()
 
@@ -84,7 +84,7 @@ func Test_metacopier_TypeAPIAPIService(t *testing.T) {
 
 	t.Run("Test TypeAPIAPIService GetProxyRegions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TypeAPIAPI.GetProxyRegions(context.Background()).Execute()
 
@@ -96,7 +96,7 @@ func Test_metacopier_TypeAPIAPIService(t *testing.T) {
 
 	t.Run("Test TypeAPIAPIService GetRegions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TypeAPIAPI.GetRegions(context.Background()).Execute()
 
@@ -108,7 +108,7 @@ func Test_metacopier_TypeAPIAPIService(t *testing.T) {
 
 	t.Run("Test TypeAPIAPIService GetRiskTypes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TypeAPIAPI.GetRiskTypes(context.Background()).Execute()
 
@@ -120,7 +120,7 @@ func Test_metacopier_TypeAPIAPIService(t *testing.T) {
 
 	t.Run("Test TypeAPIAPIService GetScaleTypes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TypeAPIAPI.GetScaleTypes(context.Background()).Execute()
 

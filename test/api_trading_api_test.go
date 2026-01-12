@@ -11,10 +11,10 @@ package metacopier
 
 import (
 	"context"
+	openapiclient "github.com/metacopier/go-package"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/metacopier/go-package"
 )
 
 func Test_metacopier_TradingAPIAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_metacopier_TradingAPIAPIService(t *testing.T) {
 
 	t.Run("Test TradingAPIAPIService CloseAllPositions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -37,7 +37,7 @@ func Test_metacopier_TradingAPIAPIService(t *testing.T) {
 
 	t.Run("Test TradingAPIAPIService ClosePosition", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var positionId string
@@ -51,7 +51,7 @@ func Test_metacopier_TradingAPIAPIService(t *testing.T) {
 
 	t.Run("Test TradingAPIAPIService GetHistoryPositions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -65,7 +65,7 @@ func Test_metacopier_TradingAPIAPIService(t *testing.T) {
 
 	t.Run("Test TradingAPIAPIService GetInformation", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -79,7 +79,7 @@ func Test_metacopier_TradingAPIAPIService(t *testing.T) {
 
 	t.Run("Test TradingAPIAPIService GetPositions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -93,7 +93,7 @@ func Test_metacopier_TradingAPIAPIService(t *testing.T) {
 
 	t.Run("Test TradingAPIAPIService GetQuote", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var symbol string
@@ -108,7 +108,7 @@ func Test_metacopier_TradingAPIAPIService(t *testing.T) {
 
 	t.Run("Test TradingAPIAPIService GetSymbols", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -122,7 +122,7 @@ func Test_metacopier_TradingAPIAPIService(t *testing.T) {
 
 	t.Run("Test TradingAPIAPIService ModifyPosition", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var positionId string
@@ -136,7 +136,7 @@ func Test_metacopier_TradingAPIAPIService(t *testing.T) {
 
 	t.Run("Test TradingAPIAPIService OpenPosition", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -149,7 +149,7 @@ func Test_metacopier_TradingAPIAPIService(t *testing.T) {
 
 	t.Run("Test TradingAPIAPIService SendOrder", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 

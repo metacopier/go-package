@@ -19,10 +19,10 @@ var _ MappedNullable = &ProxyDTO{}
 
 // ProxyDTO Read-only. The system will reserve the proxy servers per region and list them in this field.
 type ProxyDTO struct {
-	Id *int32 `json:"id,omitempty"`
-	IpAddress *string `json:"ipAddress,omitempty"`
-	Region *ProxyRegionDTO `json:"region,omitempty"`
-	UsedByAccounts []string `json:"usedByAccounts,omitempty"`
+	Id             *int32          `json:"id,omitempty"`
+	IpAddress      *string         `json:"ipAddress,omitempty"`
+	Region         *ProxyRegionDTO `json:"region,omitempty"`
+	UsedByAccounts []string        `json:"usedByAccounts,omitempty"`
 }
 
 // NewProxyDTO instantiates a new ProxyDTO object
@@ -171,7 +171,7 @@ func (o *ProxyDTO) SetUsedByAccounts(v []string) {
 }
 
 func (o ProxyDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,5 +230,3 @@ func (v *NullableProxyDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

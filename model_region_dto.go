@@ -11,8 +11,8 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &RegionDTO{}
 
 // RegionDTO A list of allowed regions to which the account can be moved if an error or issue occurs. When an account is moved, another IP address will be assigned to it. If the list is empty, all regions are allowed.
 type RegionDTO struct {
-	Id int32 `json:"id"`
+	Id   int32   `json:"id"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -102,7 +102,7 @@ func (o *RegionDTO) SetName(v string) {
 }
 
 func (o RegionDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,10 +131,10 @@ func (o *RegionDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -190,5 +190,3 @@ func (v *NullableRegionDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

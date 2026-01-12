@@ -11,10 +11,10 @@ package metacopier
 
 import (
 	"context"
+	openapiclient "github.com/metacopier/go-package"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/metacopier/go-package"
 )
 
 func Test_metacopier_SignalAPIAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_metacopier_SignalAPIAPIService(t *testing.T) {
 
 	t.Run("Test SignalAPIAPIService CloseAllPositionsInAllFollowerAccounts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var signalProviderId string
 
@@ -37,7 +37,7 @@ func Test_metacopier_SignalAPIAPIService(t *testing.T) {
 
 	t.Run("Test SignalAPIAPIService CloseSignalFollowerAllPositions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var signalProviderId string
 		var accountId string
@@ -51,7 +51,7 @@ func Test_metacopier_SignalAPIAPIService(t *testing.T) {
 
 	t.Run("Test SignalAPIAPIService CloseSignalFollowerPosition", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var signalProviderId string
 		var accountId string
@@ -66,7 +66,7 @@ func Test_metacopier_SignalAPIAPIService(t *testing.T) {
 
 	t.Run("Test SignalAPIAPIService GetFollowerFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var signalProviderId string
 		var accountId string
@@ -81,7 +81,7 @@ func Test_metacopier_SignalAPIAPIService(t *testing.T) {
 
 	t.Run("Test SignalAPIAPIService GetSignalFollowerAccountAuditLogs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var signalProviderId string
 		var accountId string
@@ -96,7 +96,7 @@ func Test_metacopier_SignalAPIAPIService(t *testing.T) {
 
 	t.Run("Test SignalAPIAPIService GetSignalFollowerAccountHistoryPositions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var signalProviderId string
 		var accountId string
@@ -111,7 +111,7 @@ func Test_metacopier_SignalAPIAPIService(t *testing.T) {
 
 	t.Run("Test SignalAPIAPIService GetSignalFollowerAccountLogs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var signalProviderId string
 		var accountId string
@@ -126,7 +126,7 @@ func Test_metacopier_SignalAPIAPIService(t *testing.T) {
 
 	t.Run("Test SignalAPIAPIService GetSignalFollowerAccountPerformanceMetrics", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var signalProviderId string
 		var accountId string
@@ -141,7 +141,7 @@ func Test_metacopier_SignalAPIAPIService(t *testing.T) {
 
 	t.Run("Test SignalAPIAPIService GetSignalFollowerAccountPositions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var signalProviderId string
 		var accountId string
@@ -156,7 +156,7 @@ func Test_metacopier_SignalAPIAPIService(t *testing.T) {
 
 	t.Run("Test SignalAPIAPIService GetSignalFollowerAccounts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var signalProviderId string
 
@@ -170,7 +170,7 @@ func Test_metacopier_SignalAPIAPIService(t *testing.T) {
 
 	t.Run("Test SignalAPIAPIService GetSignalSymbols", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var signalProviderId string
 		var accountId string
@@ -185,7 +185,7 @@ func Test_metacopier_SignalAPIAPIService(t *testing.T) {
 
 	t.Run("Test SignalAPIAPIService UpdateFollowerFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var signalProviderId string
 		var accountId string

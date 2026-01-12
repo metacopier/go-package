@@ -11,8 +11,8 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,22 +21,22 @@ var _ MappedNullable = &ProjectDTO{}
 
 // ProjectDTO struct for ProjectDTO
 type ProjectDTO struct {
-	Balance *float32 `json:"balance,omitempty"`
-	BillingCity string `json:"billingCity"`
-	BillingCompanyName string `json:"billingCompanyName"`
-	BillingCountry string `json:"billingCountry"`
-	BillingCountryIsoAlpha2 string `json:"billingCountryIsoAlpha2"`
-	BillingIdentification string `json:"billingIdentification"`
-	BillingName string `json:"billingName"`
-	BillingPostcode string `json:"billingPostcode"`
-	BillingStreet string `json:"billingStreet"`
-	Blocked *bool `json:"blocked,omitempty"`
-	CurrencyType CurrencyTypeDTO `json:"currencyType"`
+	Balance                 *float32        `json:"balance,omitempty"`
+	BillingCity             string          `json:"billingCity"`
+	BillingCompanyName      string          `json:"billingCompanyName"`
+	BillingCountry          string          `json:"billingCountry"`
+	BillingCountryIsoAlpha2 string          `json:"billingCountryIsoAlpha2"`
+	BillingIdentification   string          `json:"billingIdentification"`
+	BillingName             string          `json:"billingName"`
+	BillingPostcode         string          `json:"billingPostcode"`
+	BillingStreet           string          `json:"billingStreet"`
+	Blocked                 *bool           `json:"blocked,omitempty"`
+	CurrencyType            CurrencyTypeDTO `json:"currencyType"`
 	// You have to set it during resource creation, after that, it is only read-only. See pricing on our webpage for more information
-	Dedicated bool `json:"dedicated"`
-	Id *string `json:"id,omitempty"`
-	Name string `json:"name"`
-	Owner *CustomerDTO `json:"owner,omitempty"`
+	Dedicated     bool              `json:"dedicated"`
+	Id            *string           `json:"id,omitempty"`
+	Name          string            `json:"name"`
+	Owner         *CustomerDTO      `json:"owner,omitempty"`
 	PaymentMethod *PaymentMethodDTO `json:"paymentMethod,omitempty"`
 }
 
@@ -497,7 +497,7 @@ func (o *ProjectDTO) SetPaymentMethod(v PaymentMethodDTO) {
 }
 
 func (o ProjectDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -558,10 +558,10 @@ func (o *ProjectDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -617,5 +617,3 @@ func (v *NullableProjectDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,10 +11,10 @@ package metacopier
 
 import (
 	"context"
+	openapiclient "github.com/metacopier/go-package"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/metacopier/go-package"
 )
 
 func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService AcknowledgeAllLogs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -37,7 +37,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService AcknowledgeLog", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var id int32
@@ -51,7 +51,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService AcknowledgeLogsBulk", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -64,7 +64,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService CloseAllPositionsInAllAccounts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -77,7 +77,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService CreateProjectFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -91,7 +91,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService CreateProjectStrategy", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -105,7 +105,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService CreateProjectStrategyCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -120,7 +120,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService CreateProjectStrategyCopierFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -136,7 +136,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService CreateProjectSymbolMapping", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -150,7 +150,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService DeleteProjectFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var featureId string
@@ -164,7 +164,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService DeleteProjectStrategy", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -178,7 +178,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService DeleteProjectStrategyCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -193,7 +193,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService DeleteProjectStrategyCopierFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -209,7 +209,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService DeleteProjectSymbolMapping", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var symbolMappingId int32
@@ -223,7 +223,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetAvailableLabels", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -237,7 +237,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetForecastCost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -251,7 +251,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetInvoiceDetails", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var invoiceNumber string
@@ -266,7 +266,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetInvoices", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -280,7 +280,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProject", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -294,7 +294,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectAuditLogs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -308,7 +308,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectAvailableSignalsToFollow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -322,7 +322,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var featureId string
@@ -337,7 +337,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectFeatures", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -351,7 +351,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectLogs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -365,7 +365,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectStrategies", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -379,7 +379,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectStrategy", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -394,7 +394,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectStrategyCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -410,7 +410,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectStrategyCopierFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -427,7 +427,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectStrategyCopierFeatures", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -443,7 +443,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectStrategyCopiers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -458,7 +458,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectSymbolMapping", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var symbolMappingId int32
@@ -473,7 +473,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectSymbolMappings", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -487,7 +487,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService GetProjectTransactions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -501,7 +501,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService ResyncStrategyCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -516,7 +516,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService UpdateProject", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 
@@ -530,7 +530,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService UpdateProjectFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var featureId string
@@ -545,7 +545,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService UpdateProjectStrategy", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -560,7 +560,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService UpdateProjectStrategyCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -576,7 +576,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService UpdateProjectStrategyCopierFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var strategyId string
@@ -593,7 +593,7 @@ func Test_metacopier_ProjectAPIAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIAPIService UpdateProjectSymbolMapping", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId string
 		var symbolMappingId int32

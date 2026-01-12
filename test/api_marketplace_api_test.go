@@ -11,10 +11,10 @@ package metacopier
 
 import (
 	"context"
+	openapiclient "github.com/metacopier/go-package"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/metacopier/go-package"
 )
 
 func Test_metacopier_MarketplaceAPIAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_metacopier_MarketplaceAPIAPIService(t *testing.T) {
 
 	t.Run("Test MarketplaceAPIAPIService GetMarketplace", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.MarketplaceAPIAPI.GetMarketplace(context.Background()).Execute()
 

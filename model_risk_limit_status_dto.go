@@ -21,9 +21,9 @@ var _ MappedNullable = &RiskLimitStatusDTO{}
 // RiskLimitStatusDTO struct for RiskLimitStatusDTO
 type RiskLimitStatusDTO struct {
 	BalanceLastUpdate *time.Time `json:"balanceLastUpdate,omitempty"`
-	LimitIsHit *bool `json:"limitIsHit,omitempty"`
-	ReferenceBalance *float32 `json:"referenceBalance,omitempty"`
-	RiskLimitId *string `json:"riskLimitId,omitempty"`
+	LimitIsHit        *bool      `json:"limitIsHit,omitempty"`
+	ReferenceBalance  *float32   `json:"referenceBalance,omitempty"`
+	RiskLimitId       *string    `json:"riskLimitId,omitempty"`
 }
 
 // NewRiskLimitStatusDTO instantiates a new RiskLimitStatusDTO object
@@ -172,7 +172,7 @@ func (o *RiskLimitStatusDTO) SetRiskLimitId(v string) {
 }
 
 func (o RiskLimitStatusDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,5 +231,3 @@ func (v *NullableRiskLimitStatusDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

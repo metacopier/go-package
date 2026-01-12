@@ -66,7 +66,7 @@ type PerformanceMetricsDTO struct {
 	// Monthly profit percentage - key: YYYY-MM format, value: profit percentage (%)
 	ProfitPercentagePerMonth *map[string]float32 `json:"profitPercentagePerMonth,omitempty"`
 	// Composite signal quality score (0-100) based on multiple performance metrics
-	Score *float32 `json:"score,omitempty"`
+	Score          *float32           `json:"score,omitempty"`
 	ScoreBreakdown *ScoreBreakdownDTO `json:"scoreBreakdown,omitempty"`
 	// Total commissions paid across all trades in account currency (amount)
 	TotalCommissions *float32 `json:"totalCommissions,omitempty"`
@@ -1126,7 +1126,7 @@ func (o *PerformanceMetricsDTO) SetWinRate(v float32) {
 }
 
 func (o PerformanceMetricsDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1269,5 +1269,3 @@ func (v *NullablePerformanceMetricsDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

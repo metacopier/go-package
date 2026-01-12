@@ -19,12 +19,11 @@ import (
 	"strings"
 )
 
-
 // AccountAPIAPIService AccountAPIAPI service
 type AccountAPIAPIService service
 
 type ApiActivateAllCopiersRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
 }
 
@@ -35,22 +34,22 @@ func (r ApiActivateAllCopiersRequest) Execute() (*http.Response, error) {
 /*
 ActivateAllCopiers Activate all copiers across all accounts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiActivateAllCopiersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiActivateAllCopiersRequest
 */
 func (a *AccountAPIAPIService) ActivateAllCopiers(ctx context.Context) ApiActivateAllCopiersRequest {
 	return ApiActivateAllCopiersRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AccountAPIAPIService) ActivateAllCopiersExecute(r ApiActivateAllCopiersRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.ActivateAllCopiers")
@@ -124,9 +123,9 @@ func (a *AccountAPIAPIService) ActivateAllCopiersExecute(r ApiActivateAllCopiers
 }
 
 type ApiActivateSlavesCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiActivateSlavesCopierRequest) Execute() (*http.Response, error) {
@@ -136,24 +135,24 @@ func (r ApiActivateSlavesCopierRequest) Execute() (*http.Response, error) {
 /*
 ActivateSlavesCopier Activate all copiers of all slave accounts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiActivateSlavesCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiActivateSlavesCopierRequest
 */
 func (a *AccountAPIAPIService) ActivateSlavesCopier(ctx context.Context, accountId string) ApiActivateSlavesCopierRequest {
 	return ApiActivateSlavesCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
 func (a *AccountAPIAPIService) ActivateSlavesCopierExecute(r ApiActivateSlavesCopierRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.ActivateSlavesCopier")
@@ -228,7 +227,7 @@ func (a *AccountAPIAPIService) ActivateSlavesCopierExecute(r ApiActivateSlavesCo
 }
 
 type ApiCreateAccountRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
 	accountDTO *AccountDTO
 }
@@ -245,24 +244,25 @@ func (r ApiCreateAccountRequest) Execute() (*AccountDTO, *http.Response, error) 
 /*
 CreateAccount Create an account
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateAccountRequest
 */
 func (a *AccountAPIAPIService) CreateAccount(ctx context.Context) ApiCreateAccountRequest {
 	return ApiCreateAccountRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return AccountDTO
+//
+//	@return AccountDTO
 func (a *AccountAPIAPIService) CreateAccountExecute(r ApiCreateAccountRequest) (*AccountDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AccountDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AccountDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.CreateAccount")
@@ -350,9 +350,9 @@ func (a *AccountAPIAPIService) CreateAccountExecute(r ApiCreateAccountRequest) (
 }
 
 type ApiCreateAccountApprovalRequest struct {
-	ctx context.Context
-	ApiService *AccountAPIAPIService
-	accountId string
+	ctx         context.Context
+	ApiService  *AccountAPIAPIService
+	accountId   string
 	approvalDTO *ApprovalDTO
 }
 
@@ -368,24 +368,24 @@ func (r ApiCreateAccountApprovalRequest) Execute() (*http.Response, error) {
 /*
 CreateAccountApproval Create an approval
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiCreateAccountApprovalRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiCreateAccountApprovalRequest
 */
 func (a *AccountAPIAPIService) CreateAccountApproval(ctx context.Context, accountId string) ApiCreateAccountApprovalRequest {
 	return ApiCreateAccountApprovalRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
 func (a *AccountAPIAPIService) CreateAccountApprovalExecute(r ApiCreateAccountApprovalRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.CreateAccountApproval")
@@ -465,9 +465,9 @@ func (a *AccountAPIAPIService) CreateAccountApprovalExecute(r ApiCreateAccountAp
 }
 
 type ApiCreateAccountFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 	featureDTO *FeatureDTO
 }
 
@@ -483,26 +483,27 @@ func (r ApiCreateAccountFeatureRequest) Execute() (*FeatureDTO, *http.Response, 
 /*
 CreateAccountFeature Create an account feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiCreateAccountFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiCreateAccountFeatureRequest
 */
 func (a *AccountAPIAPIService) CreateAccountFeature(ctx context.Context, accountId string) ApiCreateAccountFeatureRequest {
 	return ApiCreateAccountFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *AccountAPIAPIService) CreateAccountFeatureExecute(r ApiCreateAccountFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.CreateAccountFeature")
@@ -591,10 +592,10 @@ func (a *AccountAPIAPIService) CreateAccountFeatureExecute(r ApiCreateAccountFea
 }
 
 type ApiCreateCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	copierDTO *CopierDTO
+	accountId  string
+	copierDTO  *CopierDTO
 }
 
 func (r ApiCreateCopierRequest) CopierDTO(copierDTO CopierDTO) ApiCreateCopierRequest {
@@ -609,26 +610,27 @@ func (r ApiCreateCopierRequest) Execute() (*CopierDTO, *http.Response, error) {
 /*
 CreateCopier Create an account copier
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiCreateCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiCreateCopierRequest
 */
 func (a *AccountAPIAPIService) CreateCopier(ctx context.Context, accountId string) ApiCreateCopierRequest {
 	return ApiCreateCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return CopierDTO
+//
+//	@return CopierDTO
 func (a *AccountAPIAPIService) CreateCopierExecute(r ApiCreateCopierRequest) (*CopierDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CopierDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CopierDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.CreateCopier")
@@ -717,10 +719,10 @@ func (a *AccountAPIAPIService) CreateCopierExecute(r ApiCreateCopierRequest) (*C
 }
 
 type ApiCreateCopierFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	copierId string
+	accountId  string
+	copierId   string
 	featureDTO *FeatureDTO
 }
 
@@ -736,28 +738,29 @@ func (r ApiCreateCopierFeatureRequest) Execute() (*FeatureDTO, *http.Response, e
 /*
 CreateCopierFeature Create a copier feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param copierId
- @return ApiCreateCopierFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param copierId
+	@return ApiCreateCopierFeatureRequest
 */
 func (a *AccountAPIAPIService) CreateCopierFeature(ctx context.Context, accountId string, copierId string) ApiCreateCopierFeatureRequest {
 	return ApiCreateCopierFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		copierId: copierId,
+		ctx:        ctx,
+		accountId:  accountId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *AccountAPIAPIService) CreateCopierFeatureExecute(r ApiCreateCopierFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.CreateCopierFeature")
@@ -847,9 +850,9 @@ func (a *AccountAPIAPIService) CreateCopierFeatureExecute(r ApiCreateCopierFeatu
 }
 
 type ApiCreateRiskLimitRequest struct {
-	ctx context.Context
-	ApiService *AccountAPIAPIService
-	accountId string
+	ctx          context.Context
+	ApiService   *AccountAPIAPIService
+	accountId    string
 	riskLimitDTO *RiskLimitDTO
 }
 
@@ -865,26 +868,27 @@ func (r ApiCreateRiskLimitRequest) Execute() (*RiskLimitDTO, *http.Response, err
 /*
 CreateRiskLimit Create an account risk limit
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiCreateRiskLimitRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiCreateRiskLimitRequest
 */
 func (a *AccountAPIAPIService) CreateRiskLimit(ctx context.Context, accountId string) ApiCreateRiskLimitRequest {
 	return ApiCreateRiskLimitRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return RiskLimitDTO
+//
+//	@return RiskLimitDTO
 func (a *AccountAPIAPIService) CreateRiskLimitExecute(r ApiCreateRiskLimitRequest) (*RiskLimitDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RiskLimitDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskLimitDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.CreateRiskLimit")
@@ -973,7 +977,7 @@ func (a *AccountAPIAPIService) CreateRiskLimitExecute(r ApiCreateRiskLimitReques
 }
 
 type ApiDeactivateAllCopiersRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
 }
 
@@ -984,22 +988,22 @@ func (r ApiDeactivateAllCopiersRequest) Execute() (*http.Response, error) {
 /*
 DeactivateAllCopiers Deactivate all copiers across all accounts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiDeactivateAllCopiersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiDeactivateAllCopiersRequest
 */
 func (a *AccountAPIAPIService) DeactivateAllCopiers(ctx context.Context) ApiDeactivateAllCopiersRequest {
 	return ApiDeactivateAllCopiersRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AccountAPIAPIService) DeactivateAllCopiersExecute(r ApiDeactivateAllCopiersRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.DeactivateAllCopiers")
@@ -1073,9 +1077,9 @@ func (a *AccountAPIAPIService) DeactivateAllCopiersExecute(r ApiDeactivateAllCop
 }
 
 type ApiDeactivateSlavesCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiDeactivateSlavesCopierRequest) Execute() (*http.Response, error) {
@@ -1085,24 +1089,24 @@ func (r ApiDeactivateSlavesCopierRequest) Execute() (*http.Response, error) {
 /*
 DeactivateSlavesCopier Deactivate all copiers of all slave accounts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiDeactivateSlavesCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiDeactivateSlavesCopierRequest
 */
 func (a *AccountAPIAPIService) DeactivateSlavesCopier(ctx context.Context, accountId string) ApiDeactivateSlavesCopierRequest {
 	return ApiDeactivateSlavesCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
 func (a *AccountAPIAPIService) DeactivateSlavesCopierExecute(r ApiDeactivateSlavesCopierRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.DeactivateSlavesCopier")
@@ -1177,9 +1181,9 @@ func (a *AccountAPIAPIService) DeactivateSlavesCopierExecute(r ApiDeactivateSlav
 }
 
 type ApiDeleteAccountRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiDeleteAccountRequest) Execute() (*http.Response, error) {
@@ -1189,24 +1193,24 @@ func (r ApiDeleteAccountRequest) Execute() (*http.Response, error) {
 /*
 DeleteAccount Delete an account
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiDeleteAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiDeleteAccountRequest
 */
 func (a *AccountAPIAPIService) DeleteAccount(ctx context.Context, accountId string) ApiDeleteAccountRequest {
 	return ApiDeleteAccountRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
 func (a *AccountAPIAPIService) DeleteAccountExecute(r ApiDeleteAccountRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.DeleteAccount")
@@ -1281,10 +1285,10 @@ func (a *AccountAPIAPIService) DeleteAccountExecute(r ApiDeleteAccountRequest) (
 }
 
 type ApiDeleteAccountFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	featureId string
+	accountId  string
+	featureId  string
 }
 
 func (r ApiDeleteAccountFeatureRequest) Execute() (*http.Response, error) {
@@ -1294,26 +1298,26 @@ func (r ApiDeleteAccountFeatureRequest) Execute() (*http.Response, error) {
 /*
 DeleteAccountFeature Delete an account feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param featureId
- @return ApiDeleteAccountFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param featureId
+	@return ApiDeleteAccountFeatureRequest
 */
 func (a *AccountAPIAPIService) DeleteAccountFeature(ctx context.Context, accountId string, featureId string) ApiDeleteAccountFeatureRequest {
 	return ApiDeleteAccountFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		featureId: featureId,
+		ctx:        ctx,
+		accountId:  accountId,
+		featureId:  featureId,
 	}
 }
 
 // Execute executes the request
 func (a *AccountAPIAPIService) DeleteAccountFeatureExecute(r ApiDeleteAccountFeatureRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.DeleteAccountFeature")
@@ -1389,10 +1393,10 @@ func (a *AccountAPIAPIService) DeleteAccountFeatureExecute(r ApiDeleteAccountFea
 }
 
 type ApiDeleteCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	copierId string
+	accountId  string
+	copierId   string
 }
 
 func (r ApiDeleteCopierRequest) Execute() (*http.Response, error) {
@@ -1402,26 +1406,26 @@ func (r ApiDeleteCopierRequest) Execute() (*http.Response, error) {
 /*
 DeleteCopier Delete an account copier
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param copierId
- @return ApiDeleteCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param copierId
+	@return ApiDeleteCopierRequest
 */
 func (a *AccountAPIAPIService) DeleteCopier(ctx context.Context, accountId string, copierId string) ApiDeleteCopierRequest {
 	return ApiDeleteCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		copierId: copierId,
+		ctx:        ctx,
+		accountId:  accountId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
 func (a *AccountAPIAPIService) DeleteCopierExecute(r ApiDeleteCopierRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.DeleteCopier")
@@ -1497,11 +1501,11 @@ func (a *AccountAPIAPIService) DeleteCopierExecute(r ApiDeleteCopierRequest) (*h
 }
 
 type ApiDeleteCopierFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	copierId string
-	featureId string
+	accountId  string
+	copierId   string
+	featureId  string
 }
 
 func (r ApiDeleteCopierFeatureRequest) Execute() (*http.Response, error) {
@@ -1511,28 +1515,28 @@ func (r ApiDeleteCopierFeatureRequest) Execute() (*http.Response, error) {
 /*
 DeleteCopierFeature Delete a copier feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param copierId
- @param featureId
- @return ApiDeleteCopierFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param copierId
+	@param featureId
+	@return ApiDeleteCopierFeatureRequest
 */
 func (a *AccountAPIAPIService) DeleteCopierFeature(ctx context.Context, accountId string, copierId string, featureId string) ApiDeleteCopierFeatureRequest {
 	return ApiDeleteCopierFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		copierId: copierId,
-		featureId: featureId,
+		ctx:        ctx,
+		accountId:  accountId,
+		copierId:   copierId,
+		featureId:  featureId,
 	}
 }
 
 // Execute executes the request
 func (a *AccountAPIAPIService) DeleteCopierFeatureExecute(r ApiDeleteCopierFeatureRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.DeleteCopierFeature")
@@ -1609,9 +1613,9 @@ func (a *AccountAPIAPIService) DeleteCopierFeatureExecute(r ApiDeleteCopierFeatu
 }
 
 type ApiDeleteRiskLimitRequest struct {
-	ctx context.Context
-	ApiService *AccountAPIAPIService
-	accountId string
+	ctx         context.Context
+	ApiService  *AccountAPIAPIService
+	accountId   string
 	riskLimitId string
 }
 
@@ -1622,16 +1626,16 @@ func (r ApiDeleteRiskLimitRequest) Execute() (*http.Response, error) {
 /*
 DeleteRiskLimit Delete an account risk limit
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param riskLimitId
- @return ApiDeleteRiskLimitRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param riskLimitId
+	@return ApiDeleteRiskLimitRequest
 */
 func (a *AccountAPIAPIService) DeleteRiskLimit(ctx context.Context, accountId string, riskLimitId string) ApiDeleteRiskLimitRequest {
 	return ApiDeleteRiskLimitRequest{
-		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ApiService:  a,
+		ctx:         ctx,
+		accountId:   accountId,
 		riskLimitId: riskLimitId,
 	}
 }
@@ -1639,9 +1643,9 @@ func (a *AccountAPIAPIService) DeleteRiskLimit(ctx context.Context, accountId st
 // Execute executes the request
 func (a *AccountAPIAPIService) DeleteRiskLimitExecute(r ApiDeleteRiskLimitRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.DeleteRiskLimit")
@@ -1717,9 +1721,9 @@ func (a *AccountAPIAPIService) DeleteRiskLimitExecute(r ApiDeleteRiskLimitReques
 }
 
 type ApiGetAccountRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiGetAccountRequest) Execute() (*AccountDTO, *http.Response, error) {
@@ -1729,26 +1733,27 @@ func (r ApiGetAccountRequest) Execute() (*AccountDTO, *http.Response, error) {
 /*
 GetAccount Get an account
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetAccountRequest
 */
 func (a *AccountAPIAPIService) GetAccount(ctx context.Context, accountId string) ApiGetAccountRequest {
 	return ApiGetAccountRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return AccountDTO
+//
+//	@return AccountDTO
 func (a *AccountAPIAPIService) GetAccountExecute(r ApiGetAccountRequest) (*AccountDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AccountDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AccountDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetAccount")
@@ -1832,13 +1837,13 @@ func (a *AccountAPIAPIService) GetAccountExecute(r ApiGetAccountRequest) (*Accou
 }
 
 type ApiGetAccountAuditLogsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	limit *int32
-	offset *int32
-	startDate *string
-	endDate *string
+	accountId  string
+	limit      *int32
+	offset     *int32
+	startDate  *string
+	endDate    *string
 }
 
 // Maximum number of logs to return
@@ -1874,26 +1879,27 @@ GetAccountAuditLogs Get audit logs for a specific account
 
 Retrieves audit logs for all API modifications made to a specific account.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetAccountAuditLogsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetAccountAuditLogsRequest
 */
 func (a *AccountAPIAPIService) GetAccountAuditLogs(ctx context.Context, accountId string) ApiGetAccountAuditLogsRequest {
 	return ApiGetAccountAuditLogsRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []AuditLogDTO
+//
+//	@return []AuditLogDTO
 func (a *AccountAPIAPIService) GetAccountAuditLogsExecute(r ApiGetAccountAuditLogsRequest) ([]AuditLogDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []AuditLogDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []AuditLogDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetAccountAuditLogs")
@@ -1989,10 +1995,10 @@ func (a *AccountAPIAPIService) GetAccountAuditLogsExecute(r ApiGetAccountAuditLo
 }
 
 type ApiGetAccountCopierCurrentSymbolMappingsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	copierId string
+	accountId  string
+	copierId   string
 }
 
 func (r ApiGetAccountCopierCurrentSymbolMappingsRequest) Execute() ([]SymbolMappingDTO, *http.Response, error) {
@@ -2002,28 +2008,29 @@ func (r ApiGetAccountCopierCurrentSymbolMappingsRequest) Execute() ([]SymbolMapp
 /*
 GetAccountCopierCurrentSymbolMappings Get account copier current symbol mappings
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param copierId
- @return ApiGetAccountCopierCurrentSymbolMappingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param copierId
+	@return ApiGetAccountCopierCurrentSymbolMappingsRequest
 */
 func (a *AccountAPIAPIService) GetAccountCopierCurrentSymbolMappings(ctx context.Context, accountId string, copierId string) ApiGetAccountCopierCurrentSymbolMappingsRequest {
 	return ApiGetAccountCopierCurrentSymbolMappingsRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		copierId: copierId,
+		ctx:        ctx,
+		accountId:  accountId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
-//  @return []SymbolMappingDTO
+//
+//	@return []SymbolMappingDTO
 func (a *AccountAPIAPIService) GetAccountCopierCurrentSymbolMappingsExecute(r ApiGetAccountCopierCurrentSymbolMappingsRequest) ([]SymbolMappingDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []SymbolMappingDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []SymbolMappingDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetAccountCopierCurrentSymbolMappings")
@@ -2108,12 +2115,12 @@ func (a *AccountAPIAPIService) GetAccountCopierCurrentSymbolMappingsExecute(r Ap
 }
 
 type ApiGetAccountDataCollectorRecordsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	limit *int32
-	startTime *string
-	endTime *string
+	accountId  string
+	limit      *int32
+	startTime  *string
+	endTime    *string
 }
 
 // Maximum number of records to return (default: 10000, use -1 for all records)
@@ -2143,26 +2150,27 @@ GetAccountDataCollectorRecords Get data collector records for a specific account
 
 Retrieves equity, balance, and floating PnL time-series data collected for advanced analytics, drawdown monitoring, and equity curve construction.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetAccountDataCollectorRecordsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetAccountDataCollectorRecordsRequest
 */
 func (a *AccountAPIAPIService) GetAccountDataCollectorRecords(ctx context.Context, accountId string) ApiGetAccountDataCollectorRecordsRequest {
 	return ApiGetAccountDataCollectorRecordsRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []DataCollectorRecordDTO
+//
+//	@return []DataCollectorRecordDTO
 func (a *AccountAPIAPIService) GetAccountDataCollectorRecordsExecute(r ApiGetAccountDataCollectorRecordsRequest) ([]DataCollectorRecordDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []DataCollectorRecordDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []DataCollectorRecordDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetAccountDataCollectorRecords")
@@ -2255,10 +2263,10 @@ func (a *AccountAPIAPIService) GetAccountDataCollectorRecordsExecute(r ApiGetAcc
 }
 
 type ApiGetAccountFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	featureId string
+	accountId  string
+	featureId  string
 }
 
 func (r ApiGetAccountFeatureRequest) Execute() (*FeatureDTO, *http.Response, error) {
@@ -2268,28 +2276,29 @@ func (r ApiGetAccountFeatureRequest) Execute() (*FeatureDTO, *http.Response, err
 /*
 GetAccountFeature Get an account feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param featureId
- @return ApiGetAccountFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param featureId
+	@return ApiGetAccountFeatureRequest
 */
 func (a *AccountAPIAPIService) GetAccountFeature(ctx context.Context, accountId string, featureId string) ApiGetAccountFeatureRequest {
 	return ApiGetAccountFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		featureId: featureId,
+		ctx:        ctx,
+		accountId:  accountId,
+		featureId:  featureId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *AccountAPIAPIService) GetAccountFeatureExecute(r ApiGetAccountFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetAccountFeature")
@@ -2374,9 +2383,9 @@ func (a *AccountAPIAPIService) GetAccountFeatureExecute(r ApiGetAccountFeatureRe
 }
 
 type ApiGetAccountFeaturesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiGetAccountFeaturesRequest) Execute() ([]FeatureDTO, *http.Response, error) {
@@ -2386,26 +2395,27 @@ func (r ApiGetAccountFeaturesRequest) Execute() ([]FeatureDTO, *http.Response, e
 /*
 GetAccountFeatures Get all account features
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetAccountFeaturesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetAccountFeaturesRequest
 */
 func (a *AccountAPIAPIService) GetAccountFeatures(ctx context.Context, accountId string) ApiGetAccountFeaturesRequest {
 	return ApiGetAccountFeaturesRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []FeatureDTO
+//
+//	@return []FeatureDTO
 func (a *AccountAPIAPIService) GetAccountFeaturesExecute(r ApiGetAccountFeaturesRequest) ([]FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []FeatureDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetAccountFeatures")
@@ -2489,14 +2499,14 @@ func (a *AccountAPIAPIService) GetAccountFeaturesExecute(r ApiGetAccountFeatures
 }
 
 type ApiGetAccountLogsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	limit *int32
-	offset *int32
-	start *string
-	stop *string
-	logTypeId *int32
+	accountId  string
+	limit      *int32
+	offset     *int32
+	start      *string
+	stop       *string
+	logTypeId  *int32
 }
 
 // Get the last logs: e.g. 100 means the last 100 logs
@@ -2536,26 +2546,27 @@ func (r ApiGetAccountLogsRequest) Execute() ([]LogDTO, *http.Response, error) {
 /*
 GetAccountLogs Get account logs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetAccountLogsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetAccountLogsRequest
 */
 func (a *AccountAPIAPIService) GetAccountLogs(ctx context.Context, accountId string) ApiGetAccountLogsRequest {
 	return ApiGetAccountLogsRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []LogDTO
+//
+//	@return []LogDTO
 func (a *AccountAPIAPIService) GetAccountLogsExecute(r ApiGetAccountLogsRequest) ([]LogDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []LogDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []LogDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetAccountLogs")
@@ -2654,9 +2665,9 @@ func (a *AccountAPIAPIService) GetAccountLogsExecute(r ApiGetAccountLogsRequest)
 }
 
 type ApiGetAccountPerformanceMetricsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiGetAccountPerformanceMetricsRequest) Execute() (*PerformanceMetricsDTO, *http.Response, error) {
@@ -2666,26 +2677,27 @@ func (r ApiGetAccountPerformanceMetricsRequest) Execute() (*PerformanceMetricsDT
 /*
 GetAccountPerformanceMetrics Get an account performance metrics
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetAccountPerformanceMetricsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetAccountPerformanceMetricsRequest
 */
 func (a *AccountAPIAPIService) GetAccountPerformanceMetrics(ctx context.Context, accountId string) ApiGetAccountPerformanceMetricsRequest {
 	return ApiGetAccountPerformanceMetricsRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return PerformanceMetricsDTO
+//
+//	@return PerformanceMetricsDTO
 func (a *AccountAPIAPIService) GetAccountPerformanceMetricsExecute(r ApiGetAccountPerformanceMetricsRequest) (*PerformanceMetricsDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PerformanceMetricsDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PerformanceMetricsDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetAccountPerformanceMetrics")
@@ -2769,9 +2781,9 @@ func (a *AccountAPIAPIService) GetAccountPerformanceMetricsExecute(r ApiGetAccou
 }
 
 type ApiGetAccountSymbolMappingsRequest struct {
-	ctx context.Context
-	ApiService *AccountAPIAPIService
-	accountId string
+	ctx                      context.Context
+	ApiService               *AccountAPIAPIService
+	accountId                string
 	requestSymbolMappingsDTO *RequestSymbolMappingsDTO
 }
 
@@ -2787,26 +2799,27 @@ func (r ApiGetAccountSymbolMappingsRequest) Execute() ([]SymbolMappingDTO, *http
 /*
 GetAccountSymbolMappings Get account symbol mappings for given symbols
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetAccountSymbolMappingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetAccountSymbolMappingsRequest
 */
 func (a *AccountAPIAPIService) GetAccountSymbolMappings(ctx context.Context, accountId string) ApiGetAccountSymbolMappingsRequest {
 	return ApiGetAccountSymbolMappingsRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []SymbolMappingDTO
+//
+//	@return []SymbolMappingDTO
 func (a *AccountAPIAPIService) GetAccountSymbolMappingsExecute(r ApiGetAccountSymbolMappingsRequest) ([]SymbolMappingDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []SymbolMappingDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []SymbolMappingDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetAccountSymbolMappings")
@@ -2895,7 +2908,7 @@ func (a *AccountAPIAPIService) GetAccountSymbolMappingsExecute(r ApiGetAccountSy
 }
 
 type ApiGetAccountsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
 }
 
@@ -2906,24 +2919,25 @@ func (r ApiGetAccountsRequest) Execute() ([]AccountDTO, *http.Response, error) {
 /*
 GetAccounts Get all accounts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetAccountsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetAccountsRequest
 */
 func (a *AccountAPIAPIService) GetAccounts(ctx context.Context) ApiGetAccountsRequest {
 	return ApiGetAccountsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []AccountDTO
+//
+//	@return []AccountDTO
 func (a *AccountAPIAPIService) GetAccountsExecute(r ApiGetAccountsRequest) ([]AccountDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []AccountDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []AccountDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetAccounts")
@@ -3006,10 +3020,10 @@ func (a *AccountAPIAPIService) GetAccountsExecute(r ApiGetAccountsRequest) ([]Ac
 }
 
 type ApiGetCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	copierId string
+	accountId  string
+	copierId   string
 }
 
 func (r ApiGetCopierRequest) Execute() (*CopierDTO, *http.Response, error) {
@@ -3019,28 +3033,29 @@ func (r ApiGetCopierRequest) Execute() (*CopierDTO, *http.Response, error) {
 /*
 GetCopier Get account copier
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param copierId
- @return ApiGetCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param copierId
+	@return ApiGetCopierRequest
 */
 func (a *AccountAPIAPIService) GetCopier(ctx context.Context, accountId string, copierId string) ApiGetCopierRequest {
 	return ApiGetCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		copierId: copierId,
+		ctx:        ctx,
+		accountId:  accountId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
-//  @return CopierDTO
+//
+//	@return CopierDTO
 func (a *AccountAPIAPIService) GetCopierExecute(r ApiGetCopierRequest) (*CopierDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CopierDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CopierDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetCopier")
@@ -3125,11 +3140,11 @@ func (a *AccountAPIAPIService) GetCopierExecute(r ApiGetCopierRequest) (*CopierD
 }
 
 type ApiGetCopierFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	copierId string
-	featureId string
+	accountId  string
+	copierId   string
+	featureId  string
 }
 
 func (r ApiGetCopierFeatureRequest) Execute() (*FeatureDTO, *http.Response, error) {
@@ -3139,30 +3154,31 @@ func (r ApiGetCopierFeatureRequest) Execute() (*FeatureDTO, *http.Response, erro
 /*
 GetCopierFeature Get a copier feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param copierId
- @param featureId
- @return ApiGetCopierFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param copierId
+	@param featureId
+	@return ApiGetCopierFeatureRequest
 */
 func (a *AccountAPIAPIService) GetCopierFeature(ctx context.Context, accountId string, copierId string, featureId string) ApiGetCopierFeatureRequest {
 	return ApiGetCopierFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		copierId: copierId,
-		featureId: featureId,
+		ctx:        ctx,
+		accountId:  accountId,
+		copierId:   copierId,
+		featureId:  featureId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *AccountAPIAPIService) GetCopierFeatureExecute(r ApiGetCopierFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetCopierFeature")
@@ -3248,10 +3264,10 @@ func (a *AccountAPIAPIService) GetCopierFeatureExecute(r ApiGetCopierFeatureRequ
 }
 
 type ApiGetCopierFeaturesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	copierId string
+	accountId  string
+	copierId   string
 }
 
 func (r ApiGetCopierFeaturesRequest) Execute() ([]FeatureDTO, *http.Response, error) {
@@ -3261,28 +3277,29 @@ func (r ApiGetCopierFeaturesRequest) Execute() ([]FeatureDTO, *http.Response, er
 /*
 GetCopierFeatures Get all copier features
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param copierId
- @return ApiGetCopierFeaturesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param copierId
+	@return ApiGetCopierFeaturesRequest
 */
 func (a *AccountAPIAPIService) GetCopierFeatures(ctx context.Context, accountId string, copierId string) ApiGetCopierFeaturesRequest {
 	return ApiGetCopierFeaturesRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		copierId: copierId,
+		ctx:        ctx,
+		accountId:  accountId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
-//  @return []FeatureDTO
+//
+//	@return []FeatureDTO
 func (a *AccountAPIAPIService) GetCopierFeaturesExecute(r ApiGetCopierFeaturesRequest) ([]FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []FeatureDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetCopierFeatures")
@@ -3367,9 +3384,9 @@ func (a *AccountAPIAPIService) GetCopierFeaturesExecute(r ApiGetCopierFeaturesRe
 }
 
 type ApiGetCopiersRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiGetCopiersRequest) Execute() ([]CopierDTO, *http.Response, error) {
@@ -3379,26 +3396,27 @@ func (r ApiGetCopiersRequest) Execute() ([]CopierDTO, *http.Response, error) {
 /*
 GetCopiers Get account copiers
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetCopiersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetCopiersRequest
 */
 func (a *AccountAPIAPIService) GetCopiers(ctx context.Context, accountId string) ApiGetCopiersRequest {
 	return ApiGetCopiersRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []CopierDTO
+//
+//	@return []CopierDTO
 func (a *AccountAPIAPIService) GetCopiersExecute(r ApiGetCopiersRequest) ([]CopierDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CopierDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CopierDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetCopiers")
@@ -3482,9 +3500,9 @@ func (a *AccountAPIAPIService) GetCopiersExecute(r ApiGetCopiersRequest) ([]Copi
 }
 
 type ApiGetRiskLimitRequest struct {
-	ctx context.Context
-	ApiService *AccountAPIAPIService
-	accountId string
+	ctx         context.Context
+	ApiService  *AccountAPIAPIService
+	accountId   string
 	riskLimitId string
 }
 
@@ -3495,28 +3513,29 @@ func (r ApiGetRiskLimitRequest) Execute() (*RiskLimitDTO, *http.Response, error)
 /*
 GetRiskLimit Get an account risk limit
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param riskLimitId
- @return ApiGetRiskLimitRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param riskLimitId
+	@return ApiGetRiskLimitRequest
 */
 func (a *AccountAPIAPIService) GetRiskLimit(ctx context.Context, accountId string, riskLimitId string) ApiGetRiskLimitRequest {
 	return ApiGetRiskLimitRequest{
-		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ApiService:  a,
+		ctx:         ctx,
+		accountId:   accountId,
 		riskLimitId: riskLimitId,
 	}
 }
 
 // Execute executes the request
-//  @return RiskLimitDTO
+//
+//	@return RiskLimitDTO
 func (a *AccountAPIAPIService) GetRiskLimitExecute(r ApiGetRiskLimitRequest) (*RiskLimitDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RiskLimitDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskLimitDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetRiskLimit")
@@ -3601,9 +3620,9 @@ func (a *AccountAPIAPIService) GetRiskLimitExecute(r ApiGetRiskLimitRequest) (*R
 }
 
 type ApiGetRiskLimitsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiGetRiskLimitsRequest) Execute() ([]RiskLimitDTO, *http.Response, error) {
@@ -3613,26 +3632,27 @@ func (r ApiGetRiskLimitsRequest) Execute() ([]RiskLimitDTO, *http.Response, erro
 /*
 GetRiskLimits Get account risk limits
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetRiskLimitsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetRiskLimitsRequest
 */
 func (a *AccountAPIAPIService) GetRiskLimits(ctx context.Context, accountId string) ApiGetRiskLimitsRequest {
 	return ApiGetRiskLimitsRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []RiskLimitDTO
+//
+//	@return []RiskLimitDTO
 func (a *AccountAPIAPIService) GetRiskLimitsExecute(r ApiGetRiskLimitsRequest) ([]RiskLimitDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []RiskLimitDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []RiskLimitDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetRiskLimits")
@@ -3716,9 +3736,9 @@ func (a *AccountAPIAPIService) GetRiskLimitsExecute(r ApiGetRiskLimitsRequest) (
 }
 
 type ApiGetSlaveAccountsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiGetSlaveAccountsRequest) Execute() ([]AccountDTO, *http.Response, error) {
@@ -3728,26 +3748,27 @@ func (r ApiGetSlaveAccountsRequest) Execute() ([]AccountDTO, *http.Response, err
 /*
 GetSlaveAccounts Get all slave accounts that are copying from this master account
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiGetSlaveAccountsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiGetSlaveAccountsRequest
 */
 func (a *AccountAPIAPIService) GetSlaveAccounts(ctx context.Context, accountId string) ApiGetSlaveAccountsRequest {
 	return ApiGetSlaveAccountsRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []AccountDTO
+//
+//	@return []AccountDTO
 func (a *AccountAPIAPIService) GetSlaveAccountsExecute(r ApiGetSlaveAccountsRequest) ([]AccountDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []AccountDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []AccountDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.GetSlaveAccounts")
@@ -3831,7 +3852,7 @@ func (a *AccountAPIAPIService) GetSlaveAccountsExecute(r ApiGetSlaveAccountsRequ
 }
 
 type ApiMonitorOnlyAllCopiersRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
 }
 
@@ -3842,22 +3863,22 @@ func (r ApiMonitorOnlyAllCopiersRequest) Execute() (*http.Response, error) {
 /*
 MonitorOnlyAllCopiers Set all copiers across all accounts to monitor-only mode
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiMonitorOnlyAllCopiersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiMonitorOnlyAllCopiersRequest
 */
 func (a *AccountAPIAPIService) MonitorOnlyAllCopiers(ctx context.Context) ApiMonitorOnlyAllCopiersRequest {
 	return ApiMonitorOnlyAllCopiersRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AccountAPIAPIService) MonitorOnlyAllCopiersExecute(r ApiMonitorOnlyAllCopiersRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.MonitorOnlyAllCopiers")
@@ -3931,9 +3952,9 @@ func (a *AccountAPIAPIService) MonitorOnlyAllCopiersExecute(r ApiMonitorOnlyAllC
 }
 
 type ApiMonitorOnlySlavesCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiMonitorOnlySlavesCopierRequest) Execute() (*http.Response, error) {
@@ -3943,24 +3964,24 @@ func (r ApiMonitorOnlySlavesCopierRequest) Execute() (*http.Response, error) {
 /*
 MonitorOnlySlavesCopier Set all copiers of all slave accounts to monitor-only mode
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiMonitorOnlySlavesCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiMonitorOnlySlavesCopierRequest
 */
 func (a *AccountAPIAPIService) MonitorOnlySlavesCopier(ctx context.Context, accountId string) ApiMonitorOnlySlavesCopierRequest {
 	return ApiMonitorOnlySlavesCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
 func (a *AccountAPIAPIService) MonitorOnlySlavesCopierExecute(r ApiMonitorOnlySlavesCopierRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.MonitorOnlySlavesCopier")
@@ -4035,9 +4056,9 @@ func (a *AccountAPIAPIService) MonitorOnlySlavesCopierExecute(r ApiMonitorOnlySl
 }
 
 type ApiResetProfitTargetRequest struct {
-	ctx context.Context
-	ApiService *AccountAPIAPIService
-	accountId string
+	ctx                   context.Context
+	ApiService            *AccountAPIAPIService
+	accountId             string
 	profitTargetFeatureId string
 }
 
@@ -4050,16 +4071,16 @@ ResetProfitTarget Reset an account profit target
 
 If the profit target (e.g., daily) is hit, no trades will be copied for the remainder of the day. To resume trading on the same day, you can utilize this operation to unlock the profit target
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param profitTargetFeatureId
- @return ApiResetProfitTargetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param profitTargetFeatureId
+	@return ApiResetProfitTargetRequest
 */
 func (a *AccountAPIAPIService) ResetProfitTarget(ctx context.Context, accountId string, profitTargetFeatureId string) ApiResetProfitTargetRequest {
 	return ApiResetProfitTargetRequest{
-		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ApiService:            a,
+		ctx:                   ctx,
+		accountId:             accountId,
 		profitTargetFeatureId: profitTargetFeatureId,
 	}
 }
@@ -4067,9 +4088,9 @@ func (a *AccountAPIAPIService) ResetProfitTarget(ctx context.Context, accountId 
 // Execute executes the request
 func (a *AccountAPIAPIService) ResetProfitTargetExecute(r ApiResetProfitTargetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.ResetProfitTarget")
@@ -4145,9 +4166,9 @@ func (a *AccountAPIAPIService) ResetProfitTargetExecute(r ApiResetProfitTargetRe
 }
 
 type ApiResetRiskLimitRequest struct {
-	ctx context.Context
-	ApiService *AccountAPIAPIService
-	accountId string
+	ctx         context.Context
+	ApiService  *AccountAPIAPIService
+	accountId   string
 	riskLimitId string
 }
 
@@ -4160,16 +4181,16 @@ ResetRiskLimit Reset an account risk limit
 
 If the risk limit (e.g., daily) is hit, no trades will be copied for the remainder of the day. To resume trading on the same day, you can utilize this operation to unlock the risk limit
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param riskLimitId
- @return ApiResetRiskLimitRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param riskLimitId
+	@return ApiResetRiskLimitRequest
 */
 func (a *AccountAPIAPIService) ResetRiskLimit(ctx context.Context, accountId string, riskLimitId string) ApiResetRiskLimitRequest {
 	return ApiResetRiskLimitRequest{
-		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ApiService:  a,
+		ctx:         ctx,
+		accountId:   accountId,
 		riskLimitId: riskLimitId,
 	}
 }
@@ -4177,9 +4198,9 @@ func (a *AccountAPIAPIService) ResetRiskLimit(ctx context.Context, accountId str
 // Execute executes the request
 func (a *AccountAPIAPIService) ResetRiskLimitExecute(r ApiResetRiskLimitRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.ResetRiskLimit")
@@ -4255,10 +4276,10 @@ func (a *AccountAPIAPIService) ResetRiskLimitExecute(r ApiResetRiskLimitRequest)
 }
 
 type ApiResyncCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	copierId string
+	accountId  string
+	copierId   string
 }
 
 func (r ApiResyncCopierRequest) Execute() (*http.Response, error) {
@@ -4270,26 +4291,26 @@ ResyncCopier Resynchronize copier with master
 
 Resynchronize with the master account. If a position was closed on the slave account but remains open on the master, this operation will reopen the position on the slave to match the master's state.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param copierId
- @return ApiResyncCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param copierId
+	@return ApiResyncCopierRequest
 */
 func (a *AccountAPIAPIService) ResyncCopier(ctx context.Context, accountId string, copierId string) ApiResyncCopierRequest {
 	return ApiResyncCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		copierId: copierId,
+		ctx:        ctx,
+		accountId:  accountId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
 func (a *AccountAPIAPIService) ResyncCopierExecute(r ApiResyncCopierRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.ResyncCopier")
@@ -4365,9 +4386,9 @@ func (a *AccountAPIAPIService) ResyncCopierExecute(r ApiResyncCopierRequest) (*h
 }
 
 type ApiStartAccountRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiStartAccountRequest) Execute() (*AccountDTO, *http.Response, error) {
@@ -4377,26 +4398,27 @@ func (r ApiStartAccountRequest) Execute() (*AccountDTO, *http.Response, error) {
 /*
 StartAccount Start an account (connect)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiStartAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiStartAccountRequest
 */
 func (a *AccountAPIAPIService) StartAccount(ctx context.Context, accountId string) ApiStartAccountRequest {
 	return ApiStartAccountRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return AccountDTO
+//
+//	@return AccountDTO
 func (a *AccountAPIAPIService) StartAccountExecute(r ApiStartAccountRequest) (*AccountDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AccountDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AccountDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.StartAccount")
@@ -4480,9 +4502,9 @@ func (a *AccountAPIAPIService) StartAccountExecute(r ApiStartAccountRequest) (*A
 }
 
 type ApiStopAccountRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 }
 
 func (r ApiStopAccountRequest) Execute() (*AccountDTO, *http.Response, error) {
@@ -4492,26 +4514,27 @@ func (r ApiStopAccountRequest) Execute() (*AccountDTO, *http.Response, error) {
 /*
 StopAccount Stop an account (disconnect)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiStopAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiStopAccountRequest
 */
 func (a *AccountAPIAPIService) StopAccount(ctx context.Context, accountId string) ApiStopAccountRequest {
 	return ApiStopAccountRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return AccountDTO
+//
+//	@return AccountDTO
 func (a *AccountAPIAPIService) StopAccountExecute(r ApiStopAccountRequest) (*AccountDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AccountDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AccountDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.StopAccount")
@@ -4595,9 +4618,9 @@ func (a *AccountAPIAPIService) StopAccountExecute(r ApiStopAccountRequest) (*Acc
 }
 
 type ApiUpdateAccountRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
+	accountId  string
 	accountDTO *AccountDTO
 }
 
@@ -4613,26 +4636,27 @@ func (r ApiUpdateAccountRequest) Execute() (*AccountDTO, *http.Response, error) 
 /*
 UpdateAccount Update an account
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @return ApiUpdateAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@return ApiUpdateAccountRequest
 */
 func (a *AccountAPIAPIService) UpdateAccount(ctx context.Context, accountId string) ApiUpdateAccountRequest {
 	return ApiUpdateAccountRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ctx:        ctx,
+		accountId:  accountId,
 	}
 }
 
 // Execute executes the request
-//  @return AccountDTO
+//
+//	@return AccountDTO
 func (a *AccountAPIAPIService) UpdateAccountExecute(r ApiUpdateAccountRequest) (*AccountDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AccountDTO
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AccountDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.UpdateAccount")
@@ -4721,10 +4745,10 @@ func (a *AccountAPIAPIService) UpdateAccountExecute(r ApiUpdateAccountRequest) (
 }
 
 type ApiUpdateAccountFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	featureId string
+	accountId  string
+	featureId  string
 	featureDTO *FeatureDTO
 }
 
@@ -4740,28 +4764,29 @@ func (r ApiUpdateAccountFeatureRequest) Execute() (*FeatureDTO, *http.Response, 
 /*
 UpdateAccountFeature Update an account feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param featureId
- @return ApiUpdateAccountFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param featureId
+	@return ApiUpdateAccountFeatureRequest
 */
 func (a *AccountAPIAPIService) UpdateAccountFeature(ctx context.Context, accountId string, featureId string) ApiUpdateAccountFeatureRequest {
 	return ApiUpdateAccountFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		featureId: featureId,
+		ctx:        ctx,
+		accountId:  accountId,
+		featureId:  featureId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *AccountAPIAPIService) UpdateAccountFeatureExecute(r ApiUpdateAccountFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.UpdateAccountFeature")
@@ -4851,11 +4876,11 @@ func (a *AccountAPIAPIService) UpdateAccountFeatureExecute(r ApiUpdateAccountFea
 }
 
 type ApiUpdateCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	copierId string
-	copierDTO *CopierDTO
+	accountId  string
+	copierId   string
+	copierDTO  *CopierDTO
 }
 
 func (r ApiUpdateCopierRequest) CopierDTO(copierDTO CopierDTO) ApiUpdateCopierRequest {
@@ -4870,28 +4895,29 @@ func (r ApiUpdateCopierRequest) Execute() (*CopierDTO, *http.Response, error) {
 /*
 UpdateCopier Update an account copier
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param copierId
- @return ApiUpdateCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param copierId
+	@return ApiUpdateCopierRequest
 */
 func (a *AccountAPIAPIService) UpdateCopier(ctx context.Context, accountId string, copierId string) ApiUpdateCopierRequest {
 	return ApiUpdateCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		copierId: copierId,
+		ctx:        ctx,
+		accountId:  accountId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
-//  @return CopierDTO
+//
+//	@return CopierDTO
 func (a *AccountAPIAPIService) UpdateCopierExecute(r ApiUpdateCopierRequest) (*CopierDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CopierDTO
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CopierDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.UpdateCopier")
@@ -4981,11 +5007,11 @@ func (a *AccountAPIAPIService) UpdateCopierExecute(r ApiUpdateCopierRequest) (*C
 }
 
 type ApiUpdateCopierFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountAPIAPIService
-	accountId string
-	copierId string
-	featureId string
+	accountId  string
+	copierId   string
+	featureId  string
 	featureDTO *FeatureDTO
 }
 
@@ -5001,30 +5027,31 @@ func (r ApiUpdateCopierFeatureRequest) Execute() (*FeatureDTO, *http.Response, e
 /*
 UpdateCopierFeature Update a copier feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param copierId
- @param featureId
- @return ApiUpdateCopierFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param copierId
+	@param featureId
+	@return ApiUpdateCopierFeatureRequest
 */
 func (a *AccountAPIAPIService) UpdateCopierFeature(ctx context.Context, accountId string, copierId string, featureId string) ApiUpdateCopierFeatureRequest {
 	return ApiUpdateCopierFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		copierId: copierId,
-		featureId: featureId,
+		ctx:        ctx,
+		accountId:  accountId,
+		copierId:   copierId,
+		featureId:  featureId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *AccountAPIAPIService) UpdateCopierFeatureExecute(r ApiUpdateCopierFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.UpdateCopierFeature")
@@ -5115,10 +5142,10 @@ func (a *AccountAPIAPIService) UpdateCopierFeatureExecute(r ApiUpdateCopierFeatu
 }
 
 type ApiUpdateRiskLimitRequest struct {
-	ctx context.Context
-	ApiService *AccountAPIAPIService
-	accountId string
-	riskLimitId string
+	ctx          context.Context
+	ApiService   *AccountAPIAPIService
+	accountId    string
+	riskLimitId  string
 	riskLimitDTO *RiskLimitDTO
 }
 
@@ -5134,28 +5161,29 @@ func (r ApiUpdateRiskLimitRequest) Execute() (*RiskLimitDTO, *http.Response, err
 /*
 UpdateRiskLimit Update an account risk limit
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
- @param riskLimitId
- @return ApiUpdateRiskLimitRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accountId
+	@param riskLimitId
+	@return ApiUpdateRiskLimitRequest
 */
 func (a *AccountAPIAPIService) UpdateRiskLimit(ctx context.Context, accountId string, riskLimitId string) ApiUpdateRiskLimitRequest {
 	return ApiUpdateRiskLimitRequest{
-		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
+		ApiService:  a,
+		ctx:         ctx,
+		accountId:   accountId,
 		riskLimitId: riskLimitId,
 	}
 }
 
 // Execute executes the request
-//  @return RiskLimitDTO
+//
+//	@return RiskLimitDTO
 func (a *AccountAPIAPIService) UpdateRiskLimitExecute(r ApiUpdateRiskLimitRequest) (*RiskLimitDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RiskLimitDTO
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RiskLimitDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIAPIService.UpdateRiskLimit")

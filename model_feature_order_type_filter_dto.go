@@ -73,7 +73,7 @@ func (o *FeatureOrderTypeFilterDTO) SetAllowedOrderTypes(v []string) {
 }
 
 func (o FeatureOrderTypeFilterDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,5 +123,3 @@ func (v *NullableFeatureOrderTypeFilterDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,9 +19,9 @@ var _ MappedNullable = &ForecastDTO{}
 
 // ForecastDTO struct for ForecastDTO
 type ForecastDTO struct {
-	Currency *CurrencyTypeDTO `json:"currency,omitempty"`
-	Positions []string `json:"positions,omitempty"`
-	Total *float32 `json:"total,omitempty"`
+	Currency  *CurrencyTypeDTO `json:"currency,omitempty"`
+	Positions []string         `json:"positions,omitempty"`
+	Total     *float32         `json:"total,omitempty"`
 }
 
 // NewForecastDTO instantiates a new ForecastDTO object
@@ -138,7 +138,7 @@ func (o *ForecastDTO) SetTotal(v float32) {
 }
 
 func (o ForecastDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableForecastDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

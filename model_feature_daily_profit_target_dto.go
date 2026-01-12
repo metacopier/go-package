@@ -50,8 +50,6 @@ func NewFeatureDailyProfitTargetDTO() *FeatureDailyProfitTargetDTO {
 	this.DailyRelativeProfitTarget = &dailyRelativeProfitTarget
 	var pauseInsteadOfClose bool = false
 	this.PauseInsteadOfClose = &pauseInsteadOfClose
-	var resetTime time.Time = "2023-12-30T00:00Z"
-	this.ResetTime = &resetTime
 	return &this
 }
 
@@ -70,8 +68,6 @@ func NewFeatureDailyProfitTargetDTOWithDefaults() *FeatureDailyProfitTargetDTO {
 	this.DailyRelativeProfitTarget = &dailyRelativeProfitTarget
 	var pauseInsteadOfClose bool = false
 	this.PauseInsteadOfClose = &pauseInsteadOfClose
-	var resetTime time.Time = "2023-12-30T00:00Z"
-	this.ResetTime = &resetTime
 	return &this
 }
 
@@ -268,7 +264,7 @@ func (o *FeatureDailyProfitTargetDTO) SetResetTime(v time.Time) {
 }
 
 func (o FeatureDailyProfitTargetDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -333,5 +329,3 @@ func (v *NullableFeatureDailyProfitTargetDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

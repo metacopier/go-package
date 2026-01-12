@@ -18,43 +18,43 @@ import (
 
 // FeatureSettingDTO - Configure setting for the specific feature
 type FeatureSettingDTO struct {
-	FeatureApprovalDTO *FeatureApprovalDTO
-	FeatureBreakEvenDTO *FeatureBreakEvenDTO
-	FeatureCopierFilterDTO *FeatureCopierFilterDTO
-	FeatureDailyProfitTargetDTO *FeatureDailyProfitTargetDTO
-	FeatureDataCollectorDTO *FeatureDataCollectorDTO
-	FeatureDedicatedIpDTO *FeatureDedicatedIpDTO
-	FeatureDedicatedIpPoolDTO *FeatureDedicatedIpPoolDTO
-	FeatureDelayedExecutionDTO *FeatureDelayedExecutionDTO
-	FeatureExitSignalOverrideDTO *FeatureExitSignalOverrideDTO
-	FeatureFallbackSettingDTO *FeatureFallbackSettingDTO
-	FeatureHftModeDTO *FeatureHftModeDTO
-	FeatureKeepAliveTradeDTO *FeatureKeepAliveTradeDTO
-	FeatureLiveDelayDTO *FeatureLiveDelayDTO
-	FeatureMaintenanceWindowDTO *FeatureMaintenanceWindowDTO
-	FeatureMasanielloDTO *FeatureMasanielloDTO
-	FeatureMaxLotSizeDTO *FeatureMaxLotSizeDTO
-	FeatureMaxOpenPositionsDTO *FeatureMaxOpenPositionsDTO
-	FeatureMaximumLotDTO *FeatureMaximumLotDTO
-	FeatureMinimumHoldingTimeDTO *FeatureMinimumHoldingTimeDTO
-	FeatureMonthlyProfitTargetDTO *FeatureMonthlyProfitTargetDTO
-	FeatureMultiplierDTO *FeatureMultiplierDTO
-	FeatureMyHomeIpDTO *FeatureMyHomeIpDTO
-	FeatureOrderTypeFilterDTO *FeatureOrderTypeFilterDTO
-	FeaturePermittedSymbolsDTO *FeaturePermittedSymbolsDTO
+	FeatureApprovalDTO               *FeatureApprovalDTO
+	FeatureBreakEvenDTO              *FeatureBreakEvenDTO
+	FeatureCopierFilterDTO           *FeatureCopierFilterDTO
+	FeatureDailyProfitTargetDTO      *FeatureDailyProfitTargetDTO
+	FeatureDataCollectorDTO          *FeatureDataCollectorDTO
+	FeatureDedicatedIpDTO            *FeatureDedicatedIpDTO
+	FeatureDedicatedIpPoolDTO        *FeatureDedicatedIpPoolDTO
+	FeatureDelayedExecutionDTO       *FeatureDelayedExecutionDTO
+	FeatureExitSignalOverrideDTO     *FeatureExitSignalOverrideDTO
+	FeatureFallbackSettingDTO        *FeatureFallbackSettingDTO
+	FeatureHftModeDTO                *FeatureHftModeDTO
+	FeatureKeepAliveTradeDTO         *FeatureKeepAliveTradeDTO
+	FeatureLiveDelayDTO              *FeatureLiveDelayDTO
+	FeatureMaintenanceWindowDTO      *FeatureMaintenanceWindowDTO
+	FeatureMasanielloDTO             *FeatureMasanielloDTO
+	FeatureMaxLotSizeDTO             *FeatureMaxLotSizeDTO
+	FeatureMaxOpenPositionsDTO       *FeatureMaxOpenPositionsDTO
+	FeatureMaximumLotDTO             *FeatureMaximumLotDTO
+	FeatureMinimumHoldingTimeDTO     *FeatureMinimumHoldingTimeDTO
+	FeatureMonthlyProfitTargetDTO    *FeatureMonthlyProfitTargetDTO
+	FeatureMultiplierDTO             *FeatureMultiplierDTO
+	FeatureMyHomeIpDTO               *FeatureMyHomeIpDTO
+	FeatureOrderTypeFilterDTO        *FeatureOrderTypeFilterDTO
+	FeaturePermittedSymbolsDTO       *FeaturePermittedSymbolsDTO
 	FeatureProgressiveTradeSizingDTO *FeatureProgressiveTradeSizingDTO
-	FeatureRiskPerTradeDTO *FeatureRiskPerTradeDTO
-	FeatureSignalFollowerDTO *FeatureSignalFollowerDTO
-	FeatureSignalProviderDTO *FeatureSignalProviderDTO
-	FeatureSkipPositionDTO *FeatureSkipPositionDTO
-	FeatureSocketDTO *FeatureSocketDTO
-	FeatureTelegramNotificationDTO *FeatureTelegramNotificationDTO
-	FeatureTpSlManagementDTO *FeatureTpSlManagementDTO
-	FeatureTradeGuardrailsDTO *FeatureTradeGuardrailsDTO
-	FeatureTradingWindowsDTO *FeatureTradingWindowsDTO
-	FeatureTrailingStopDTO *FeatureTrailingStopDTO
-	FeatureWeeklyProfitTargetDTO *FeatureWeeklyProfitTargetDTO
-	FeatureWhiteLabelDTO *FeatureWhiteLabelDTO
+	FeatureRiskPerTradeDTO           *FeatureRiskPerTradeDTO
+	FeatureSignalFollowerDTO         *FeatureSignalFollowerDTO
+	FeatureSignalProviderDTO         *FeatureSignalProviderDTO
+	FeatureSkipPositionDTO           *FeatureSkipPositionDTO
+	FeatureSocketDTO                 *FeatureSocketDTO
+	FeatureTelegramNotificationDTO   *FeatureTelegramNotificationDTO
+	FeatureTpSlManagementDTO         *FeatureTpSlManagementDTO
+	FeatureTradeGuardrailsDTO        *FeatureTradeGuardrailsDTO
+	FeatureTradingWindowsDTO         *FeatureTradingWindowsDTO
+	FeatureTrailingStopDTO           *FeatureTrailingStopDTO
+	FeatureWeeklyProfitTargetDTO     *FeatureWeeklyProfitTargetDTO
+	FeatureWhiteLabelDTO             *FeatureWhiteLabelDTO
 }
 
 // FeatureApprovalDTOAsFeatureSettingDTO is a convenience function that returns FeatureApprovalDTO wrapped in FeatureSettingDTO
@@ -315,7 +315,6 @@ func FeatureWhiteLabelDTOAsFeatureSettingDTO(v *FeatureWhiteLabelDTO) FeatureSet
 		FeatureWhiteLabelDTO: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *FeatureSettingDTO) UnmarshalJSON(data []byte) error {
@@ -1152,7 +1151,7 @@ func (src FeatureSettingDTO) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *FeatureSettingDTO) GetActualInstance() (interface{}) {
+func (obj *FeatureSettingDTO) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -1309,7 +1308,7 @@ func (obj *FeatureSettingDTO) GetActualInstance() (interface{}) {
 }
 
 // Get the actual instance value
-func (obj FeatureSettingDTO) GetActualInstanceValue() (interface{}) {
+func (obj FeatureSettingDTO) GetActualInstanceValue() interface{} {
 	if obj.FeatureApprovalDTO != nil {
 		return *obj.FeatureApprovalDTO
 	}
@@ -1497,5 +1496,3 @@ func (v *NullableFeatureSettingDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

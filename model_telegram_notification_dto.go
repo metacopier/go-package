@@ -11,8 +11,8 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &TelegramNotificationDTO{}
 // TelegramNotificationDTO List of telegram notifications
 type TelegramNotificationDTO struct {
 	// Only the account IDs listed here will receive notifications
-	AccountIds []string `json:"accountIds,omitempty"`
+	AccountIds   []string           `json:"accountIds,omitempty"`
 	AliasMapping *map[string]string `json:"aliasMapping,omitempty"`
-	LogLevel LogTypeDTO `json:"logLevel"`
+	LogLevel     LogTypeDTO         `json:"logLevel"`
 	// Use alias instead of UUID for identification
 	UseAlias *bool `json:"useAlias,omitempty"`
 	// Enter the Telegram username (e.g. @john98734)
@@ -197,7 +197,7 @@ func (o *TelegramNotificationDTO) SetUsername(v string) {
 }
 
 func (o TelegramNotificationDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -234,10 +234,10 @@ func (o *TelegramNotificationDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -293,5 +293,3 @@ func (v *NullableTelegramNotificationDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

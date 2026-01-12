@@ -11,10 +11,10 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the AccountDTO type satisfies the MappedNullable interface at compile time
@@ -23,14 +23,14 @@ var _ MappedNullable = &AccountDTO{}
 // AccountDTO struct for AccountDTO
 type AccountDTO struct {
 	AccountInformation *AccountInformationDTO `json:"accountInformation,omitempty"`
-	Alias *string `json:"alias,omitempty"`
+	Alias              *string                `json:"alias,omitempty"`
 	// When enabled, any open positions on the account that were originally opened by MetaCopier but are no longer managed, due to technical issues, will be automatically closed. However, this mechanism can occasionally result in false positives. If disabled, such unmanaged positions will remain open, and a notification will be sent to the notification center or to Telegram (if configured). In this case, manual intervention is required. We recommend keeping this option disabled to avoid accidental closures.
 	CloseUnmanagedPositions *bool `json:"closeUnmanagedPositions,omitempty"`
 	// ISO 8601
-	Created *time.Time `json:"created,omitempty"`
-	CtraderClientId *string `json:"ctraderClientId,omitempty"`
-	CtraderClientSecret *string `json:"ctraderClientSecret,omitempty"`
-	DedicatedIp *FeatureDedicatedIpDTO `json:"dedicatedIp,omitempty"`
+	Created             *time.Time             `json:"created,omitempty"`
+	CtraderClientId     *string                `json:"ctraderClientId,omitempty"`
+	CtraderClientSecret *string                `json:"ctraderClientSecret,omitempty"`
+	DedicatedIp         *FeatureDedicatedIpDTO `json:"dedicatedIp,omitempty"`
 	// ISO 8601
 	Deleted *time.Time `json:"deleted,omitempty"`
 	// If true, the create-account call fails when the account already exists in the project
@@ -40,8 +40,8 @@ type AccountDTO struct {
 	// Indicates whether this account has any disabled only copiers. Returns true if at least one copier has active=false, false otherwise.
 	HasDisabledCopiers *bool `json:"hasDisabledCopiers,omitempty"`
 	// Indicates whether this account has any monitor-only copiers. Returns true if at least one copier is in monitor only mode (monitoring without copying trades), false otherwise.
-	HasMonitorOnlyCopiers *bool `json:"hasMonitorOnlyCopiers,omitempty"`
-	Id *string `json:"id,omitempty"`
+	HasMonitorOnlyCopiers *bool   `json:"hasMonitorOnlyCopiers,omitempty"`
+	Id                    *string `json:"id,omitempty"`
 	// Set labels for your account. If null, this field will not add, update, or delete anything. To delete all labels, set this field to an empty list.
 	Labels []string `json:"labels,omitempty"`
 	// For Binance and Bybit leave it empty
@@ -49,18 +49,18 @@ type AccountDTO struct {
 	// For cTrader 'token|refreshToken'. For Binance and Bybit 'apiKey|secretKey'. Only fill this field if you want to update the password or at account creation. When updating the account, you can leave this field empty \"\" - you don't have to send the password every time.
 	LoginAccountPassword string `json:"loginAccountPassword"`
 	// Enter the server address, for example, ICMarketsSC-MT5-4 for MetaTrader, or the URL such as dxtrade.instantfunding.io for DXtrade or mtr-demo-prod.match-trader.com MatchTrader. For CTrader, live.ctraderapi.com:5035 or demo.ctraderapi.com:5035. For TradeLocker, live.tradelocker.com or demo.tradelocker.com. For Binance and Bybit 'live', 'testnet' or 'demo'.
-	LoginServer string `json:"loginServer"`
-	MyHomeIp *FeatureMyHomeIpDTO `json:"myHomeIp,omitempty"`
+	LoginServer string              `json:"loginServer"`
+	MyHomeIp    *FeatureMyHomeIpDTO `json:"myHomeIp,omitempty"`
 	// Indicates whether the integration runs in native mode (applies only to MetaTrader 4/5 connectors). If true, the solution operates via the official MetaTrader terminal (native). If false, it connects directly to the server without using the terminal (non-native). Non-native mode can achieve lower latency for high-frequency trading (HFT) strategies, but for 99% of typical use cases native mode is sufficiently fast. If the non-native mode fails or becomes unavailable, the system will automatically fall back to native mode. For all other connectors, the integration is always native.
-	NativeMode *bool `json:"nativeMode,omitempty"`
-	Region RegionDTO `json:"region"`
+	NativeMode *bool     `json:"nativeMode,omitempty"`
+	Region     RegionDTO `json:"region"`
 	// When set to true, skips credential validation during account creation. Use with caution, the account will be created without verifying login credentials.
-	SkipCredentialCheck *bool `json:"skipCredentialCheck,omitempty"`
-	Status *AccountStatusDTO `json:"status,omitempty"`
-	StatusMessage *string `json:"statusMessage,omitempty"`
+	SkipCredentialCheck *bool             `json:"skipCredentialCheck,omitempty"`
+	Status              *AccountStatusDTO `json:"status,omitempty"`
+	StatusMessage       *string           `json:"statusMessage,omitempty"`
 	// When enabled, puts the account in read-only mode, preventing any new trades from being opened or existing trades from being modified or closed. Use this when you want to use the account as a read-only master.
-	TradingDisabled *bool `json:"tradingDisabled,omitempty"`
-	Type AccountTypeDTO `json:"type"`
+	TradingDisabled *bool          `json:"tradingDisabled,omitempty"`
+	Type            AccountTypeDTO `json:"type"`
 }
 
 type _AccountDTO AccountDTO
@@ -871,7 +871,7 @@ func (o *AccountDTO) SetType(v AccountTypeDTO) {
 }
 
 func (o AccountDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -966,10 +966,10 @@ func (o *AccountDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1025,5 +1025,3 @@ func (v *NullableAccountDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

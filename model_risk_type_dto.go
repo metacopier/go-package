@@ -11,17 +11,17 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
 // checks if the RiskTypeDTO type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RiskTypeDTO{}
 
-// RiskTypeDTO     You have to set it during resource creation, after that, it is only read-only.     You have only to set the id, e.g. 4 for actual drawdown.     1: Daily, 2: Weekly, 3: Monthly, 4: Actual, 5: Equity-equity daily, 6: Equity-equity weekly, 7: Equity-equity monthly, 8: Smart reference daily,     9: Smart reference weekly, 10: Smart reference monthly.      When you set a daily risk limit of 0.5 (50%), it means that if the ratio of the balance     at a specific timepoint (see resetTime) to equity reaches 50%, the copy trading will be     paused, and if specified, all trades will be closed (see closeAllOpenPositions).      The limit reference type depends on the selected risk type:     • Balance-based limits use the balance as reference.     • Equity-based limits use the equity as reference.     • Smart limits use the greater of balance and equity as reference.      Example: {id: 1} 
+// RiskTypeDTO     You have to set it during resource creation, after that, it is only read-only.     You have only to set the id, e.g. 4 for actual drawdown.     1: Daily, 2: Weekly, 3: Monthly, 4: Actual, 5: Equity-equity daily, 6: Equity-equity weekly, 7: Equity-equity monthly, 8: Smart reference daily,     9: Smart reference weekly, 10: Smart reference monthly.      When you set a daily risk limit of 0.5 (50%), it means that if the ratio of the balance     at a specific timepoint (see resetTime) to equity reaches 50%, the copy trading will be     paused, and if specified, all trades will be closed (see closeAllOpenPositions).      The limit reference type depends on the selected risk type:     • Balance-based limits use the balance as reference.     • Equity-based limits use the equity as reference.     • Smart limits use the greater of balance and equity as reference.      Example: {id: 1}
 type RiskTypeDTO struct {
-	Id int32 `json:"id"`
+	Id   int32   `json:"id"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -102,7 +102,7 @@ func (o *RiskTypeDTO) SetName(v string) {
 }
 
 func (o RiskTypeDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,10 +131,10 @@ func (o *RiskTypeDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -190,5 +190,3 @@ func (v *NullableRiskTypeDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

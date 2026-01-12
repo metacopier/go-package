@@ -18,13 +18,12 @@ import (
 	"net/url"
 )
 
-
 // ReportAPIAPIService ReportAPIAPI service
 type ReportAPIAPIService service
 
 type ApiCreateReportPerformanceRequest struct {
-	ctx context.Context
-	ApiService *ReportAPIAPIService
+	ctx                            context.Context
+	ApiService                     *ReportAPIAPIService
 	reportPerformanceParametersDTO *ReportPerformanceParametersDTO
 }
 
@@ -38,26 +37,27 @@ func (r ApiCreateReportPerformanceRequest) Execute() (*ReportPerformanceDTO, *ht
 }
 
 /*
-CreateReportPerformance Create a performance report 
+CreateReportPerformance Create a performance report
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateReportPerformanceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateReportPerformanceRequest
 */
 func (a *ReportAPIAPIService) CreateReportPerformance(ctx context.Context) ApiCreateReportPerformanceRequest {
 	return ApiCreateReportPerformanceRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ReportPerformanceDTO
+//
+//	@return ReportPerformanceDTO
 func (a *ReportAPIAPIService) CreateReportPerformanceExecute(r ApiCreateReportPerformanceRequest) (*ReportPerformanceDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReportPerformanceDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReportPerformanceDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIAPIService.CreateReportPerformance")

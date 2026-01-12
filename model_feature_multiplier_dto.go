@@ -26,8 +26,8 @@ type FeatureMultiplierDTO struct {
 	// Set the lot size to a specific value, only applicable when the scaleType is set to '3' (Fixed lot size).
 	FixedLotSize *float32 `json:"fixedLotSize,omitempty"`
 	// Specifies the global multiplier applied to all symbols. This setting will override the copier's multiplier.
-	Multiplier *float32 `json:"multiplier,omitempty"`
-	ScaleType *ScaleTypeDTO `json:"scaleType,omitempty"`
+	Multiplier *float32      `json:"multiplier,omitempty"`
+	ScaleType  *ScaleTypeDTO `json:"scaleType,omitempty"`
 	// Defines the multiplier for each symbol.
 	SymbolsConfiguration *map[string]FeatureMultiplierDTO `json:"symbolsConfiguration,omitempty"`
 }
@@ -258,7 +258,7 @@ func (o *FeatureMultiplierDTO) SetSymbolsConfiguration(v map[string]FeatureMulti
 }
 
 func (o FeatureMultiplierDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -323,5 +323,3 @@ func (v *NullableFeatureMultiplierDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

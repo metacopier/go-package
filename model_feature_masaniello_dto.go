@@ -11,8 +11,8 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -25,7 +25,7 @@ type FeatureMasanielloDTO struct {
 	AssumedPointRisk *float32 `json:"assumedPointRisk,omitempty"`
 	// Reset after completing all events.
 	AutoResetOnSeriesComplete *bool `json:"autoResetOnSeriesComplete,omitempty"`
-	AutoTuneBoundsValid *bool `json:"autoTuneBoundsValid,omitempty"`
+	AutoTuneBoundsValid       *bool `json:"autoTuneBoundsValid,omitempty"`
 	// Defines the base used for bankroll percentage: BALANCE, EQUITY, FREE_MARGIN.
 	BankrollBase string `json:"bankrollBase"`
 	// Percentage of account base (balance/equity/free margin) used as bankroll for one series.
@@ -41,8 +41,8 @@ type FeatureMasanielloDTO struct {
 	// Expected average profit per win, expressed as R multiple. Example: 1.0 means +1R average win. Used when payoutModel=R_MULTIPLE.
 	ExpectedRMultiple *float32 `json:"expectedRMultiple,omitempty"`
 	// Expected number of wins in one series. Must be <= totalEvents.
-	ExpectedWins *int32 `json:"expectedWins,omitempty"`
-	ExpectedWinsValid *bool `json:"expectedWinsValid,omitempty"`
+	ExpectedWins      *int32 `json:"expectedWins,omitempty"`
+	ExpectedWinsValid *bool  `json:"expectedWinsValid,omitempty"`
 	// How to round the computed lot size to the lot step.
 	LotRoundingMode string `json:"lotRoundingMode"`
 	// Lot step to round lots to, e.g. 0.01 for Forex.
@@ -1225,7 +1225,7 @@ func (o *FeatureMasanielloDTO) SetWinThresholdPercentage(v float32) {
 }
 
 func (o FeatureMasanielloDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1342,10 +1342,10 @@ func (o *FeatureMasanielloDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1401,5 +1401,3 @@ func (v *NullableFeatureMasanielloDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

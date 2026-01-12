@@ -111,7 +111,7 @@ func (o *FeatureMinimumHoldingTimeDTO) SetSymbolsConfiguration(v map[string]Feat
 }
 
 func (o FeatureMinimumHoldingTimeDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -164,5 +164,3 @@ func (v *NullableFeatureMinimumHoldingTimeDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

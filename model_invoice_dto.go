@@ -11,10 +11,10 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the InvoiceDTO type satisfies the MappedNullable interface at compile time
@@ -24,21 +24,21 @@ var _ MappedNullable = &InvoiceDTO{}
 type InvoiceDTO struct {
 	Amount *float32 `json:"amount,omitempty"`
 	// ISO 8601
-	Created *time.Time `json:"created,omitempty"`
-	CurrencyType CurrencyTypeDTO `json:"currencyType"`
-	Description *string `json:"description,omitempty"`
-	DescriptionPosition *string `json:"descriptionPosition,omitempty"`
-	Discount *float32 `json:"discount,omitempty"`
+	Created             *time.Time      `json:"created,omitempty"`
+	CurrencyType        CurrencyTypeDTO `json:"currencyType"`
+	Description         *string         `json:"description,omitempty"`
+	DescriptionPosition *string         `json:"descriptionPosition,omitempty"`
+	Discount            *float32        `json:"discount,omitempty"`
 	// ISO 8601
-	DueDate *time.Time `json:"dueDate,omitempty"`
-	Id *string `json:"id,omitempty"`
-	InvoiceNumber *string `json:"invoiceNumber,omitempty"`
-	InvoicePaymentUrl *string `json:"invoicePaymentUrl,omitempty"`
-	InvoicePdfUrl *string `json:"invoicePdfUrl,omitempty"`
-	ProjectId *string `json:"projectId,omitempty"`
-	ProjectName *string `json:"projectName,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Tax *TaxDTO `json:"tax,omitempty"`
+	DueDate           *time.Time `json:"dueDate,omitempty"`
+	Id                *string    `json:"id,omitempty"`
+	InvoiceNumber     *string    `json:"invoiceNumber,omitempty"`
+	InvoicePaymentUrl *string    `json:"invoicePaymentUrl,omitempty"`
+	InvoicePdfUrl     *string    `json:"invoicePdfUrl,omitempty"`
+	ProjectId         *string    `json:"projectId,omitempty"`
+	ProjectName       *string    `json:"projectName,omitempty"`
+	Status            *string    `json:"status,omitempty"`
+	Tax               *TaxDTO    `json:"tax,omitempty"`
 }
 
 type _InvoiceDTO InvoiceDTO
@@ -534,7 +534,7 @@ func (o *InvoiceDTO) SetTax(v TaxDTO) {
 }
 
 func (o InvoiceDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -602,10 +602,10 @@ func (o *InvoiceDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -661,5 +661,3 @@ func (v *NullableInvoiceDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

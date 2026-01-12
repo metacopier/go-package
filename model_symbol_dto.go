@@ -19,17 +19,17 @@ var _ MappedNullable = &SymbolDTO{}
 
 // SymbolDTO struct for SymbolDTO
 type SymbolDTO struct {
-	BaseCurrency *string `json:"baseCurrency,omitempty"`
-	Digits *int32 `json:"digits,omitempty"`
-	Disabled *bool `json:"disabled,omitempty"`
-	LotSize *int32 `json:"lotSize,omitempty"`
+	BaseCurrency  *string  `json:"baseCurrency,omitempty"`
+	Digits        *int32   `json:"digits,omitempty"`
+	Disabled      *bool    `json:"disabled,omitempty"`
+	LotSize       *int32   `json:"lotSize,omitempty"`
 	MaximalVolume *float64 `json:"maximalVolume,omitempty"`
 	MinimalVolume *float64 `json:"minimalVolume,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Points *float64 `json:"points,omitempty"`
-	QuoteCurrency *string `json:"quoteCurrency,omitempty"`
-	StepVolume *float64 `json:"stepVolume,omitempty"`
-	TradeType *string `json:"tradeType,omitempty"`
+	Name          *string  `json:"name,omitempty"`
+	Points        *float64 `json:"points,omitempty"`
+	QuoteCurrency *string  `json:"quoteCurrency,omitempty"`
+	StepVolume    *float64 `json:"stepVolume,omitempty"`
+	TradeType     *string  `json:"tradeType,omitempty"`
 }
 
 // NewSymbolDTO instantiates a new SymbolDTO object
@@ -402,7 +402,7 @@ func (o *SymbolDTO) SetTradeType(v string) {
 }
 
 func (o SymbolDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -482,5 +482,3 @@ func (v *NullableSymbolDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

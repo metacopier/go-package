@@ -23,29 +23,29 @@ type PositionDTO struct {
 	// Original time string from the broker
 	BrokerTimeClose *string `json:"brokerTimeClose,omitempty"`
 	// Original time string from the broker
-	BrokerTimeOpen *string `json:"brokerTimeOpen,omitempty"`
-	ClosePrice *float32 `json:"closePrice,omitempty"`
+	BrokerTimeOpen *string  `json:"brokerTimeOpen,omitempty"`
+	ClosePrice     *float32 `json:"closePrice,omitempty"`
 	// ISO 8601
-	CloseTime *time.Time `json:"closeTime,omitempty"`
-	Comment *string `json:"comment,omitempty"`
-	Commission *float32 `json:"commission,omitempty"`
-	DealType *string `json:"dealType,omitempty"`
-	Id *string `json:"id,omitempty"`
-	MagicNumber *string `json:"magicNumber,omitempty"`
-	NetProfit *float32 `json:"netProfit,omitempty"`
-	OpenPrice *float32 `json:"openPrice,omitempty"`
+	CloseTime   *time.Time `json:"closeTime,omitempty"`
+	Comment     *string    `json:"comment,omitempty"`
+	Commission  *float32   `json:"commission,omitempty"`
+	DealType    *string    `json:"dealType,omitempty"`
+	Id          *string    `json:"id,omitempty"`
+	MagicNumber *string    `json:"magicNumber,omitempty"`
+	NetProfit   *float32   `json:"netProfit,omitempty"`
+	OpenPrice   *float32   `json:"openPrice,omitempty"`
 	// ISO 8601
-	OpenTime *time.Time `json:"openTime,omitempty"`
-	OrderType *string `json:"orderType,omitempty"`
-	PlacedType *string `json:"placedType,omitempty"`
-	Profit *float32 `json:"profit,omitempty"`
-	RequestId *string `json:"requestId,omitempty"`
-	State *string `json:"state,omitempty"`
-	StopLoss *float32 `json:"stopLoss,omitempty"`
-	Swap *float32 `json:"swap,omitempty"`
-	Symbol *string `json:"symbol,omitempty"`
-	TakeProfit *float32 `json:"takeProfit,omitempty"`
-	Volume *float32 `json:"volume,omitempty"`
+	OpenTime   *time.Time `json:"openTime,omitempty"`
+	OrderType  *string    `json:"orderType,omitempty"`
+	PlacedType *string    `json:"placedType,omitempty"`
+	Profit     *float32   `json:"profit,omitempty"`
+	RequestId  *string    `json:"requestId,omitempty"`
+	State      *string    `json:"state,omitempty"`
+	StopLoss   *float32   `json:"stopLoss,omitempty"`
+	Swap       *float32   `json:"swap,omitempty"`
+	Symbol     *string    `json:"symbol,omitempty"`
+	TakeProfit *float32   `json:"takeProfit,omitempty"`
+	Volume     *float32   `json:"volume,omitempty"`
 }
 
 // NewPositionDTO instantiates a new PositionDTO object
@@ -770,7 +770,7 @@ func (o *PositionDTO) SetVolume(v float32) {
 }
 
 func (o PositionDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -883,5 +883,3 @@ func (v *NullablePositionDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

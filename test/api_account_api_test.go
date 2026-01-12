@@ -11,10 +11,10 @@ package metacopier
 
 import (
 	"context"
+	openapiclient "github.com/metacopier/go-package"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/metacopier/go-package"
 )
 
 func Test_metacopier_AccountAPIAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService ActivateAllCopiers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.AccountAPIAPI.ActivateAllCopiers(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService ActivateSlavesCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -48,7 +48,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService CreateAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AccountAPIAPI.CreateAccount(context.Background()).Execute()
 
@@ -60,7 +60,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService CreateAccountApproval", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -73,7 +73,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService CreateAccountFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -87,7 +87,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService CreateCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -101,7 +101,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService CreateCopierFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var copierId string
@@ -116,7 +116,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService CreateRiskLimit", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -130,7 +130,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService DeactivateAllCopiers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.AccountAPIAPI.DeactivateAllCopiers(context.Background()).Execute()
 
@@ -141,7 +141,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService DeactivateSlavesCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -154,7 +154,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService DeleteAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -167,7 +167,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService DeleteAccountFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var featureId string
@@ -181,7 +181,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService DeleteCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var copierId string
@@ -195,7 +195,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService DeleteCopierFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var copierId string
@@ -210,7 +210,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService DeleteRiskLimit", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var riskLimitId string
@@ -224,7 +224,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -238,7 +238,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetAccountAuditLogs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -252,7 +252,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetAccountCopierCurrentSymbolMappings", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var copierId string
@@ -267,7 +267,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetAccountDataCollectorRecords", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -281,7 +281,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetAccountFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var featureId string
@@ -296,7 +296,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetAccountFeatures", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -310,7 +310,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetAccountLogs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -324,7 +324,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetAccountPerformanceMetrics", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -338,7 +338,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetAccountSymbolMappings", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -352,7 +352,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetAccounts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AccountAPIAPI.GetAccounts(context.Background()).Execute()
 
@@ -364,7 +364,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var copierId string
@@ -379,7 +379,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetCopierFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var copierId string
@@ -395,7 +395,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetCopierFeatures", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var copierId string
@@ -410,7 +410,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetCopiers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -424,7 +424,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetRiskLimit", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var riskLimitId string
@@ -439,7 +439,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetRiskLimits", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -453,7 +453,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService GetSlaveAccounts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -467,7 +467,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService MonitorOnlyAllCopiers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.AccountAPIAPI.MonitorOnlyAllCopiers(context.Background()).Execute()
 
@@ -478,7 +478,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService MonitorOnlySlavesCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -491,7 +491,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService ResetProfitTarget", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var profitTargetFeatureId string
@@ -505,7 +505,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService ResetRiskLimit", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var riskLimitId string
@@ -519,7 +519,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService ResyncCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var copierId string
@@ -533,7 +533,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService StartAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -547,7 +547,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService StopAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -561,7 +561,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService UpdateAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
@@ -575,7 +575,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService UpdateAccountFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var featureId string
@@ -590,7 +590,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService UpdateCopier", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var copierId string
@@ -605,7 +605,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService UpdateCopierFeature", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var copierId string
@@ -621,7 +621,7 @@ func Test_metacopier_AccountAPIAPIService(t *testing.T) {
 
 	t.Run("Test AccountAPIAPIService UpdateRiskLimit", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 		var riskLimitId string

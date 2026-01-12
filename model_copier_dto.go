@@ -44,16 +44,16 @@ type CopierDTO struct {
 	// If set to true, when the calculated lot size is for example 0.005, it will be adjusted to the minimum size of the symbol. If set to false, the trade will not be executed. If the copier belongs to a strategy, this setting will be ignored.
 	ForceMinTrade *bool `json:"forceMinTrade,omitempty"`
 	// Place more trades if max lot size for a specific symbol is reached. Not available for Binance and Bybit.
-	ForcePositionLotSize *bool `json:"forcePositionLotSize,omitempty"`
-	FromAccountAlias *string `json:"fromAccountAlias,omitempty"`
+	ForcePositionLotSize *bool   `json:"forcePositionLotSize,omitempty"`
+	FromAccountAlias     *string `json:"fromAccountAlias,omitempty"`
 	// You have to set it during resource creation, after that, it is only read-only
 	FromAccountId *string `json:"fromAccountId,omitempty"`
 	// You have to set it during resource creation, after that, it is only read-only
-	FromStrategyId *string `json:"fromStrategyId,omitempty"`
+	FromStrategyId   *string `json:"fromStrategyId,omitempty"`
 	FromStrategyName *string `json:"fromStrategyName,omitempty"`
 	// When enabled, the comment will be hidden, leaving the comment field empty. Furthermore, any positions opened manually or by other systems with an empty comment field will be closed to prevent them from remaining open in case of an error. It is recommended to enable this option only if absolutely necessary.
-	HideComment *bool `json:"hideComment,omitempty"`
-	Id *string `json:"id,omitempty"`
+	HideComment *bool   `json:"hideComment,omitempty"`
+	Id          *string `json:"id,omitempty"`
 	// For the lot size calculation, the contract size (lot size) of the symbol will be ignored.
 	IgnoreContractSize *bool `json:"ignoreContractSize,omitempty"`
 	// When enabled, the lot size calculation will ignore currency differences between the master and slave accounts—no conversion will be applied. If false, and the currencies of the master and slave accounts differ, the lot size calculation will include a conversion to account for the currency difference.
@@ -77,7 +77,7 @@ type CopierDTO struct {
 	// Specifies the total duration (in minutes) during which the retry mechanism will attempt to resend a rejected or failed request. If set to 0, the system will retry indefinitely. Once this duration elapses, no further retry attempts will be made. This setting is applicable only if 'openRetry' is set to true.
 	OpenRetryTimeoutInMinutes *int32 `json:"openRetryTimeoutInMinutes,omitempty"`
 	// If enabled, the order direction is reversed. Useful for trading strategies that require inverse operations.
-	Reverse *bool `json:"reverse,omitempty"`
+	Reverse   *bool         `json:"reverse,omitempty"`
 	ScaleType *ScaleTypeDTO `json:"scaleType,omitempty"`
 	// This setting allows traders to choose whether or not to replicate pending orders (orders that have not yet been executed). Skipping pending orders is highly recommended. By default, this option is blocked. If you are an expert trader, please contact us to unlock this option. If the copier belongs to a strategy, this setting will be ignored. For DXtrade is not supported. For TradeLocker, MatchTrader, Binance and Bybit, quotes are not in real-time, so small slippage settings are not recommended.
 	SkipPendingOrders *bool `json:"skipPendingOrders,omitempty"`
@@ -1325,7 +1325,7 @@ func (o *CopierDTO) SetToStrategyId(v string) {
 }
 
 func (o CopierDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1477,5 +1477,3 @@ func (v *NullableCopierDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

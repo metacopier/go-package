@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // SignalAPIAPIService SignalAPIAPI service
 type SignalAPIAPIService service
 
 type ApiCloseAllPositionsInAllFollowerAccountsRequest struct {
-	ctx context.Context
-	ApiService *SignalAPIAPIService
+	ctx              context.Context
+	ApiService       *SignalAPIAPIService
 	signalProviderId string
 }
 
@@ -36,14 +35,14 @@ func (r ApiCloseAllPositionsInAllFollowerAccountsRequest) Execute() (*http.Respo
 /*
 CloseAllPositionsInAllFollowerAccounts Close all open positions in all accounts (followers)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param signalProviderId
- @return ApiCloseAllPositionsInAllFollowerAccountsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param signalProviderId
+	@return ApiCloseAllPositionsInAllFollowerAccountsRequest
 */
 func (a *SignalAPIAPIService) CloseAllPositionsInAllFollowerAccounts(ctx context.Context, signalProviderId string) ApiCloseAllPositionsInAllFollowerAccountsRequest {
 	return ApiCloseAllPositionsInAllFollowerAccountsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		signalProviderId: signalProviderId,
 	}
 }
@@ -51,9 +50,9 @@ func (a *SignalAPIAPIService) CloseAllPositionsInAllFollowerAccounts(ctx context
 // Execute executes the request
 func (a *SignalAPIAPIService) CloseAllPositionsInAllFollowerAccountsExecute(r ApiCloseAllPositionsInAllFollowerAccountsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignalAPIAPIService.CloseAllPositionsInAllFollowerAccounts")
@@ -128,10 +127,10 @@ func (a *SignalAPIAPIService) CloseAllPositionsInAllFollowerAccountsExecute(r Ap
 }
 
 type ApiCloseSignalFollowerAllPositionsRequest struct {
-	ctx context.Context
-	ApiService *SignalAPIAPIService
+	ctx              context.Context
+	ApiService       *SignalAPIAPIService
 	signalProviderId string
-	accountId string
+	accountId        string
 }
 
 func (r ApiCloseSignalFollowerAllPositionsRequest) Execute() (*http.Response, error) {
@@ -141,26 +140,26 @@ func (r ApiCloseSignalFollowerAllPositionsRequest) Execute() (*http.Response, er
 /*
 CloseSignalFollowerAllPositions Close all signal follower account positions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param signalProviderId
- @param accountId
- @return ApiCloseSignalFollowerAllPositionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param signalProviderId
+	@param accountId
+	@return ApiCloseSignalFollowerAllPositionsRequest
 */
 func (a *SignalAPIAPIService) CloseSignalFollowerAllPositions(ctx context.Context, signalProviderId string, accountId string) ApiCloseSignalFollowerAllPositionsRequest {
 	return ApiCloseSignalFollowerAllPositionsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		signalProviderId: signalProviderId,
-		accountId: accountId,
+		accountId:        accountId,
 	}
 }
 
 // Execute executes the request
 func (a *SignalAPIAPIService) CloseSignalFollowerAllPositionsExecute(r ApiCloseSignalFollowerAllPositionsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignalAPIAPIService.CloseSignalFollowerAllPositions")
@@ -236,11 +235,11 @@ func (a *SignalAPIAPIService) CloseSignalFollowerAllPositionsExecute(r ApiCloseS
 }
 
 type ApiCloseSignalFollowerPositionRequest struct {
-	ctx context.Context
-	ApiService *SignalAPIAPIService
+	ctx              context.Context
+	ApiService       *SignalAPIAPIService
 	signalProviderId string
-	accountId string
-	positionId string
+	accountId        string
+	positionId       string
 }
 
 func (r ApiCloseSignalFollowerPositionRequest) Execute() (*http.Response, error) {
@@ -250,28 +249,28 @@ func (r ApiCloseSignalFollowerPositionRequest) Execute() (*http.Response, error)
 /*
 CloseSignalFollowerPosition Close an signal follower account position
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param signalProviderId
- @param accountId
- @param positionId
- @return ApiCloseSignalFollowerPositionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param signalProviderId
+	@param accountId
+	@param positionId
+	@return ApiCloseSignalFollowerPositionRequest
 */
 func (a *SignalAPIAPIService) CloseSignalFollowerPosition(ctx context.Context, signalProviderId string, accountId string, positionId string) ApiCloseSignalFollowerPositionRequest {
 	return ApiCloseSignalFollowerPositionRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		signalProviderId: signalProviderId,
-		accountId: accountId,
-		positionId: positionId,
+		accountId:        accountId,
+		positionId:       positionId,
 	}
 }
 
 // Execute executes the request
 func (a *SignalAPIAPIService) CloseSignalFollowerPositionExecute(r ApiCloseSignalFollowerPositionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignalAPIAPIService.CloseSignalFollowerPosition")
@@ -348,10 +347,10 @@ func (a *SignalAPIAPIService) CloseSignalFollowerPositionExecute(r ApiCloseSigna
 }
 
 type ApiGetFollowerFeatureRequest struct {
-	ctx context.Context
-	ApiService *SignalAPIAPIService
+	ctx              context.Context
+	ApiService       *SignalAPIAPIService
 	signalProviderId string
-	accountId string
+	accountId        string
 }
 
 func (r ApiGetFollowerFeatureRequest) Execute() (*FeatureDTO, *http.Response, error) {
@@ -361,28 +360,29 @@ func (r ApiGetFollowerFeatureRequest) Execute() (*FeatureDTO, *http.Response, er
 /*
 GetFollowerFeature Get follower feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param signalProviderId
- @param accountId
- @return ApiGetFollowerFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param signalProviderId
+	@param accountId
+	@return ApiGetFollowerFeatureRequest
 */
 func (a *SignalAPIAPIService) GetFollowerFeature(ctx context.Context, signalProviderId string, accountId string) ApiGetFollowerFeatureRequest {
 	return ApiGetFollowerFeatureRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		signalProviderId: signalProviderId,
-		accountId: accountId,
+		accountId:        accountId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *SignalAPIAPIService) GetFollowerFeatureExecute(r ApiGetFollowerFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignalAPIAPIService.GetFollowerFeature")
@@ -467,14 +467,14 @@ func (a *SignalAPIAPIService) GetFollowerFeatureExecute(r ApiGetFollowerFeatureR
 }
 
 type ApiGetSignalFollowerAccountAuditLogsRequest struct {
-	ctx context.Context
-	ApiService *SignalAPIAPIService
+	ctx              context.Context
+	ApiService       *SignalAPIAPIService
 	signalProviderId string
-	accountId string
-	limit *int32
-	offset *int32
-	startDate *string
-	endDate *string
+	accountId        string
+	limit            *int32
+	offset           *int32
+	startDate        *string
+	endDate          *string
 }
 
 // Maximum number of logs to return
@@ -510,28 +510,29 @@ GetSignalFollowerAccountAuditLogs Get signal follower account audit logs
 
 Retrieves audit logs for all API modifications made to a specific signal follower account.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param signalProviderId
- @param accountId
- @return ApiGetSignalFollowerAccountAuditLogsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param signalProviderId
+	@param accountId
+	@return ApiGetSignalFollowerAccountAuditLogsRequest
 */
 func (a *SignalAPIAPIService) GetSignalFollowerAccountAuditLogs(ctx context.Context, signalProviderId string, accountId string) ApiGetSignalFollowerAccountAuditLogsRequest {
 	return ApiGetSignalFollowerAccountAuditLogsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		signalProviderId: signalProviderId,
-		accountId: accountId,
+		accountId:        accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []AuditLogDTO
+//
+//	@return []AuditLogDTO
 func (a *SignalAPIAPIService) GetSignalFollowerAccountAuditLogsExecute(r ApiGetSignalFollowerAccountAuditLogsRequest) ([]AuditLogDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []AuditLogDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []AuditLogDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignalAPIAPIService.GetSignalFollowerAccountAuditLogs")
@@ -628,12 +629,12 @@ func (a *SignalAPIAPIService) GetSignalFollowerAccountAuditLogsExecute(r ApiGetS
 }
 
 type ApiGetSignalFollowerAccountHistoryPositionsRequest struct {
-	ctx context.Context
-	ApiService *SignalAPIAPIService
+	ctx              context.Context
+	ApiService       *SignalAPIAPIService
 	signalProviderId string
-	accountId string
-	start *string
-	stop *string
+	accountId        string
+	start            *string
+	stop             *string
 }
 
 // ISO 8601
@@ -657,28 +658,29 @@ GetSignalFollowerAccountHistoryPositions Get signal follower account history pos
 
 The history is not updated in real-time. There may be a delay of up to 3 minutes
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param signalProviderId
- @param accountId
- @return ApiGetSignalFollowerAccountHistoryPositionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param signalProviderId
+	@param accountId
+	@return ApiGetSignalFollowerAccountHistoryPositionsRequest
 */
 func (a *SignalAPIAPIService) GetSignalFollowerAccountHistoryPositions(ctx context.Context, signalProviderId string, accountId string) ApiGetSignalFollowerAccountHistoryPositionsRequest {
 	return ApiGetSignalFollowerAccountHistoryPositionsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		signalProviderId: signalProviderId,
-		accountId: accountId,
+		accountId:        accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []PositionDTO
+//
+//	@return []PositionDTO
 func (a *SignalAPIAPIService) GetSignalFollowerAccountHistoryPositionsExecute(r ApiGetSignalFollowerAccountHistoryPositionsRequest) ([]PositionDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []PositionDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []PositionDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignalAPIAPIService.GetSignalFollowerAccountHistoryPositions")
@@ -771,15 +773,15 @@ func (a *SignalAPIAPIService) GetSignalFollowerAccountHistoryPositionsExecute(r 
 }
 
 type ApiGetSignalFollowerAccountLogsRequest struct {
-	ctx context.Context
-	ApiService *SignalAPIAPIService
+	ctx              context.Context
+	ApiService       *SignalAPIAPIService
 	signalProviderId string
-	accountId string
-	limit *int32
-	offset *int32
-	start *string
-	stop *string
-	logTypeId *int32
+	accountId        string
+	limit            *int32
+	offset           *int32
+	start            *string
+	stop             *string
+	logTypeId        *int32
 }
 
 // Get the last logs: e.g. 100 means the last 100 logs
@@ -819,28 +821,29 @@ func (r ApiGetSignalFollowerAccountLogsRequest) Execute() ([]LogDTO, *http.Respo
 /*
 GetSignalFollowerAccountLogs Get signal follower account logs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param signalProviderId
- @param accountId
- @return ApiGetSignalFollowerAccountLogsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param signalProviderId
+	@param accountId
+	@return ApiGetSignalFollowerAccountLogsRequest
 */
 func (a *SignalAPIAPIService) GetSignalFollowerAccountLogs(ctx context.Context, signalProviderId string, accountId string) ApiGetSignalFollowerAccountLogsRequest {
 	return ApiGetSignalFollowerAccountLogsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		signalProviderId: signalProviderId,
-		accountId: accountId,
+		accountId:        accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []LogDTO
+//
+//	@return []LogDTO
 func (a *SignalAPIAPIService) GetSignalFollowerAccountLogsExecute(r ApiGetSignalFollowerAccountLogsRequest) ([]LogDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []LogDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []LogDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignalAPIAPIService.GetSignalFollowerAccountLogs")
@@ -940,10 +943,10 @@ func (a *SignalAPIAPIService) GetSignalFollowerAccountLogsExecute(r ApiGetSignal
 }
 
 type ApiGetSignalFollowerAccountPerformanceMetricsRequest struct {
-	ctx context.Context
-	ApiService *SignalAPIAPIService
+	ctx              context.Context
+	ApiService       *SignalAPIAPIService
 	signalProviderId string
-	accountId string
+	accountId        string
 }
 
 func (r ApiGetSignalFollowerAccountPerformanceMetricsRequest) Execute() (*PerformanceMetricsDTO, *http.Response, error) {
@@ -953,28 +956,29 @@ func (r ApiGetSignalFollowerAccountPerformanceMetricsRequest) Execute() (*Perfor
 /*
 GetSignalFollowerAccountPerformanceMetrics Get signal follower account performance metrics
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param signalProviderId
- @param accountId
- @return ApiGetSignalFollowerAccountPerformanceMetricsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param signalProviderId
+	@param accountId
+	@return ApiGetSignalFollowerAccountPerformanceMetricsRequest
 */
 func (a *SignalAPIAPIService) GetSignalFollowerAccountPerformanceMetrics(ctx context.Context, signalProviderId string, accountId string) ApiGetSignalFollowerAccountPerformanceMetricsRequest {
 	return ApiGetSignalFollowerAccountPerformanceMetricsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		signalProviderId: signalProviderId,
-		accountId: accountId,
+		accountId:        accountId,
 	}
 }
 
 // Execute executes the request
-//  @return PerformanceMetricsDTO
+//
+//	@return PerformanceMetricsDTO
 func (a *SignalAPIAPIService) GetSignalFollowerAccountPerformanceMetricsExecute(r ApiGetSignalFollowerAccountPerformanceMetricsRequest) (*PerformanceMetricsDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PerformanceMetricsDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PerformanceMetricsDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignalAPIAPIService.GetSignalFollowerAccountPerformanceMetrics")
@@ -1059,10 +1063,10 @@ func (a *SignalAPIAPIService) GetSignalFollowerAccountPerformanceMetricsExecute(
 }
 
 type ApiGetSignalFollowerAccountPositionsRequest struct {
-	ctx context.Context
-	ApiService *SignalAPIAPIService
+	ctx              context.Context
+	ApiService       *SignalAPIAPIService
 	signalProviderId string
-	accountId string
+	accountId        string
 }
 
 func (r ApiGetSignalFollowerAccountPositionsRequest) Execute() ([]PositionDTO, *http.Response, error) {
@@ -1072,28 +1076,29 @@ func (r ApiGetSignalFollowerAccountPositionsRequest) Execute() ([]PositionDTO, *
 /*
 GetSignalFollowerAccountPositions Get signal follower account positions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param signalProviderId
- @param accountId
- @return ApiGetSignalFollowerAccountPositionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param signalProviderId
+	@param accountId
+	@return ApiGetSignalFollowerAccountPositionsRequest
 */
 func (a *SignalAPIAPIService) GetSignalFollowerAccountPositions(ctx context.Context, signalProviderId string, accountId string) ApiGetSignalFollowerAccountPositionsRequest {
 	return ApiGetSignalFollowerAccountPositionsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		signalProviderId: signalProviderId,
-		accountId: accountId,
+		accountId:        accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []PositionDTO
+//
+//	@return []PositionDTO
 func (a *SignalAPIAPIService) GetSignalFollowerAccountPositionsExecute(r ApiGetSignalFollowerAccountPositionsRequest) ([]PositionDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []PositionDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []PositionDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignalAPIAPIService.GetSignalFollowerAccountPositions")
@@ -1178,8 +1183,8 @@ func (a *SignalAPIAPIService) GetSignalFollowerAccountPositionsExecute(r ApiGetS
 }
 
 type ApiGetSignalFollowerAccountsRequest struct {
-	ctx context.Context
-	ApiService *SignalAPIAPIService
+	ctx              context.Context
+	ApiService       *SignalAPIAPIService
 	signalProviderId string
 }
 
@@ -1190,26 +1195,27 @@ func (r ApiGetSignalFollowerAccountsRequest) Execute() ([]AccountDTO, *http.Resp
 /*
 GetSignalFollowerAccounts Get all signal follower accounts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param signalProviderId
- @return ApiGetSignalFollowerAccountsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param signalProviderId
+	@return ApiGetSignalFollowerAccountsRequest
 */
 func (a *SignalAPIAPIService) GetSignalFollowerAccounts(ctx context.Context, signalProviderId string) ApiGetSignalFollowerAccountsRequest {
 	return ApiGetSignalFollowerAccountsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		signalProviderId: signalProviderId,
 	}
 }
 
 // Execute executes the request
-//  @return []AccountDTO
+//
+//	@return []AccountDTO
 func (a *SignalAPIAPIService) GetSignalFollowerAccountsExecute(r ApiGetSignalFollowerAccountsRequest) ([]AccountDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []AccountDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []AccountDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignalAPIAPIService.GetSignalFollowerAccounts")
@@ -1293,10 +1299,10 @@ func (a *SignalAPIAPIService) GetSignalFollowerAccountsExecute(r ApiGetSignalFol
 }
 
 type ApiGetSignalSymbolsRequest struct {
-	ctx context.Context
-	ApiService *SignalAPIAPIService
+	ctx              context.Context
+	ApiService       *SignalAPIAPIService
 	signalProviderId string
-	accountId string
+	accountId        string
 }
 
 func (r ApiGetSignalSymbolsRequest) Execute() ([]SymbolDTO, *http.Response, error) {
@@ -1306,28 +1312,29 @@ func (r ApiGetSignalSymbolsRequest) Execute() ([]SymbolDTO, *http.Response, erro
 /*
 GetSignalSymbols Get signal follower account symbols
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param signalProviderId
- @param accountId
- @return ApiGetSignalSymbolsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param signalProviderId
+	@param accountId
+	@return ApiGetSignalSymbolsRequest
 */
 func (a *SignalAPIAPIService) GetSignalSymbols(ctx context.Context, signalProviderId string, accountId string) ApiGetSignalSymbolsRequest {
 	return ApiGetSignalSymbolsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		signalProviderId: signalProviderId,
-		accountId: accountId,
+		accountId:        accountId,
 	}
 }
 
 // Execute executes the request
-//  @return []SymbolDTO
+//
+//	@return []SymbolDTO
 func (a *SignalAPIAPIService) GetSignalSymbolsExecute(r ApiGetSignalSymbolsRequest) ([]SymbolDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []SymbolDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []SymbolDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignalAPIAPIService.GetSignalSymbols")
@@ -1412,11 +1419,11 @@ func (a *SignalAPIAPIService) GetSignalSymbolsExecute(r ApiGetSignalSymbolsReque
 }
 
 type ApiUpdateFollowerFeatureRequest struct {
-	ctx context.Context
-	ApiService *SignalAPIAPIService
+	ctx              context.Context
+	ApiService       *SignalAPIAPIService
 	signalProviderId string
-	accountId string
-	featureDTO *FeatureDTO
+	accountId        string
+	featureDTO       *FeatureDTO
 }
 
 func (r ApiUpdateFollowerFeatureRequest) FeatureDTO(featureDTO FeatureDTO) ApiUpdateFollowerFeatureRequest {
@@ -1431,28 +1438,29 @@ func (r ApiUpdateFollowerFeatureRequest) Execute() (*FeatureDTO, *http.Response,
 /*
 UpdateFollowerFeature Update follower feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param signalProviderId
- @param accountId
- @return ApiUpdateFollowerFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param signalProviderId
+	@param accountId
+	@return ApiUpdateFollowerFeatureRequest
 */
 func (a *SignalAPIAPIService) UpdateFollowerFeature(ctx context.Context, signalProviderId string, accountId string) ApiUpdateFollowerFeatureRequest {
 	return ApiUpdateFollowerFeatureRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		signalProviderId: signalProviderId,
-		accountId: accountId,
+		accountId:        accountId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *SignalAPIAPIService) UpdateFollowerFeatureExecute(r ApiUpdateFollowerFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignalAPIAPIService.UpdateFollowerFeature")

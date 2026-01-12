@@ -149,7 +149,7 @@ func (o *FeatureLiveDelayDTO) SetSymbolsConfiguration(v map[string]FeatureLiveDe
 }
 
 func (o FeatureLiveDelayDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -205,5 +205,3 @@ func (v *NullableFeatureLiveDelayDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

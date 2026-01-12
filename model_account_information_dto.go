@@ -24,28 +24,28 @@ type AccountInformationDTO struct {
 	// Account margin mode: HEDGING, NETTING, or EXCHANGE
 	AccountMode *string `json:"accountMode,omitempty"`
 	// Average drawdown percentage during trading period (%)
-	AvgDrawdown *float32 `json:"avgDrawdown,omitempty"`
-	Balance *float32 `json:"balance,omitempty"`
-	BrokeTimeOffsetToUtc *int32 `json:"brokeTimeOffsetToUtc,omitempty"`
-	ConfiguredProxy *ProxyDTO `json:"configuredProxy,omitempty"`
-	Connected *bool `json:"connected,omitempty"`
+	AvgDrawdown          *float32  `json:"avgDrawdown,omitempty"`
+	Balance              *float32  `json:"balance,omitempty"`
+	BrokeTimeOffsetToUtc *int32    `json:"brokeTimeOffsetToUtc,omitempty"`
+	ConfiguredProxy      *ProxyDTO `json:"configuredProxy,omitempty"`
+	Connected            *bool     `json:"connected,omitempty"`
 	// Only for MT4/MT5
-	Credit *float32 `json:"credit,omitempty"`
-	Currency *string `json:"currency,omitempty"`
+	Credit   *float32 `json:"credit,omitempty"`
+	Currency *string  `json:"currency,omitempty"`
 	// The drawdown percentage of the account
 	Drawdown *float32 `json:"drawdown,omitempty"`
-	Equity *float32 `json:"equity,omitempty"`
+	Equity   *float32 `json:"equity,omitempty"`
 	// The fallback mode is active (This means something is not working properly, and the system switches to the fallback mode)
-	FallbackMode *bool `json:"fallbackMode,omitempty"`
-	FreeMargin *float32 `json:"freeMargin,omitempty"`
+	FallbackMode *bool    `json:"fallbackMode,omitempty"`
+	FreeMargin   *float32 `json:"freeMargin,omitempty"`
 	// Indicates if the account is performing excessive trading activity. When true, history fetching may be disabled to reduce broker load
-	IsHyperactive *bool `json:"isHyperactive,omitempty"`
+	IsHyperactive      *bool `json:"isHyperactive,omitempty"`
 	IsInvestorPassword *bool `json:"isInvestorPassword,omitempty"`
 	// Indicates if the account is using native mode
 	IsNative *bool `json:"isNative,omitempty"`
 	// Latency to the broker's access server
 	LatencyInMs *int64 `json:"latencyInMs,omitempty"`
-	Leverage *int32 `json:"leverage,omitempty"`
+	Leverage    *int32 `json:"leverage,omitempty"`
 	// Maximum drawdown percentage - worst peak-to-trough decline (%)
 	MaxDrawdown *float32 `json:"maxDrawdown,omitempty"`
 	// List of missing symbol mappings for this account
@@ -53,25 +53,25 @@ type AccountInformationDTO struct {
 	// True if there is an open position (buy or sell)
 	OpenPositions *bool `json:"openPositions,omitempty"`
 	// Number of open positions (buy or sell)
-	OpenPositionsCount *int32 `json:"openPositionsCount,omitempty"`
-	PendingApprovals []ApprovalDTO `json:"pendingApprovals,omitempty"`
+	OpenPositionsCount *int32        `json:"openPositionsCount,omitempty"`
+	PendingApprovals   []ApprovalDTO `json:"pendingApprovals,omitempty"`
 	// True if there is a pending order (buy limit, sell limit, etc
 	PendingOrders *bool `json:"pendingOrders,omitempty"`
 	// Number of pending orders (buy limit, sell limit, etc)
 	PendingOrdersCount *int32 `json:"pendingOrdersCount,omitempty"`
 	// Indicates that the open positions between the master and slave accounts are not synchronized due to failed open or close operations
-	PositionMismatch *bool `json:"positionMismatch,omitempty"`
+	PositionMismatch    *bool                   `json:"positionMismatch,omitempty"`
 	ProfitTargetsStatus []ProfitTargetStatusDTO `json:"profitTargetsStatus,omitempty"`
-	ProfitThisMonth *float32 `json:"profitThisMonth,omitempty"`
-	ProfitThisWeek *float32 `json:"profitThisWeek,omitempty"`
-	ProfitToday *float32 `json:"profitToday,omitempty"`
-	Proxy *ProxyDTO `json:"proxy,omitempty"`
-	RiskLimitsStatus []RiskLimitStatusDTO `json:"riskLimitsStatus,omitempty"`
-	Status *string `json:"status,omitempty"`
-	UnrealizedProfit *float32 `json:"unrealizedProfit,omitempty"`
-	UsedMargin *float32 `json:"usedMargin,omitempty"`
-	WalletBalances []WalletDTO `json:"walletBalances,omitempty"`
-	WrongCredentials *bool `json:"wrongCredentials,omitempty"`
+	ProfitThisMonth     *float32                `json:"profitThisMonth,omitempty"`
+	ProfitThisWeek      *float32                `json:"profitThisWeek,omitempty"`
+	ProfitToday         *float32                `json:"profitToday,omitempty"`
+	Proxy               *ProxyDTO               `json:"proxy,omitempty"`
+	RiskLimitsStatus    []RiskLimitStatusDTO    `json:"riskLimitsStatus,omitempty"`
+	Status              *string                 `json:"status,omitempty"`
+	UnrealizedProfit    *float32                `json:"unrealizedProfit,omitempty"`
+	UsedMargin          *float32                `json:"usedMargin,omitempty"`
+	WalletBalances      []WalletDTO             `json:"walletBalances,omitempty"`
+	WrongCredentials    *bool                   `json:"wrongCredentials,omitempty"`
 }
 
 // NewAccountInformationDTO instantiates a new AccountInformationDTO object
@@ -1276,7 +1276,7 @@ func (o *AccountInformationDTO) SetWrongCredentials(v bool) {
 }
 
 func (o AccountInformationDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1434,5 +1434,3 @@ func (v *NullableAccountInformationDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

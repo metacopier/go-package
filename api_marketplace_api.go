@@ -18,12 +18,11 @@ import (
 	"net/url"
 )
 
-
 // MarketplaceAPIAPIService MarketplaceAPIAPI service
 type MarketplaceAPIAPIService service
 
 type ApiGetMarketplaceRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *MarketplaceAPIAPIService
 }
 
@@ -34,24 +33,25 @@ func (r ApiGetMarketplaceRequest) Execute() (*MarketplaceDTO, *http.Response, er
 /*
 GetMarketplace Get marketplace data
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetMarketplaceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetMarketplaceRequest
 */
 func (a *MarketplaceAPIAPIService) GetMarketplace(ctx context.Context) ApiGetMarketplaceRequest {
 	return ApiGetMarketplaceRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return MarketplaceDTO
+//
+//	@return MarketplaceDTO
 func (a *MarketplaceAPIAPIService) GetMarketplaceExecute(r ApiGetMarketplaceRequest) (*MarketplaceDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MarketplaceDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MarketplaceDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MarketplaceAPIAPIService.GetMarketplace")

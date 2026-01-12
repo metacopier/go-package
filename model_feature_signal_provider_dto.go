@@ -11,8 +11,8 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -32,9 +32,9 @@ type FeatureSignalProviderDTO struct {
 	// List of allowed broker patterns (regex supported) that followers must use to subscribe to this signal. Use regex patterns to match broker names, for example 'ICMarketsSC-Live.*' will match all ICMarkets SC Live servers. Leave empty to allow all brokers.
 	AllowedBrokers []string `json:"allowedBrokers,omitempty"`
 	// Billing model for profit sharing fees. MONTHLY_PROFIT: Charge on all profits each month (default). HIGH_WATERMARK: Charge only on new profits above the previous peak cumulative profit. High watermark ensures followers only pay when their total performance reaches a new high, regardless of deposits/withdrawals. NOTE: This field can ONLY be set during resource creation and CANNOT be changed later.
-	BillingModel *string `json:"billingModel,omitempty"`
-	Contact *ContactDTO `json:"contact,omitempty"`
-	Copier CopierDTO `json:"copier"`
+	BillingModel *string     `json:"billingModel,omitempty"`
+	Contact      *ContactDTO `json:"contact,omitempty"`
+	Copier       CopierDTO   `json:"copier"`
 	// Enable this option to cover the MetaCopier costs for your followers. When enabled, the follower accounts' MetaCopier subscription fees will be charged to your project instead, allowing your followers to use MetaCopier for free. This applies to all accounts that follow your signal. Note: This only covers the base MetaCopier subscription cost, not signal provider performance fees or other charges. NOTE: This field can ONLY be set during resource creation and CANNOT be changed later.
 	CoverFollowerCosts *bool `json:"coverFollowerCosts,omitempty"`
 	// A short summary of your trading strategy or approach. Use this field to give potential followers an idea of what to expect from your signals, including any specific methods, goals, or markets you specialize in.
@@ -747,7 +747,7 @@ func (o *FeatureSignalProviderDTO) SetUseMetaCopierAsPaymentProvider(v bool) {
 }
 
 func (o FeatureSignalProviderDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -829,10 +829,10 @@ func (o *FeatureSignalProviderDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -888,5 +888,3 @@ func (v *NullableFeatureSignalProviderDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

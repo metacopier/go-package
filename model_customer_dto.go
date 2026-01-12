@@ -22,10 +22,10 @@ var _ MappedNullable = &CustomerDTO{}
 type CustomerDTO struct {
 	Blocked *bool `json:"blocked,omitempty"`
 	// ISO 8601
-	Created *time.Time `json:"created,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Id *int32 `json:"id,omitempty"`
-	Kyc *bool `json:"kyc,omitempty"`
+	Created      *time.Time `json:"created,omitempty"`
+	Email        *string    `json:"email,omitempty"`
+	Id           *int32     `json:"id,omitempty"`
+	Kyc          *bool      `json:"kyc,omitempty"`
 	PayoutMethod *PayoutDTO `json:"payoutMethod,omitempty"`
 	// Permission level for this customer in the project
 	PermissionType *string `json:"permissionType,omitempty"`
@@ -307,7 +307,7 @@ func (o *CustomerDTO) SetTos(v time.Time) {
 }
 
 func (o CustomerDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -378,5 +378,3 @@ func (v *NullableCustomerDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

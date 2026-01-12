@@ -20,15 +20,15 @@ var _ MappedNullable = &LogDTO{}
 
 // LogDTO struct for LogDTO
 type LogDTO struct {
-	AccountId *string `json:"accountId,omitempty"`
-	Acknowledged *bool `json:"acknowledged,omitempty"`
+	AccountId     *string `json:"accountId,omitempty"`
+	Acknowledged  *bool   `json:"acknowledged,omitempty"`
 	CustomerEmail *string `json:"customerEmail,omitempty"`
 	// ISO 8601
-	Date *time.Time `json:"date,omitempty"`
-	Id *int64 `json:"id,omitempty"`
-	LogType *string `json:"logType,omitempty"`
-	ProjectId *string `json:"projectId,omitempty"`
-	Text *string `json:"text,omitempty"`
+	Date      *time.Time `json:"date,omitempty"`
+	Id        *int64     `json:"id,omitempty"`
+	LogType   *string    `json:"logType,omitempty"`
+	ProjectId *string    `json:"projectId,omitempty"`
+	Text      *string    `json:"text,omitempty"`
 }
 
 // NewLogDTO instantiates a new LogDTO object
@@ -305,7 +305,7 @@ func (o *LogDTO) SetText(v string) {
 }
 
 func (o LogDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -376,5 +376,3 @@ func (v *NullableLogDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

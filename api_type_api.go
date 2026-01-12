@@ -18,12 +18,11 @@ import (
 	"net/url"
 )
 
-
 // TypeAPIAPIService TypeAPIAPI service
 type TypeAPIAPIService service
 
 type ApiGetAccountTypesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TypeAPIAPIService
 }
 
@@ -34,24 +33,25 @@ func (r ApiGetAccountTypesRequest) Execute() ([]AccountTypeDTO, *http.Response, 
 /*
 GetAccountTypes Get account type enum
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetAccountTypesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetAccountTypesRequest
 */
 func (a *TypeAPIAPIService) GetAccountTypes(ctx context.Context) ApiGetAccountTypesRequest {
 	return ApiGetAccountTypesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []AccountTypeDTO
+//
+//	@return []AccountTypeDTO
 func (a *TypeAPIAPIService) GetAccountTypesExecute(r ApiGetAccountTypesRequest) ([]AccountTypeDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []AccountTypeDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []AccountTypeDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TypeAPIAPIService.GetAccountTypes")
@@ -134,7 +134,7 @@ func (a *TypeAPIAPIService) GetAccountTypesExecute(r ApiGetAccountTypesRequest) 
 }
 
 type ApiGetCurrencyTypesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TypeAPIAPIService
 }
 
@@ -145,24 +145,25 @@ func (r ApiGetCurrencyTypesRequest) Execute() ([]CurrencyTypeDTO, *http.Response
 /*
 GetCurrencyTypes Get currency type enum
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetCurrencyTypesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetCurrencyTypesRequest
 */
 func (a *TypeAPIAPIService) GetCurrencyTypes(ctx context.Context) ApiGetCurrencyTypesRequest {
 	return ApiGetCurrencyTypesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []CurrencyTypeDTO
+//
+//	@return []CurrencyTypeDTO
 func (a *TypeAPIAPIService) GetCurrencyTypesExecute(r ApiGetCurrencyTypesRequest) ([]CurrencyTypeDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CurrencyTypeDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CurrencyTypeDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TypeAPIAPIService.GetCurrencyTypes")
@@ -245,7 +246,7 @@ func (a *TypeAPIAPIService) GetCurrencyTypesExecute(r ApiGetCurrencyTypesRequest
 }
 
 type ApiGetFeatureTypesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TypeAPIAPIService
 }
 
@@ -256,24 +257,25 @@ func (r ApiGetFeatureTypesRequest) Execute() ([]FeatureTypeDTO, *http.Response, 
 /*
 GetFeatureTypes Get feature type enum
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetFeatureTypesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetFeatureTypesRequest
 */
 func (a *TypeAPIAPIService) GetFeatureTypes(ctx context.Context) ApiGetFeatureTypesRequest {
 	return ApiGetFeatureTypesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []FeatureTypeDTO
+//
+//	@return []FeatureTypeDTO
 func (a *TypeAPIAPIService) GetFeatureTypesExecute(r ApiGetFeatureTypesRequest) ([]FeatureTypeDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []FeatureTypeDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []FeatureTypeDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TypeAPIAPIService.GetFeatureTypes")
@@ -356,7 +358,7 @@ func (a *TypeAPIAPIService) GetFeatureTypesExecute(r ApiGetFeatureTypesRequest) 
 }
 
 type ApiGetLogTypesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TypeAPIAPIService
 }
 
@@ -367,24 +369,25 @@ func (r ApiGetLogTypesRequest) Execute() ([]LogTypeDTO, *http.Response, error) {
 /*
 GetLogTypes Get log type enum
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetLogTypesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetLogTypesRequest
 */
 func (a *TypeAPIAPIService) GetLogTypes(ctx context.Context) ApiGetLogTypesRequest {
 	return ApiGetLogTypesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []LogTypeDTO
+//
+//	@return []LogTypeDTO
 func (a *TypeAPIAPIService) GetLogTypesExecute(r ApiGetLogTypesRequest) ([]LogTypeDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []LogTypeDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []LogTypeDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TypeAPIAPIService.GetLogTypes")
@@ -467,7 +470,7 @@ func (a *TypeAPIAPIService) GetLogTypesExecute(r ApiGetLogTypesRequest) ([]LogTy
 }
 
 type ApiGetNotificationCategoryTypesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TypeAPIAPIService
 }
 
@@ -478,24 +481,25 @@ func (r ApiGetNotificationCategoryTypesRequest) Execute() ([]NotificationCategor
 /*
 GetNotificationCategoryTypes Get notification category type enum
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetNotificationCategoryTypesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetNotificationCategoryTypesRequest
 */
 func (a *TypeAPIAPIService) GetNotificationCategoryTypes(ctx context.Context) ApiGetNotificationCategoryTypesRequest {
 	return ApiGetNotificationCategoryTypesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []NotificationCategoryTypeDTO
+//
+//	@return []NotificationCategoryTypeDTO
 func (a *TypeAPIAPIService) GetNotificationCategoryTypesExecute(r ApiGetNotificationCategoryTypesRequest) ([]NotificationCategoryTypeDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []NotificationCategoryTypeDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []NotificationCategoryTypeDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TypeAPIAPIService.GetNotificationCategoryTypes")
@@ -578,7 +582,7 @@ func (a *TypeAPIAPIService) GetNotificationCategoryTypesExecute(r ApiGetNotifica
 }
 
 type ApiGetProxyRegionsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TypeAPIAPIService
 }
 
@@ -589,24 +593,25 @@ func (r ApiGetProxyRegionsRequest) Execute() ([]ProxyRegionDTO, *http.Response, 
 /*
 GetProxyRegions Get proxy region enum
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProxyRegionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProxyRegionsRequest
 */
 func (a *TypeAPIAPIService) GetProxyRegions(ctx context.Context) ApiGetProxyRegionsRequest {
 	return ApiGetProxyRegionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ProxyRegionDTO
+//
+//	@return []ProxyRegionDTO
 func (a *TypeAPIAPIService) GetProxyRegionsExecute(r ApiGetProxyRegionsRequest) ([]ProxyRegionDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ProxyRegionDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ProxyRegionDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TypeAPIAPIService.GetProxyRegions")
@@ -689,7 +694,7 @@ func (a *TypeAPIAPIService) GetProxyRegionsExecute(r ApiGetProxyRegionsRequest) 
 }
 
 type ApiGetRegionsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TypeAPIAPIService
 }
 
@@ -700,24 +705,25 @@ func (r ApiGetRegionsRequest) Execute() ([]RegionDTO, *http.Response, error) {
 /*
 GetRegions Get region enum
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetRegionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetRegionsRequest
 */
 func (a *TypeAPIAPIService) GetRegions(ctx context.Context) ApiGetRegionsRequest {
 	return ApiGetRegionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []RegionDTO
+//
+//	@return []RegionDTO
 func (a *TypeAPIAPIService) GetRegionsExecute(r ApiGetRegionsRequest) ([]RegionDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []RegionDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []RegionDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TypeAPIAPIService.GetRegions")
@@ -800,7 +806,7 @@ func (a *TypeAPIAPIService) GetRegionsExecute(r ApiGetRegionsRequest) ([]RegionD
 }
 
 type ApiGetRiskTypesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TypeAPIAPIService
 }
 
@@ -811,24 +817,25 @@ func (r ApiGetRiskTypesRequest) Execute() ([]RiskTypeDTO, *http.Response, error)
 /*
 GetRiskTypes Get risk type enum
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetRiskTypesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetRiskTypesRequest
 */
 func (a *TypeAPIAPIService) GetRiskTypes(ctx context.Context) ApiGetRiskTypesRequest {
 	return ApiGetRiskTypesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []RiskTypeDTO
+//
+//	@return []RiskTypeDTO
 func (a *TypeAPIAPIService) GetRiskTypesExecute(r ApiGetRiskTypesRequest) ([]RiskTypeDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []RiskTypeDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []RiskTypeDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TypeAPIAPIService.GetRiskTypes")
@@ -911,7 +918,7 @@ func (a *TypeAPIAPIService) GetRiskTypesExecute(r ApiGetRiskTypesRequest) ([]Ris
 }
 
 type ApiGetScaleTypesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TypeAPIAPIService
 }
 
@@ -922,24 +929,25 @@ func (r ApiGetScaleTypesRequest) Execute() ([]ScaleTypeDTO, *http.Response, erro
 /*
 GetScaleTypes Get scale type enum
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetScaleTypesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetScaleTypesRequest
 */
 func (a *TypeAPIAPIService) GetScaleTypes(ctx context.Context) ApiGetScaleTypesRequest {
 	return ApiGetScaleTypesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ScaleTypeDTO
+//
+//	@return []ScaleTypeDTO
 func (a *TypeAPIAPIService) GetScaleTypesExecute(r ApiGetScaleTypesRequest) ([]ScaleTypeDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ScaleTypeDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ScaleTypeDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TypeAPIAPIService.GetScaleTypes")

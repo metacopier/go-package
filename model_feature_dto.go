@@ -11,10 +11,10 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the FeatureDTO type satisfies the MappedNullable interface at compile time
@@ -28,11 +28,11 @@ type FeatureDTO struct {
 	CopierId *string `json:"copierId,omitempty"`
 	// ISO 8601
 	Created *time.Time `json:"created,omitempty"`
-	Id *string `json:"id,omitempty"`
+	Id      *string    `json:"id,omitempty"`
 	// You have to set it during resource creation, after that, it is only read-only
-	ProjectId *string `json:"projectId,omitempty"`
-	Setting FeatureSettingDTO `json:"setting"`
-	Type FeatureTypeDTO `json:"type"`
+	ProjectId *string           `json:"projectId,omitempty"`
+	Setting   FeatureSettingDTO `json:"setting"`
+	Type      FeatureTypeDTO    `json:"type"`
 }
 
 type _FeatureDTO FeatureDTO
@@ -265,7 +265,7 @@ func (o *FeatureDTO) SetType(v FeatureTypeDTO) {
 }
 
 func (o FeatureDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -308,10 +308,10 @@ func (o *FeatureDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -367,5 +367,3 @@ func (v *NullableFeatureDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,11 +19,11 @@ var _ MappedNullable = &MissingSymbolMappingDTO{}
 
 // MissingSymbolMappingDTO List of missing symbol mappings for this account
 type MissingSymbolMappingDTO struct {
-	CopierId *string `json:"copierId,omitempty"`
-	FromAccount *string `json:"fromAccount,omitempty"`
-	FromAccountId *string `json:"fromAccountId,omitempty"`
-	LastTimestampDetected *int64 `json:"lastTimestampDetected,omitempty"`
-	Symbol *string `json:"symbol,omitempty"`
+	CopierId              *string `json:"copierId,omitempty"`
+	FromAccount           *string `json:"fromAccount,omitempty"`
+	FromAccountId         *string `json:"fromAccountId,omitempty"`
+	LastTimestampDetected *int64  `json:"lastTimestampDetected,omitempty"`
+	Symbol                *string `json:"symbol,omitempty"`
 }
 
 // NewMissingSymbolMappingDTO instantiates a new MissingSymbolMappingDTO object
@@ -204,7 +204,7 @@ func (o *MissingSymbolMappingDTO) SetSymbol(v string) {
 }
 
 func (o MissingSymbolMappingDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,5 +266,3 @@ func (v *NullableMissingSymbolMappingDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

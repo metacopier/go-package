@@ -11,8 +11,8 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -29,9 +29,9 @@ type SymbolMappingDTO struct {
 	BrokerToSuggestion []string `json:"brokerToSuggestion,omitempty"`
 	// Enter a symbol e.g. GBPUSD (is not a regex)
 	From string `json:"from"`
-	Id *int64 `json:"id,omitempty"`
+	Id   *int64 `json:"id,omitempty"`
 	// The priority is ascending, which means that 0 has a higher priority than 1. Priority is always positive
-	Priority int32 `json:"priority"`
+	Priority  int32   `json:"priority"`
 	ProjectId *string `json:"projectId,omitempty"`
 	// Enter a symbol e.g. GBPEUR (is not a regex)
 	To string `json:"to"`
@@ -278,7 +278,7 @@ func (o *SymbolMappingDTO) SetTo(v string) {
 }
 
 func (o SymbolMappingDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -321,10 +321,10 @@ func (o *SymbolMappingDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -380,5 +380,3 @@ func (v *NullableSymbolMappingDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

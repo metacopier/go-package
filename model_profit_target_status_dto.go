@@ -20,10 +20,10 @@ var _ MappedNullable = &ProfitTargetStatusDTO{}
 
 // ProfitTargetStatusDTO struct for ProfitTargetStatusDTO
 type ProfitTargetStatusDTO struct {
-	BalanceLastUpdate *time.Time `json:"balanceLastUpdate,omitempty"`
-	ProfitTargetFeatureId *string `json:"profitTargetFeatureId,omitempty"`
-	ProfitTargetIsHit *bool `json:"profitTargetIsHit,omitempty"`
-	ReferenceBalance *float32 `json:"referenceBalance,omitempty"`
+	BalanceLastUpdate     *time.Time `json:"balanceLastUpdate,omitempty"`
+	ProfitTargetFeatureId *string    `json:"profitTargetFeatureId,omitempty"`
+	ProfitTargetIsHit     *bool      `json:"profitTargetIsHit,omitempty"`
+	ReferenceBalance      *float32   `json:"referenceBalance,omitempty"`
 }
 
 // NewProfitTargetStatusDTO instantiates a new ProfitTargetStatusDTO object
@@ -172,7 +172,7 @@ func (o *ProfitTargetStatusDTO) SetReferenceBalance(v float32) {
 }
 
 func (o ProfitTargetStatusDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,5 +231,3 @@ func (v *NullableProfitTargetStatusDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

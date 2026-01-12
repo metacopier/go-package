@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // APIKeyManagementAPIService APIKeyManagementAPI service
 type APIKeyManagementAPIService service
 
 type ApiGetAvailableEndpointsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *APIKeyManagementAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiGetAvailableEndpointsRequest) Execute() ([]RestEndpointMetadataDTO, *http.Response, error) {
@@ -38,26 +37,27 @@ GetAvailableEndpoints Get available REST endpoints
 
 Returns a list of all REST endpoints with their HTTP methods that can be controlled via API key access policy. Endpoints annotated with @Hidden are excluded.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetAvailableEndpointsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetAvailableEndpointsRequest
 */
 func (a *APIKeyManagementAPIService) GetAvailableEndpoints(ctx context.Context, projectId string) ApiGetAvailableEndpointsRequest {
 	return ApiGetAvailableEndpointsRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []RestEndpointMetadataDTO
+//
+//	@return []RestEndpointMetadataDTO
 func (a *APIKeyManagementAPIService) GetAvailableEndpointsExecute(r ApiGetAvailableEndpointsRequest) ([]RestEndpointMetadataDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []RestEndpointMetadataDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []RestEndpointMetadataDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIKeyManagementAPIService.GetAvailableEndpoints")
@@ -141,9 +141,9 @@ func (a *APIKeyManagementAPIService) GetAvailableEndpointsExecute(r ApiGetAvaila
 }
 
 type ApiGetAvailableFieldsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *APIKeyManagementAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiGetAvailableFieldsRequest) Execute() ([]FieldMetadataDTO, *http.Response, error) {
@@ -155,26 +155,27 @@ GetAvailableFields Get available AccountInformationDTO fields
 
 Returns a list of all visible fields in AccountInformationDTO that can be controlled via API key access policy. Fields annotated with @Hidden or @Schema(hidden=true) are excluded.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetAvailableFieldsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetAvailableFieldsRequest
 */
 func (a *APIKeyManagementAPIService) GetAvailableFields(ctx context.Context, projectId string) ApiGetAvailableFieldsRequest {
 	return ApiGetAvailableFieldsRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []FieldMetadataDTO
+//
+//	@return []FieldMetadataDTO
 func (a *APIKeyManagementAPIService) GetAvailableFieldsExecute(r ApiGetAvailableFieldsRequest) ([]FieldMetadataDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []FieldMetadataDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []FieldMetadataDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIKeyManagementAPIService.GetAvailableFields")
@@ -258,9 +259,9 @@ func (a *APIKeyManagementAPIService) GetAvailableFieldsExecute(r ApiGetAvailable
 }
 
 type ApiGetAvailableFrontendFeaturesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *APIKeyManagementAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiGetAvailableFrontendFeaturesRequest) Execute() ([]FrontendFeatureDTO, *http.Response, error) {
@@ -272,26 +273,27 @@ GetAvailableFrontendFeatures Get available frontend features
 
 Returns a list of all frontend features that can be hidden via API key access policy.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetAvailableFrontendFeaturesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetAvailableFrontendFeaturesRequest
 */
 func (a *APIKeyManagementAPIService) GetAvailableFrontendFeatures(ctx context.Context, projectId string) ApiGetAvailableFrontendFeaturesRequest {
 	return ApiGetAvailableFrontendFeaturesRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []FrontendFeatureDTO
+//
+//	@return []FrontendFeatureDTO
 func (a *APIKeyManagementAPIService) GetAvailableFrontendFeaturesExecute(r ApiGetAvailableFrontendFeaturesRequest) ([]FrontendFeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []FrontendFeatureDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []FrontendFeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIKeyManagementAPIService.GetAvailableFrontendFeatures")

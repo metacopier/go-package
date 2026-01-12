@@ -6,7 +6,7 @@ This repository contains the Go SDK for the MetaCopier API.
 
 1. **Install the SDK:**
    ```bash
-   go get github.com/metacopier/go-package@v1.2.5
+   go get github.com/metacopier/go-package@v1.2.7
    ```
 
 2. **Import in your code:**
@@ -45,8 +45,8 @@ After generation:
 1. Commit all changes
 2. Tag the release:
    ```bash
-   git tag v1.2.5
-   git push origin v1.2.5
+   git tag v1.2.7
+   git push origin v1.2.7
    ```
 3. The package will automatically appear on pkg.go.dev
 

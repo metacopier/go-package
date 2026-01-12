@@ -19,12 +19,12 @@ var _ MappedNullable = &TaxRateDetailsDTO{}
 
 // TaxRateDetailsDTO struct for TaxRateDetailsDTO
 type TaxRateDetailsDTO struct {
-	Country *string `json:"country,omitempty"`
-	FlatAmount *int64 `json:"flatAmount,omitempty"`
+	Country           *string `json:"country,omitempty"`
+	FlatAmount        *int64  `json:"flatAmount,omitempty"`
 	PercentageDecimal *string `json:"percentageDecimal,omitempty"`
-	RateType *string `json:"rateType,omitempty"`
-	State *string `json:"state,omitempty"`
-	TaxType *string `json:"taxType,omitempty"`
+	RateType          *string `json:"rateType,omitempty"`
+	State             *string `json:"state,omitempty"`
+	TaxType           *string `json:"taxType,omitempty"`
 }
 
 // NewTaxRateDetailsDTO instantiates a new TaxRateDetailsDTO object
@@ -237,7 +237,7 @@ func (o *TaxRateDetailsDTO) SetTaxType(v string) {
 }
 
 func (o TaxRateDetailsDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -302,5 +302,3 @@ func (v *NullableTaxRateDetailsDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

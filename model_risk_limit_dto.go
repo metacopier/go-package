@@ -11,10 +11,10 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the RiskLimitDTO type satisfies the MappedNullable interface at compile time
@@ -26,7 +26,7 @@ type RiskLimitDTO struct {
 	AbsoluteRiskLimit *float32 `json:"absoluteRiskLimit,omitempty"`
 	// You have to set it during resource creation, after that, it is only read-only
 	AccountId *string `json:"accountId,omitempty"`
-	Active *bool `json:"active,omitempty"`
+	Active    *bool   `json:"active,omitempty"`
 	// If set to 'true', all positions will be closed immediately when the primary risk limit is reached. If set to 'false', new trades will not be opened when the primary limit is reached, but the fallback limits become active as a secondary safety measure.
 	CloseAllOpenPositions *bool `json:"closeAllOpenPositions,omitempty"`
 	// You have to set it during resource creation, after that, it is only read-only
@@ -38,15 +38,15 @@ type RiskLimitDTO struct {
 	// Fallback risk limit (percentage). Only applies when closeAllOpenPositions is false. When this limit is reached, all positions will be closed. Set to 0 to deactivate.
 	FallbackRiskLimit *float32 `json:"fallbackRiskLimit,omitempty"`
 	// If set to 5, it means that if the limit is reached and stays over the limit for 5 seconds, the risk limit will be activated; otherwise, the limit will remain deactivated
-	FulfillSeconds *int32 `json:"fulfillSeconds,omitempty"`
-	Id *string `json:"id,omitempty"`
+	FulfillSeconds *int32  `json:"fulfillSeconds,omitempty"`
+	Id             *string `json:"id,omitempty"`
 	// Enter an relative risk limit in account currency. Set to 0 to deactivate.
 	RelativeRiskLimit *float32 `json:"relativeRiskLimit,omitempty"`
 	// ISO 8601. Set the reset time for calculation (see riskType). Only used for 1-3 risk type. Only the time is considered, and the date is ignored.
 	ResetTime *time.Time `json:"resetTime,omitempty"`
 	// 0.215 for 21.5% (set to 0 to deactivate)
-	RiskLimit float32 `json:"riskLimit"`
-	RiskType RiskTypeDTO `json:"riskType"`
+	RiskLimit float32     `json:"riskLimit"`
+	RiskType  RiskTypeDTO `json:"riskType"`
 }
 
 type _RiskLimitDTO RiskLimitDTO
@@ -73,8 +73,6 @@ func NewRiskLimitDTO(riskLimit float32, riskType RiskTypeDTO) *RiskLimitDTO {
 	this.FulfillSeconds = &fulfillSeconds
 	var relativeRiskLimit float32 = 0
 	this.RelativeRiskLimit = &relativeRiskLimit
-	var resetTime time.Time = "2023-12-30T00:00Z"
-	this.ResetTime = &resetTime
 	this.RiskLimit = riskLimit
 	this.RiskType = riskType
 	return &this
@@ -101,8 +99,6 @@ func NewRiskLimitDTOWithDefaults() *RiskLimitDTO {
 	this.FulfillSeconds = &fulfillSeconds
 	var relativeRiskLimit float32 = 0
 	this.RelativeRiskLimit = &relativeRiskLimit
-	var resetTime time.Time = "2023-12-30T00:00Z"
-	this.ResetTime = &resetTime
 	return &this
 }
 
@@ -539,7 +535,7 @@ func (o *RiskLimitDTO) SetRiskType(v RiskTypeDTO) {
 }
 
 func (o RiskLimitDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -603,10 +599,10 @@ func (o *RiskLimitDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -662,5 +658,3 @@ func (v *NullableRiskLimitDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

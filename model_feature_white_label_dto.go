@@ -11,8 +11,8 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -28,9 +28,9 @@ type FeatureWhiteLabelDTO struct {
 	// Price per day (USD) for an account in a shared project
 	AccountPriceShared *float32 `json:"accountPriceShared,omitempty"`
 	// Select allowed account types for the white-label solution. If not specified, all account types are allowed.
-	AccountTypes []AccountTypeDTO `json:"accountTypes,omitempty"`
-	CtraderClientId *string `json:"ctraderClientId,omitempty"`
-	CtraderClientSecret *string `json:"ctraderClientSecret,omitempty"`
+	AccountTypes        []AccountTypeDTO `json:"accountTypes,omitempty"`
+	CtraderClientId     *string          `json:"ctraderClientId,omitempty"`
+	CtraderClientSecret *string          `json:"ctraderClientSecret,omitempty"`
 	// Price per day (USD) for feature PRO
 	FeaturePrice *float32 `json:"featurePrice,omitempty"`
 	// Select a layout for the white-label solution.
@@ -39,7 +39,7 @@ type FeatureWhiteLabelDTO struct {
 	Logo string `json:"logo"`
 	// Customer-facing brand or business name, shown as the sender name in emails
 	Name string `json:"name"`
-	// Stripe secret API key used for billing (e.g. sk_live_...). 
+	// Stripe secret API key used for billing (e.g. sk_live_...).
 	StripeApiKey string `json:"stripeApiKey"`
 	// Sub-domain used for the white-label solution. Root domains are not allowed.
 	Subdomain string `json:"subdomain"`
@@ -455,7 +455,7 @@ func (o *FeatureWhiteLabelDTO) SetTheme(v string) {
 }
 
 func (o FeatureWhiteLabelDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -514,10 +514,10 @@ func (o *FeatureWhiteLabelDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -573,5 +573,3 @@ func (v *NullableFeatureWhiteLabelDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

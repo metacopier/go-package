@@ -11,8 +11,8 @@ API version: 1.2.5
 package metacopier
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &FeatureSignalFollowerDTO{}
 // FeatureSignalFollowerDTO DTO for signal follower feature (account)
 type FeatureSignalFollowerDTO struct {
 	// Specifies if the copier is active.
-	Active *bool `json:"active,omitempty"`
+	Active *bool      `json:"active,omitempty"`
 	Copier *CopierDTO `json:"copier,omitempty"`
 	// Indicates whether this copier is in monitor-only mode. When true, the copier monitors the source account and manages existing open positions (can close, modify them) but will not copy any new trades. When false, the copier operates in normal copying mode.
 	MonitorOnly *bool `json:"monitorOnly,omitempty"`
@@ -285,7 +285,7 @@ func (o *FeatureSignalFollowerDTO) SetSuspended(v bool) {
 }
 
 func (o FeatureSignalFollowerDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -329,10 +329,10 @@ func (o *FeatureSignalFollowerDTO) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -388,5 +388,3 @@ func (v *NullableFeatureSignalFollowerDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

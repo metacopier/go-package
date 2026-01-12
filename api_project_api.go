@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // ProjectAPIAPIService ProjectAPIAPI service
 type ProjectAPIAPIService service
 
 type ApiAcknowledgeAllLogsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiAcknowledgeAllLogsRequest) Execute() (*http.Response, error) {
@@ -36,24 +35,24 @@ func (r ApiAcknowledgeAllLogsRequest) Execute() (*http.Response, error) {
 /*
 AcknowledgeAllLogs Acknowledge all logs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiAcknowledgeAllLogsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiAcknowledgeAllLogsRequest
 */
 func (a *ProjectAPIAPIService) AcknowledgeAllLogs(ctx context.Context, projectId string) ApiAcknowledgeAllLogsRequest {
 	return ApiAcknowledgeAllLogsRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAPIAPIService) AcknowledgeAllLogsExecute(r ApiAcknowledgeAllLogsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.AcknowledgeAllLogs")
@@ -128,10 +127,10 @@ func (a *ProjectAPIAPIService) AcknowledgeAllLogsExecute(r ApiAcknowledgeAllLogs
 }
 
 type ApiAcknowledgeLogRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
-	id int32
+	projectId  string
+	id         int32
 }
 
 func (r ApiAcknowledgeLogRequest) Execute() (*http.Response, error) {
@@ -141,26 +140,26 @@ func (r ApiAcknowledgeLogRequest) Execute() (*http.Response, error) {
 /*
 AcknowledgeLog Acknowledge a log
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param id
- @return ApiAcknowledgeLogRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param id
+	@return ApiAcknowledgeLogRequest
 */
 func (a *ProjectAPIAPIService) AcknowledgeLog(ctx context.Context, projectId string, id int32) ApiAcknowledgeLogRequest {
 	return ApiAcknowledgeLogRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
-		id: id,
+		ctx:        ctx,
+		projectId:  projectId,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAPIAPIService) AcknowledgeLogExecute(r ApiAcknowledgeLogRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.AcknowledgeLog")
@@ -236,9 +235,9 @@ func (a *ProjectAPIAPIService) AcknowledgeLogExecute(r ApiAcknowledgeLogRequest)
 }
 
 type ApiAcknowledgeLogsBulkRequest struct {
-	ctx context.Context
-	ApiService *ProjectAPIAPIService
-	projectId string
+	ctx         context.Context
+	ApiService  *ProjectAPIAPIService
+	projectId   string
 	requestBody *[]int32
 }
 
@@ -254,24 +253,24 @@ func (r ApiAcknowledgeLogsBulkRequest) Execute() (*http.Response, error) {
 /*
 AcknowledgeLogsBulk Method for AcknowledgeLogsBulk
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiAcknowledgeLogsBulkRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiAcknowledgeLogsBulkRequest
 */
 func (a *ProjectAPIAPIService) AcknowledgeLogsBulk(ctx context.Context, projectId string) ApiAcknowledgeLogsBulkRequest {
 	return ApiAcknowledgeLogsBulkRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAPIAPIService) AcknowledgeLogsBulkExecute(r ApiAcknowledgeLogsBulkRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.AcknowledgeLogsBulk")
@@ -351,9 +350,9 @@ func (a *ProjectAPIAPIService) AcknowledgeLogsBulkExecute(r ApiAcknowledgeLogsBu
 }
 
 type ApiCloseAllPositionsInAllAccountsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiCloseAllPositionsInAllAccountsRequest) Execute() (*http.Response, error) {
@@ -363,24 +362,24 @@ func (r ApiCloseAllPositionsInAllAccountsRequest) Execute() (*http.Response, err
 /*
 CloseAllPositionsInAllAccounts Close all open positions in all accounts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiCloseAllPositionsInAllAccountsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiCloseAllPositionsInAllAccountsRequest
 */
 func (a *ProjectAPIAPIService) CloseAllPositionsInAllAccounts(ctx context.Context, projectId string) ApiCloseAllPositionsInAllAccountsRequest {
 	return ApiCloseAllPositionsInAllAccountsRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAPIAPIService) CloseAllPositionsInAllAccountsExecute(r ApiCloseAllPositionsInAllAccountsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.CloseAllPositionsInAllAccounts")
@@ -455,9 +454,9 @@ func (a *ProjectAPIAPIService) CloseAllPositionsInAllAccountsExecute(r ApiCloseA
 }
 
 type ApiCreateProjectFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	featureDTO *FeatureDTO
 }
 
@@ -473,26 +472,27 @@ func (r ApiCreateProjectFeatureRequest) Execute() (*FeatureDTO, *http.Response, 
 /*
 CreateProjectFeature Create a project feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiCreateProjectFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiCreateProjectFeatureRequest
 */
 func (a *ProjectAPIAPIService) CreateProjectFeature(ctx context.Context, projectId string) ApiCreateProjectFeatureRequest {
 	return ApiCreateProjectFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *ProjectAPIAPIService) CreateProjectFeatureExecute(r ApiCreateProjectFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.CreateProjectFeature")
@@ -581,9 +581,9 @@ func (a *ProjectAPIAPIService) CreateProjectFeatureExecute(r ApiCreateProjectFea
 }
 
 type ApiCreateProjectStrategyRequest struct {
-	ctx context.Context
-	ApiService *ProjectAPIAPIService
-	projectId string
+	ctx         context.Context
+	ApiService  *ProjectAPIAPIService
+	projectId   string
 	strategyDTO *StrategyDTO
 }
 
@@ -599,26 +599,27 @@ func (r ApiCreateProjectStrategyRequest) Execute() (*StrategyDTO, *http.Response
 /*
 CreateProjectStrategy Create a strategy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiCreateProjectStrategyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiCreateProjectStrategyRequest
 */
 func (a *ProjectAPIAPIService) CreateProjectStrategy(ctx context.Context, projectId string) ApiCreateProjectStrategyRequest {
 	return ApiCreateProjectStrategyRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return StrategyDTO
+//
+//	@return StrategyDTO
 func (a *ProjectAPIAPIService) CreateProjectStrategyExecute(r ApiCreateProjectStrategyRequest) (*StrategyDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StrategyDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StrategyDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.CreateProjectStrategy")
@@ -707,11 +708,11 @@ func (a *ProjectAPIAPIService) CreateProjectStrategyExecute(r ApiCreateProjectSt
 }
 
 type ApiCreateProjectStrategyCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
-	copierDTO *CopierDTO
+	copierDTO  *CopierDTO
 }
 
 func (r ApiCreateProjectStrategyCopierRequest) CopierDTO(copierDTO CopierDTO) ApiCreateProjectStrategyCopierRequest {
@@ -726,28 +727,29 @@ func (r ApiCreateProjectStrategyCopierRequest) Execute() (*CopierDTO, *http.Resp
 /*
 CreateProjectStrategyCopier Create a strategy copier
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @return ApiCreateProjectStrategyCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@return ApiCreateProjectStrategyCopierRequest
 */
 func (a *ProjectAPIAPIService) CreateProjectStrategyCopier(ctx context.Context, projectId string, strategyId string) ApiCreateProjectStrategyCopierRequest {
 	return ApiCreateProjectStrategyCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
 	}
 }
 
 // Execute executes the request
-//  @return CopierDTO
+//
+//	@return CopierDTO
 func (a *ProjectAPIAPIService) CreateProjectStrategyCopierExecute(r ApiCreateProjectStrategyCopierRequest) (*CopierDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CopierDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CopierDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.CreateProjectStrategyCopier")
@@ -837,11 +839,11 @@ func (a *ProjectAPIAPIService) CreateProjectStrategyCopierExecute(r ApiCreatePro
 }
 
 type ApiCreateProjectStrategyCopierFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
-	copierId string
+	copierId   string
 	featureDTO *FeatureDTO
 }
 
@@ -857,30 +859,31 @@ func (r ApiCreateProjectStrategyCopierFeatureRequest) Execute() (*FeatureDTO, *h
 /*
 CreateProjectStrategyCopierFeature Create a strategy copier feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @param copierId
- @return ApiCreateProjectStrategyCopierFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@param copierId
+	@return ApiCreateProjectStrategyCopierFeatureRequest
 */
 func (a *ProjectAPIAPIService) CreateProjectStrategyCopierFeature(ctx context.Context, projectId string, strategyId string, copierId string) ApiCreateProjectStrategyCopierFeatureRequest {
 	return ApiCreateProjectStrategyCopierFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
-		copierId: copierId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *ProjectAPIAPIService) CreateProjectStrategyCopierFeatureExecute(r ApiCreateProjectStrategyCopierFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.CreateProjectStrategyCopierFeature")
@@ -971,9 +974,9 @@ func (a *ProjectAPIAPIService) CreateProjectStrategyCopierFeatureExecute(r ApiCr
 }
 
 type ApiCreateProjectSymbolMappingRequest struct {
-	ctx context.Context
-	ApiService *ProjectAPIAPIService
-	projectId string
+	ctx              context.Context
+	ApiService       *ProjectAPIAPIService
+	projectId        string
 	symbolMappingDTO *SymbolMappingDTO
 }
 
@@ -989,26 +992,27 @@ func (r ApiCreateProjectSymbolMappingRequest) Execute() (*SymbolMappingDTO, *htt
 /*
 CreateProjectSymbolMapping Create a symbol mapping
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiCreateProjectSymbolMappingRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiCreateProjectSymbolMappingRequest
 */
 func (a *ProjectAPIAPIService) CreateProjectSymbolMapping(ctx context.Context, projectId string) ApiCreateProjectSymbolMappingRequest {
 	return ApiCreateProjectSymbolMappingRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return SymbolMappingDTO
+//
+//	@return SymbolMappingDTO
 func (a *ProjectAPIAPIService) CreateProjectSymbolMappingExecute(r ApiCreateProjectSymbolMappingRequest) (*SymbolMappingDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SymbolMappingDTO
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SymbolMappingDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.CreateProjectSymbolMapping")
@@ -1097,10 +1101,10 @@ func (a *ProjectAPIAPIService) CreateProjectSymbolMappingExecute(r ApiCreateProj
 }
 
 type ApiDeleteProjectFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
-	featureId string
+	projectId  string
+	featureId  string
 }
 
 func (r ApiDeleteProjectFeatureRequest) Execute() (*http.Response, error) {
@@ -1110,26 +1114,26 @@ func (r ApiDeleteProjectFeatureRequest) Execute() (*http.Response, error) {
 /*
 DeleteProjectFeature Delete a project feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param featureId
- @return ApiDeleteProjectFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param featureId
+	@return ApiDeleteProjectFeatureRequest
 */
 func (a *ProjectAPIAPIService) DeleteProjectFeature(ctx context.Context, projectId string, featureId string) ApiDeleteProjectFeatureRequest {
 	return ApiDeleteProjectFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
-		featureId: featureId,
+		ctx:        ctx,
+		projectId:  projectId,
+		featureId:  featureId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAPIAPIService) DeleteProjectFeatureExecute(r ApiDeleteProjectFeatureRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.DeleteProjectFeature")
@@ -1205,9 +1209,9 @@ func (a *ProjectAPIAPIService) DeleteProjectFeatureExecute(r ApiDeleteProjectFea
 }
 
 type ApiDeleteProjectStrategyRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
 }
 
@@ -1218,16 +1222,16 @@ func (r ApiDeleteProjectStrategyRequest) Execute() (*http.Response, error) {
 /*
 DeleteProjectStrategy Delete a strategy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @return ApiDeleteProjectStrategyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@return ApiDeleteProjectStrategyRequest
 */
 func (a *ProjectAPIAPIService) DeleteProjectStrategy(ctx context.Context, projectId string, strategyId string) ApiDeleteProjectStrategyRequest {
 	return ApiDeleteProjectStrategyRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
 	}
 }
@@ -1235,9 +1239,9 @@ func (a *ProjectAPIAPIService) DeleteProjectStrategy(ctx context.Context, projec
 // Execute executes the request
 func (a *ProjectAPIAPIService) DeleteProjectStrategyExecute(r ApiDeleteProjectStrategyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.DeleteProjectStrategy")
@@ -1313,11 +1317,11 @@ func (a *ProjectAPIAPIService) DeleteProjectStrategyExecute(r ApiDeleteProjectSt
 }
 
 type ApiDeleteProjectStrategyCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
-	copierId string
+	copierId   string
 }
 
 func (r ApiDeleteProjectStrategyCopierRequest) Execute() (*http.Response, error) {
@@ -1327,28 +1331,28 @@ func (r ApiDeleteProjectStrategyCopierRequest) Execute() (*http.Response, error)
 /*
 DeleteProjectStrategyCopier Delete a strategy copier
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @param copierId
- @return ApiDeleteProjectStrategyCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@param copierId
+	@return ApiDeleteProjectStrategyCopierRequest
 */
 func (a *ProjectAPIAPIService) DeleteProjectStrategyCopier(ctx context.Context, projectId string, strategyId string, copierId string) ApiDeleteProjectStrategyCopierRequest {
 	return ApiDeleteProjectStrategyCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
-		copierId: copierId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAPIAPIService) DeleteProjectStrategyCopierExecute(r ApiDeleteProjectStrategyCopierRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.DeleteProjectStrategyCopier")
@@ -1425,12 +1429,12 @@ func (a *ProjectAPIAPIService) DeleteProjectStrategyCopierExecute(r ApiDeletePro
 }
 
 type ApiDeleteProjectStrategyCopierFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
-	copierId string
-	featureId string
+	copierId   string
+	featureId  string
 }
 
 func (r ApiDeleteProjectStrategyCopierFeatureRequest) Execute() (*http.Response, error) {
@@ -1440,30 +1444,30 @@ func (r ApiDeleteProjectStrategyCopierFeatureRequest) Execute() (*http.Response,
 /*
 DeleteProjectStrategyCopierFeature Delete a strategy copier feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @param copierId
- @param featureId
- @return ApiDeleteProjectStrategyCopierFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@param copierId
+	@param featureId
+	@return ApiDeleteProjectStrategyCopierFeatureRequest
 */
 func (a *ProjectAPIAPIService) DeleteProjectStrategyCopierFeature(ctx context.Context, projectId string, strategyId string, copierId string, featureId string) ApiDeleteProjectStrategyCopierFeatureRequest {
 	return ApiDeleteProjectStrategyCopierFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
-		copierId: copierId,
-		featureId: featureId,
+		copierId:   copierId,
+		featureId:  featureId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAPIAPIService) DeleteProjectStrategyCopierFeatureExecute(r ApiDeleteProjectStrategyCopierFeatureRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.DeleteProjectStrategyCopierFeature")
@@ -1541,9 +1545,9 @@ func (a *ProjectAPIAPIService) DeleteProjectStrategyCopierFeatureExecute(r ApiDe
 }
 
 type ApiDeleteProjectSymbolMappingRequest struct {
-	ctx context.Context
-	ApiService *ProjectAPIAPIService
-	projectId string
+	ctx             context.Context
+	ApiService      *ProjectAPIAPIService
+	projectId       string
 	symbolMappingId int32
 }
 
@@ -1554,16 +1558,16 @@ func (r ApiDeleteProjectSymbolMappingRequest) Execute() (*http.Response, error) 
 /*
 DeleteProjectSymbolMapping Delete a symbol mapping
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param symbolMappingId
- @return ApiDeleteProjectSymbolMappingRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param symbolMappingId
+	@return ApiDeleteProjectSymbolMappingRequest
 */
 func (a *ProjectAPIAPIService) DeleteProjectSymbolMapping(ctx context.Context, projectId string, symbolMappingId int32) ApiDeleteProjectSymbolMappingRequest {
 	return ApiDeleteProjectSymbolMappingRequest{
-		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ApiService:      a,
+		ctx:             ctx,
+		projectId:       projectId,
 		symbolMappingId: symbolMappingId,
 	}
 }
@@ -1571,9 +1575,9 @@ func (a *ProjectAPIAPIService) DeleteProjectSymbolMapping(ctx context.Context, p
 // Execute executes the request
 func (a *ProjectAPIAPIService) DeleteProjectSymbolMappingExecute(r ApiDeleteProjectSymbolMappingRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.DeleteProjectSymbolMapping")
@@ -1649,9 +1653,9 @@ func (a *ProjectAPIAPIService) DeleteProjectSymbolMappingExecute(r ApiDeleteProj
 }
 
 type ApiGetAvailableLabelsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiGetAvailableLabelsRequest) Execute() ([]string, *http.Response, error) {
@@ -1661,26 +1665,27 @@ func (r ApiGetAvailableLabelsRequest) Execute() ([]string, *http.Response, error
 /*
 GetAvailableLabels Get available labels (for account)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetAvailableLabelsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetAvailableLabelsRequest
 */
 func (a *ProjectAPIAPIService) GetAvailableLabels(ctx context.Context, projectId string) ApiGetAvailableLabelsRequest {
 	return ApiGetAvailableLabelsRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *ProjectAPIAPIService) GetAvailableLabelsExecute(r ApiGetAvailableLabelsRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetAvailableLabels")
@@ -1764,9 +1769,9 @@ func (a *ProjectAPIAPIService) GetAvailableLabelsExecute(r ApiGetAvailableLabels
 }
 
 type ApiGetForecastCostRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiGetForecastCostRequest) Execute() (*ForecastDTO, *http.Response, error) {
@@ -1776,26 +1781,27 @@ func (r ApiGetForecastCostRequest) Execute() (*ForecastDTO, *http.Response, erro
 /*
 GetForecastCost Retrieve forecast cost for a specific project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetForecastCostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetForecastCostRequest
 */
 func (a *ProjectAPIAPIService) GetForecastCost(ctx context.Context, projectId string) ApiGetForecastCostRequest {
 	return ApiGetForecastCostRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return ForecastDTO
+//
+//	@return ForecastDTO
 func (a *ProjectAPIAPIService) GetForecastCostExecute(r ApiGetForecastCostRequest) (*ForecastDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ForecastDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ForecastDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetForecastCost")
@@ -1879,9 +1885,9 @@ func (a *ProjectAPIAPIService) GetForecastCostExecute(r ApiGetForecastCostReques
 }
 
 type ApiGetInvoiceDetailsRequest struct {
-	ctx context.Context
-	ApiService *ProjectAPIAPIService
-	projectId string
+	ctx           context.Context
+	ApiService    *ProjectAPIAPIService
+	projectId     string
 	invoiceNumber string
 }
 
@@ -1892,28 +1898,29 @@ func (r ApiGetInvoiceDetailsRequest) Execute() (map[string]interface{}, *http.Re
 /*
 GetInvoiceDetails Get invoice calculation details
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param invoiceNumber
- @return ApiGetInvoiceDetailsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param invoiceNumber
+	@return ApiGetInvoiceDetailsRequest
 */
 func (a *ProjectAPIAPIService) GetInvoiceDetails(ctx context.Context, projectId string, invoiceNumber string) ApiGetInvoiceDetailsRequest {
 	return ApiGetInvoiceDetailsRequest{
-		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ApiService:    a,
+		ctx:           ctx,
+		projectId:     projectId,
 		invoiceNumber: invoiceNumber,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ProjectAPIAPIService) GetInvoiceDetailsExecute(r ApiGetInvoiceDetailsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetInvoiceDetails")
@@ -1998,9 +2005,9 @@ func (a *ProjectAPIAPIService) GetInvoiceDetailsExecute(r ApiGetInvoiceDetailsRe
 }
 
 type ApiGetInvoicesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiGetInvoicesRequest) Execute() ([]InvoiceDTO, *http.Response, error) {
@@ -2010,26 +2017,27 @@ func (r ApiGetInvoicesRequest) Execute() ([]InvoiceDTO, *http.Response, error) {
 /*
 GetInvoices Get all invoices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetInvoicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetInvoicesRequest
 */
 func (a *ProjectAPIAPIService) GetInvoices(ctx context.Context, projectId string) ApiGetInvoicesRequest {
 	return ApiGetInvoicesRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []InvoiceDTO
+//
+//	@return []InvoiceDTO
 func (a *ProjectAPIAPIService) GetInvoicesExecute(r ApiGetInvoicesRequest) ([]InvoiceDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []InvoiceDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []InvoiceDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetInvoices")
@@ -2113,9 +2121,9 @@ func (a *ProjectAPIAPIService) GetInvoicesExecute(r ApiGetInvoicesRequest) ([]In
 }
 
 type ApiGetProjectRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiGetProjectRequest) Execute() (*ProjectDTO, *http.Response, error) {
@@ -2125,26 +2133,27 @@ func (r ApiGetProjectRequest) Execute() (*ProjectDTO, *http.Response, error) {
 /*
 GetProject Get a project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetProjectRequest
 */
 func (a *ProjectAPIAPIService) GetProject(ctx context.Context, projectId string) ApiGetProjectRequest {
 	return ApiGetProjectRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return ProjectDTO
+//
+//	@return ProjectDTO
 func (a *ProjectAPIAPIService) GetProjectExecute(r ApiGetProjectRequest) (*ProjectDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProject")
@@ -2228,13 +2237,13 @@ func (a *ProjectAPIAPIService) GetProjectExecute(r ApiGetProjectRequest) (*Proje
 }
 
 type ApiGetProjectAuditLogsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
-	limit *int32
-	offset *int32
-	startDate *string
-	endDate *string
+	projectId  string
+	limit      *int32
+	offset     *int32
+	startDate  *string
+	endDate    *string
 }
 
 // Maximum number of logs to return
@@ -2270,26 +2279,27 @@ GetProjectAuditLogs Get audit logs for a project
 
 Retrieves audit logs for all API modifications made to the project. Only includes POST, PUT, and DELETE operations.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetProjectAuditLogsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetProjectAuditLogsRequest
 */
 func (a *ProjectAPIAPIService) GetProjectAuditLogs(ctx context.Context, projectId string) ApiGetProjectAuditLogsRequest {
 	return ApiGetProjectAuditLogsRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []AuditLogDTO
+//
+//	@return []AuditLogDTO
 func (a *ProjectAPIAPIService) GetProjectAuditLogsExecute(r ApiGetProjectAuditLogsRequest) ([]AuditLogDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []AuditLogDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []AuditLogDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectAuditLogs")
@@ -2385,9 +2395,9 @@ func (a *ProjectAPIAPIService) GetProjectAuditLogsExecute(r ApiGetProjectAuditLo
 }
 
 type ApiGetProjectAvailableSignalsToFollowRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiGetProjectAvailableSignalsToFollowRequest) Execute() ([]FeatureDTO, *http.Response, error) {
@@ -2397,26 +2407,27 @@ func (r ApiGetProjectAvailableSignalsToFollowRequest) Execute() ([]FeatureDTO, *
 /*
 GetProjectAvailableSignalsToFollow Get available signals
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetProjectAvailableSignalsToFollowRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetProjectAvailableSignalsToFollowRequest
 */
 func (a *ProjectAPIAPIService) GetProjectAvailableSignalsToFollow(ctx context.Context, projectId string) ApiGetProjectAvailableSignalsToFollowRequest {
 	return ApiGetProjectAvailableSignalsToFollowRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []FeatureDTO
+//
+//	@return []FeatureDTO
 func (a *ProjectAPIAPIService) GetProjectAvailableSignalsToFollowExecute(r ApiGetProjectAvailableSignalsToFollowRequest) ([]FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []FeatureDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectAvailableSignalsToFollow")
@@ -2500,10 +2511,10 @@ func (a *ProjectAPIAPIService) GetProjectAvailableSignalsToFollowExecute(r ApiGe
 }
 
 type ApiGetProjectFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
-	featureId string
+	projectId  string
+	featureId  string
 }
 
 func (r ApiGetProjectFeatureRequest) Execute() (*FeatureDTO, *http.Response, error) {
@@ -2513,28 +2524,29 @@ func (r ApiGetProjectFeatureRequest) Execute() (*FeatureDTO, *http.Response, err
 /*
 GetProjectFeature Get a project feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param featureId
- @return ApiGetProjectFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param featureId
+	@return ApiGetProjectFeatureRequest
 */
 func (a *ProjectAPIAPIService) GetProjectFeature(ctx context.Context, projectId string, featureId string) ApiGetProjectFeatureRequest {
 	return ApiGetProjectFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
-		featureId: featureId,
+		ctx:        ctx,
+		projectId:  projectId,
+		featureId:  featureId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *ProjectAPIAPIService) GetProjectFeatureExecute(r ApiGetProjectFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectFeature")
@@ -2619,9 +2631,9 @@ func (a *ProjectAPIAPIService) GetProjectFeatureExecute(r ApiGetProjectFeatureRe
 }
 
 type ApiGetProjectFeaturesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiGetProjectFeaturesRequest) Execute() ([]FeatureDTO, *http.Response, error) {
@@ -2631,26 +2643,27 @@ func (r ApiGetProjectFeaturesRequest) Execute() ([]FeatureDTO, *http.Response, e
 /*
 GetProjectFeatures Get all project features
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetProjectFeaturesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetProjectFeaturesRequest
 */
 func (a *ProjectAPIAPIService) GetProjectFeatures(ctx context.Context, projectId string) ApiGetProjectFeaturesRequest {
 	return ApiGetProjectFeaturesRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []FeatureDTO
+//
+//	@return []FeatureDTO
 func (a *ProjectAPIAPIService) GetProjectFeaturesExecute(r ApiGetProjectFeaturesRequest) ([]FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []FeatureDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectFeatures")
@@ -2734,12 +2747,12 @@ func (a *ProjectAPIAPIService) GetProjectFeaturesExecute(r ApiGetProjectFeatures
 }
 
 type ApiGetProjectLogsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
-	limit *int32
-	offset *int32
-	logTypeId *int32
+	projectId  string
+	limit      *int32
+	offset     *int32
+	logTypeId  *int32
 }
 
 // Get the last logs: e.g. 100 means the last 100 logs
@@ -2767,26 +2780,27 @@ func (r ApiGetProjectLogsRequest) Execute() ([]LogDTO, *http.Response, error) {
 /*
 GetProjectLogs Get project logs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetProjectLogsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetProjectLogsRequest
 */
 func (a *ProjectAPIAPIService) GetProjectLogs(ctx context.Context, projectId string) ApiGetProjectLogsRequest {
 	return ApiGetProjectLogsRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []LogDTO
+//
+//	@return []LogDTO
 func (a *ProjectAPIAPIService) GetProjectLogsExecute(r ApiGetProjectLogsRequest) ([]LogDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []LogDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []LogDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectLogs")
@@ -2879,9 +2893,9 @@ func (a *ProjectAPIAPIService) GetProjectLogsExecute(r ApiGetProjectLogsRequest)
 }
 
 type ApiGetProjectStrategiesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiGetProjectStrategiesRequest) Execute() ([]StrategyDTO, *http.Response, error) {
@@ -2891,26 +2905,27 @@ func (r ApiGetProjectStrategiesRequest) Execute() ([]StrategyDTO, *http.Response
 /*
 GetProjectStrategies Get all strategies
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetProjectStrategiesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetProjectStrategiesRequest
 */
 func (a *ProjectAPIAPIService) GetProjectStrategies(ctx context.Context, projectId string) ApiGetProjectStrategiesRequest {
 	return ApiGetProjectStrategiesRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []StrategyDTO
+//
+//	@return []StrategyDTO
 func (a *ProjectAPIAPIService) GetProjectStrategiesExecute(r ApiGetProjectStrategiesRequest) ([]StrategyDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []StrategyDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []StrategyDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectStrategies")
@@ -2994,9 +3009,9 @@ func (a *ProjectAPIAPIService) GetProjectStrategiesExecute(r ApiGetProjectStrate
 }
 
 type ApiGetProjectStrategyRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
 }
 
@@ -3007,28 +3022,29 @@ func (r ApiGetProjectStrategyRequest) Execute() (*StrategyDTO, *http.Response, e
 /*
 GetProjectStrategy Get a strategy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @return ApiGetProjectStrategyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@return ApiGetProjectStrategyRequest
 */
 func (a *ProjectAPIAPIService) GetProjectStrategy(ctx context.Context, projectId string, strategyId string) ApiGetProjectStrategyRequest {
 	return ApiGetProjectStrategyRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
 	}
 }
 
 // Execute executes the request
-//  @return StrategyDTO
+//
+//	@return StrategyDTO
 func (a *ProjectAPIAPIService) GetProjectStrategyExecute(r ApiGetProjectStrategyRequest) (*StrategyDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StrategyDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StrategyDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectStrategy")
@@ -3113,11 +3129,11 @@ func (a *ProjectAPIAPIService) GetProjectStrategyExecute(r ApiGetProjectStrategy
 }
 
 type ApiGetProjectStrategyCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
-	copierId string
+	copierId   string
 }
 
 func (r ApiGetProjectStrategyCopierRequest) Execute() (*CopierDTO, *http.Response, error) {
@@ -3127,30 +3143,31 @@ func (r ApiGetProjectStrategyCopierRequest) Execute() (*CopierDTO, *http.Respons
 /*
 GetProjectStrategyCopier Get strategy copier
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @param copierId
- @return ApiGetProjectStrategyCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@param copierId
+	@return ApiGetProjectStrategyCopierRequest
 */
 func (a *ProjectAPIAPIService) GetProjectStrategyCopier(ctx context.Context, projectId string, strategyId string, copierId string) ApiGetProjectStrategyCopierRequest {
 	return ApiGetProjectStrategyCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
-		copierId: copierId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
-//  @return CopierDTO
+//
+//	@return CopierDTO
 func (a *ProjectAPIAPIService) GetProjectStrategyCopierExecute(r ApiGetProjectStrategyCopierRequest) (*CopierDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CopierDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CopierDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectStrategyCopier")
@@ -3236,12 +3253,12 @@ func (a *ProjectAPIAPIService) GetProjectStrategyCopierExecute(r ApiGetProjectSt
 }
 
 type ApiGetProjectStrategyCopierFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
-	copierId string
-	featureId string
+	copierId   string
+	featureId  string
 }
 
 func (r ApiGetProjectStrategyCopierFeatureRequest) Execute() (*FeatureDTO, *http.Response, error) {
@@ -3251,32 +3268,33 @@ func (r ApiGetProjectStrategyCopierFeatureRequest) Execute() (*FeatureDTO, *http
 /*
 GetProjectStrategyCopierFeature Get a strategy copier feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @param copierId
- @param featureId
- @return ApiGetProjectStrategyCopierFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@param copierId
+	@param featureId
+	@return ApiGetProjectStrategyCopierFeatureRequest
 */
 func (a *ProjectAPIAPIService) GetProjectStrategyCopierFeature(ctx context.Context, projectId string, strategyId string, copierId string, featureId string) ApiGetProjectStrategyCopierFeatureRequest {
 	return ApiGetProjectStrategyCopierFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
-		copierId: copierId,
-		featureId: featureId,
+		copierId:   copierId,
+		featureId:  featureId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *ProjectAPIAPIService) GetProjectStrategyCopierFeatureExecute(r ApiGetProjectStrategyCopierFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectStrategyCopierFeature")
@@ -3363,11 +3381,11 @@ func (a *ProjectAPIAPIService) GetProjectStrategyCopierFeatureExecute(r ApiGetPr
 }
 
 type ApiGetProjectStrategyCopierFeaturesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
-	copierId string
+	copierId   string
 }
 
 func (r ApiGetProjectStrategyCopierFeaturesRequest) Execute() ([]FeatureDTO, *http.Response, error) {
@@ -3377,30 +3395,31 @@ func (r ApiGetProjectStrategyCopierFeaturesRequest) Execute() ([]FeatureDTO, *ht
 /*
 GetProjectStrategyCopierFeatures Get all strategy copier features
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @param copierId
- @return ApiGetProjectStrategyCopierFeaturesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@param copierId
+	@return ApiGetProjectStrategyCopierFeaturesRequest
 */
 func (a *ProjectAPIAPIService) GetProjectStrategyCopierFeatures(ctx context.Context, projectId string, strategyId string, copierId string) ApiGetProjectStrategyCopierFeaturesRequest {
 	return ApiGetProjectStrategyCopierFeaturesRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
-		copierId: copierId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
-//  @return []FeatureDTO
+//
+//	@return []FeatureDTO
 func (a *ProjectAPIAPIService) GetProjectStrategyCopierFeaturesExecute(r ApiGetProjectStrategyCopierFeaturesRequest) ([]FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []FeatureDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectStrategyCopierFeatures")
@@ -3486,9 +3505,9 @@ func (a *ProjectAPIAPIService) GetProjectStrategyCopierFeaturesExecute(r ApiGetP
 }
 
 type ApiGetProjectStrategyCopiersRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
 }
 
@@ -3499,28 +3518,29 @@ func (r ApiGetProjectStrategyCopiersRequest) Execute() ([]CopierDTO, *http.Respo
 /*
 GetProjectStrategyCopiers Get strategy copiers
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @return ApiGetProjectStrategyCopiersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@return ApiGetProjectStrategyCopiersRequest
 */
 func (a *ProjectAPIAPIService) GetProjectStrategyCopiers(ctx context.Context, projectId string, strategyId string) ApiGetProjectStrategyCopiersRequest {
 	return ApiGetProjectStrategyCopiersRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
 	}
 }
 
 // Execute executes the request
-//  @return []CopierDTO
+//
+//	@return []CopierDTO
 func (a *ProjectAPIAPIService) GetProjectStrategyCopiersExecute(r ApiGetProjectStrategyCopiersRequest) ([]CopierDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CopierDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CopierDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectStrategyCopiers")
@@ -3605,9 +3625,9 @@ func (a *ProjectAPIAPIService) GetProjectStrategyCopiersExecute(r ApiGetProjectS
 }
 
 type ApiGetProjectSymbolMappingRequest struct {
-	ctx context.Context
-	ApiService *ProjectAPIAPIService
-	projectId string
+	ctx             context.Context
+	ApiService      *ProjectAPIAPIService
+	projectId       string
 	symbolMappingId int32
 }
 
@@ -3618,28 +3638,29 @@ func (r ApiGetProjectSymbolMappingRequest) Execute() (*SymbolMappingDTO, *http.R
 /*
 GetProjectSymbolMapping Get a symbol mapping
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param symbolMappingId
- @return ApiGetProjectSymbolMappingRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param symbolMappingId
+	@return ApiGetProjectSymbolMappingRequest
 */
 func (a *ProjectAPIAPIService) GetProjectSymbolMapping(ctx context.Context, projectId string, symbolMappingId int32) ApiGetProjectSymbolMappingRequest {
 	return ApiGetProjectSymbolMappingRequest{
-		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ApiService:      a,
+		ctx:             ctx,
+		projectId:       projectId,
 		symbolMappingId: symbolMappingId,
 	}
 }
 
 // Execute executes the request
-//  @return SymbolMappingDTO
+//
+//	@return SymbolMappingDTO
 func (a *ProjectAPIAPIService) GetProjectSymbolMappingExecute(r ApiGetProjectSymbolMappingRequest) (*SymbolMappingDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SymbolMappingDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SymbolMappingDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectSymbolMapping")
@@ -3724,9 +3745,9 @@ func (a *ProjectAPIAPIService) GetProjectSymbolMappingExecute(r ApiGetProjectSym
 }
 
 type ApiGetProjectSymbolMappingsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiGetProjectSymbolMappingsRequest) Execute() ([]SymbolMappingDTO, *http.Response, error) {
@@ -3736,26 +3757,27 @@ func (r ApiGetProjectSymbolMappingsRequest) Execute() ([]SymbolMappingDTO, *http
 /*
 GetProjectSymbolMappings Get symbol mappings
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetProjectSymbolMappingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetProjectSymbolMappingsRequest
 */
 func (a *ProjectAPIAPIService) GetProjectSymbolMappings(ctx context.Context, projectId string) ApiGetProjectSymbolMappingsRequest {
 	return ApiGetProjectSymbolMappingsRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []SymbolMappingDTO
+//
+//	@return []SymbolMappingDTO
 func (a *ProjectAPIAPIService) GetProjectSymbolMappingsExecute(r ApiGetProjectSymbolMappingsRequest) ([]SymbolMappingDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []SymbolMappingDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []SymbolMappingDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectSymbolMappings")
@@ -3839,9 +3861,9 @@ func (a *ProjectAPIAPIService) GetProjectSymbolMappingsExecute(r ApiGetProjectSy
 }
 
 type ApiGetProjectTransactionsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 }
 
 func (r ApiGetProjectTransactionsRequest) Execute() ([]TransactionDTO, *http.Response, error) {
@@ -3851,26 +3873,27 @@ func (r ApiGetProjectTransactionsRequest) Execute() ([]TransactionDTO, *http.Res
 /*
 GetProjectTransactions Get project transactions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiGetProjectTransactionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiGetProjectTransactionsRequest
 */
 func (a *ProjectAPIAPIService) GetProjectTransactions(ctx context.Context, projectId string) ApiGetProjectTransactionsRequest {
 	return ApiGetProjectTransactionsRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []TransactionDTO
+//
+//	@return []TransactionDTO
 func (a *ProjectAPIAPIService) GetProjectTransactionsExecute(r ApiGetProjectTransactionsRequest) ([]TransactionDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []TransactionDTO
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []TransactionDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.GetProjectTransactions")
@@ -3954,11 +3977,11 @@ func (a *ProjectAPIAPIService) GetProjectTransactionsExecute(r ApiGetProjectTran
 }
 
 type ApiResyncStrategyCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
-	copierId string
+	copierId   string
 }
 
 func (r ApiResyncStrategyCopierRequest) Execute() (*http.Response, error) {
@@ -3970,28 +3993,28 @@ ResyncStrategyCopier Resync copier with master
 
 Resynchronize with the master account. If a position was closed on the slave account but remains open on the master, this operation will reopen the position on the slave to match the master's state.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @param copierId
- @return ApiResyncStrategyCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@param copierId
+	@return ApiResyncStrategyCopierRequest
 */
 func (a *ProjectAPIAPIService) ResyncStrategyCopier(ctx context.Context, projectId string, strategyId string, copierId string) ApiResyncStrategyCopierRequest {
 	return ApiResyncStrategyCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
-		copierId: copierId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAPIAPIService) ResyncStrategyCopierExecute(r ApiResyncStrategyCopierRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.ResyncStrategyCopier")
@@ -4068,9 +4091,9 @@ func (a *ProjectAPIAPIService) ResyncStrategyCopierExecute(r ApiResyncStrategyCo
 }
 
 type ApiUpdateProjectRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	projectDTO *ProjectDTO
 }
 
@@ -4086,26 +4109,27 @@ func (r ApiUpdateProjectRequest) Execute() (*ProjectDTO, *http.Response, error) 
 /*
 UpdateProject Update a project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiUpdateProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiUpdateProjectRequest
 */
 func (a *ProjectAPIAPIService) UpdateProject(ctx context.Context, projectId string) ApiUpdateProjectRequest {
 	return ApiUpdateProjectRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return ProjectDTO
+//
+//	@return ProjectDTO
 func (a *ProjectAPIAPIService) UpdateProjectExecute(r ApiUpdateProjectRequest) (*ProjectDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectDTO
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.UpdateProject")
@@ -4194,10 +4218,10 @@ func (a *ProjectAPIAPIService) UpdateProjectExecute(r ApiUpdateProjectRequest) (
 }
 
 type ApiUpdateProjectFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
-	featureId string
+	projectId  string
+	featureId  string
 	featureDTO *FeatureDTO
 }
 
@@ -4213,28 +4237,29 @@ func (r ApiUpdateProjectFeatureRequest) Execute() (*FeatureDTO, *http.Response, 
 /*
 UpdateProjectFeature Update a project feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param featureId
- @return ApiUpdateProjectFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param featureId
+	@return ApiUpdateProjectFeatureRequest
 */
 func (a *ProjectAPIAPIService) UpdateProjectFeature(ctx context.Context, projectId string, featureId string) ApiUpdateProjectFeatureRequest {
 	return ApiUpdateProjectFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
-		featureId: featureId,
+		ctx:        ctx,
+		projectId:  projectId,
+		featureId:  featureId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *ProjectAPIAPIService) UpdateProjectFeatureExecute(r ApiUpdateProjectFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.UpdateProjectFeature")
@@ -4324,10 +4349,10 @@ func (a *ProjectAPIAPIService) UpdateProjectFeatureExecute(r ApiUpdateProjectFea
 }
 
 type ApiUpdateProjectStrategyRequest struct {
-	ctx context.Context
-	ApiService *ProjectAPIAPIService
-	projectId string
-	strategyId string
+	ctx         context.Context
+	ApiService  *ProjectAPIAPIService
+	projectId   string
+	strategyId  string
 	strategyDTO *StrategyDTO
 }
 
@@ -4343,28 +4368,29 @@ func (r ApiUpdateProjectStrategyRequest) Execute() (*StrategyDTO, *http.Response
 /*
 UpdateProjectStrategy Update a strategy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @return ApiUpdateProjectStrategyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@return ApiUpdateProjectStrategyRequest
 */
 func (a *ProjectAPIAPIService) UpdateProjectStrategy(ctx context.Context, projectId string, strategyId string) ApiUpdateProjectStrategyRequest {
 	return ApiUpdateProjectStrategyRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
 	}
 }
 
 // Execute executes the request
-//  @return StrategyDTO
+//
+//	@return StrategyDTO
 func (a *ProjectAPIAPIService) UpdateProjectStrategyExecute(r ApiUpdateProjectStrategyRequest) (*StrategyDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StrategyDTO
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StrategyDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.UpdateProjectStrategy")
@@ -4454,12 +4480,12 @@ func (a *ProjectAPIAPIService) UpdateProjectStrategyExecute(r ApiUpdateProjectSt
 }
 
 type ApiUpdateProjectStrategyCopierRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
-	copierId string
-	copierDTO *CopierDTO
+	copierId   string
+	copierDTO  *CopierDTO
 }
 
 func (r ApiUpdateProjectStrategyCopierRequest) CopierDTO(copierDTO CopierDTO) ApiUpdateProjectStrategyCopierRequest {
@@ -4474,30 +4500,31 @@ func (r ApiUpdateProjectStrategyCopierRequest) Execute() (*CopierDTO, *http.Resp
 /*
 UpdateProjectStrategyCopier Update a strategy copier
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @param copierId
- @return ApiUpdateProjectStrategyCopierRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@param copierId
+	@return ApiUpdateProjectStrategyCopierRequest
 */
 func (a *ProjectAPIAPIService) UpdateProjectStrategyCopier(ctx context.Context, projectId string, strategyId string, copierId string) ApiUpdateProjectStrategyCopierRequest {
 	return ApiUpdateProjectStrategyCopierRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
-		copierId: copierId,
+		copierId:   copierId,
 	}
 }
 
 // Execute executes the request
-//  @return CopierDTO
+//
+//	@return CopierDTO
 func (a *ProjectAPIAPIService) UpdateProjectStrategyCopierExecute(r ApiUpdateProjectStrategyCopierRequest) (*CopierDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CopierDTO
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CopierDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.UpdateProjectStrategyCopier")
@@ -4588,12 +4615,12 @@ func (a *ProjectAPIAPIService) UpdateProjectStrategyCopierExecute(r ApiUpdatePro
 }
 
 type ApiUpdateProjectStrategyCopierFeatureRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectAPIAPIService
-	projectId string
+	projectId  string
 	strategyId string
-	copierId string
-	featureId string
+	copierId   string
+	featureId  string
 	featureDTO *FeatureDTO
 }
 
@@ -4609,32 +4636,33 @@ func (r ApiUpdateProjectStrategyCopierFeatureRequest) Execute() (*FeatureDTO, *h
 /*
 UpdateProjectStrategyCopierFeature Update a strategy copier feature
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param strategyId
- @param copierId
- @param featureId
- @return ApiUpdateProjectStrategyCopierFeatureRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param strategyId
+	@param copierId
+	@param featureId
+	@return ApiUpdateProjectStrategyCopierFeatureRequest
 */
 func (a *ProjectAPIAPIService) UpdateProjectStrategyCopierFeature(ctx context.Context, projectId string, strategyId string, copierId string, featureId string) ApiUpdateProjectStrategyCopierFeatureRequest {
 	return ApiUpdateProjectStrategyCopierFeatureRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 		strategyId: strategyId,
-		copierId: copierId,
-		featureId: featureId,
+		copierId:   copierId,
+		featureId:  featureId,
 	}
 }
 
 // Execute executes the request
-//  @return FeatureDTO
+//
+//	@return FeatureDTO
 func (a *ProjectAPIAPIService) UpdateProjectStrategyCopierFeatureExecute(r ApiUpdateProjectStrategyCopierFeatureRequest) (*FeatureDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FeatureDTO
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FeatureDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.UpdateProjectStrategyCopierFeature")
@@ -4726,10 +4754,10 @@ func (a *ProjectAPIAPIService) UpdateProjectStrategyCopierFeatureExecute(r ApiUp
 }
 
 type ApiUpdateProjectSymbolMappingRequest struct {
-	ctx context.Context
-	ApiService *ProjectAPIAPIService
-	projectId string
-	symbolMappingId int32
+	ctx              context.Context
+	ApiService       *ProjectAPIAPIService
+	projectId        string
+	symbolMappingId  int32
 	symbolMappingDTO *SymbolMappingDTO
 }
 
@@ -4745,28 +4773,29 @@ func (r ApiUpdateProjectSymbolMappingRequest) Execute() (*SymbolMappingDTO, *htt
 /*
 UpdateProjectSymbolMapping Update a symbol mapping
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @param symbolMappingId
- @return ApiUpdateProjectSymbolMappingRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@param symbolMappingId
+	@return ApiUpdateProjectSymbolMappingRequest
 */
 func (a *ProjectAPIAPIService) UpdateProjectSymbolMapping(ctx context.Context, projectId string, symbolMappingId int32) ApiUpdateProjectSymbolMappingRequest {
 	return ApiUpdateProjectSymbolMappingRequest{
-		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ApiService:      a,
+		ctx:             ctx,
+		projectId:       projectId,
 		symbolMappingId: symbolMappingId,
 	}
 }
 
 // Execute executes the request
-//  @return SymbolMappingDTO
+//
+//	@return SymbolMappingDTO
 func (a *ProjectAPIAPIService) UpdateProjectSymbolMappingExecute(r ApiUpdateProjectSymbolMappingRequest) (*SymbolMappingDTO, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SymbolMappingDTO
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SymbolMappingDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIAPIService.UpdateProjectSymbolMapping")

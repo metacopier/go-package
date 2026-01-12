@@ -20,15 +20,15 @@ var _ MappedNullable = &PaymentMethodDTO{}
 
 // PaymentMethodDTO struct for PaymentMethodDTO
 type PaymentMethodDTO struct {
-	Created *time.Time `json:"created,omitempty"`
-	Currency *string `json:"currency,omitempty"`
-	ExpirationDate *string `json:"expirationDate,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Identifier *string `json:"identifier,omitempty"`
-	Number *string `json:"number,omitempty"`
-	Status *bool `json:"status,omitempty"`
-	StatusMessage *string `json:"statusMessage,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Created        *time.Time `json:"created,omitempty"`
+	Currency       *string    `json:"currency,omitempty"`
+	ExpirationDate *string    `json:"expirationDate,omitempty"`
+	Id             *string    `json:"id,omitempty"`
+	Identifier     *string    `json:"identifier,omitempty"`
+	Number         *string    `json:"number,omitempty"`
+	Status         *bool      `json:"status,omitempty"`
+	StatusMessage  *string    `json:"statusMessage,omitempty"`
+	Type           *string    `json:"type,omitempty"`
 }
 
 // NewPaymentMethodDTO instantiates a new PaymentMethodDTO object
@@ -337,7 +337,7 @@ func (o *PaymentMethodDTO) SetType(v string) {
 }
 
 func (o PaymentMethodDTO) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,5 +411,3 @@ func (v *NullablePaymentMethodDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

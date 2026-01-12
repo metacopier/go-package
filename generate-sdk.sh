@@ -9,7 +9,7 @@ openapi-generator-cli generate \
   -i https://api.metacopier.io/rest/api/documentation/v3/api-docs \
   -g go \
   -o ./ \
-  --additional-properties packageName=metacopier,packageVersion=1.2.5,isGoSubmodule=false,withGoMod=true \
+  --additional-properties packageName=metacopier,packageVersion=1.2.5,isGoSubmodule=false,withGoMod=true,enumClassPrefix=true,structPrefix=false,useDefaultValuesForRequiredVars=false \
   --git-repo-id=go-package \
   --git-user-id=metacopier
 

@@ -143,7 +143,6 @@ func (o *NotificationCategoryTypeDTO) UnmarshalJSON(data []byte) (err error) {
 	varNotificationCategoryTypeDTO := _NotificationCategoryTypeDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varNotificationCategoryTypeDTO)
 
 	if err != nil {

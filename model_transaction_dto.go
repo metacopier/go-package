@@ -293,7 +293,6 @@ func (o *TransactionDTO) UnmarshalJSON(data []byte) (err error) {
 	varTransactionDTO := _TransactionDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varTransactionDTO)
 
 	if err != nil {

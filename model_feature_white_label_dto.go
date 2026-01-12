@@ -526,7 +526,6 @@ func (o *FeatureWhiteLabelDTO) UnmarshalJSON(data []byte) (err error) {
 	varFeatureWhiteLabelDTO := _FeatureWhiteLabelDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varFeatureWhiteLabelDTO)
 
 	if err != nil {

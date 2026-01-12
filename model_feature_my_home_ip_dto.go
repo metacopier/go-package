@@ -240,7 +240,6 @@ func (o *FeatureMyHomeIpDTO) UnmarshalJSON(data []byte) (err error) {
 	varFeatureMyHomeIpDTO := _FeatureMyHomeIpDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varFeatureMyHomeIpDTO)
 
 	if err != nil {

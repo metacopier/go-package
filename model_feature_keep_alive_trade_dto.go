@@ -178,7 +178,6 @@ func (o *FeatureKeepAliveTradeDTO) UnmarshalJSON(data []byte) (err error) {
 	varFeatureKeepAliveTradeDTO := _FeatureKeepAliveTradeDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varFeatureKeepAliveTradeDTO)
 
 	if err != nil {

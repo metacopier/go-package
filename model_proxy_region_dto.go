@@ -143,7 +143,6 @@ func (o *ProxyRegionDTO) UnmarshalJSON(data []byte) (err error) {
 	varProxyRegionDTO := _ProxyRegionDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varProxyRegionDTO)
 
 	if err != nil {

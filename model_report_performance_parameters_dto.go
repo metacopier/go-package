@@ -196,7 +196,6 @@ func (o *ReportPerformanceParametersDTO) UnmarshalJSON(data []byte) (err error) 
 	varReportPerformanceParametersDTO := _ReportPerformanceParametersDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varReportPerformanceParametersDTO)
 
 	if err != nil {

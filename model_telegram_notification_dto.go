@@ -246,7 +246,6 @@ func (o *TelegramNotificationDTO) UnmarshalJSON(data []byte) (err error) {
 	varTelegramNotificationDTO := _TelegramNotificationDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varTelegramNotificationDTO)
 
 	if err != nil {

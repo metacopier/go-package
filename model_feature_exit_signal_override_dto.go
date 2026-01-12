@@ -151,7 +151,6 @@ func (o *FeatureExitSignalOverrideDTO) UnmarshalJSON(data []byte) (err error) {
 	varFeatureExitSignalOverrideDTO := _FeatureExitSignalOverrideDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varFeatureExitSignalOverrideDTO)
 
 	if err != nil {

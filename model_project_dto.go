@@ -570,7 +570,6 @@ func (o *ProjectDTO) UnmarshalJSON(data []byte) (err error) {
 	varProjectDTO := _ProjectDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varProjectDTO)
 
 	if err != nil {

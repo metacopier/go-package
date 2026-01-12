@@ -611,7 +611,6 @@ func (o *RiskLimitDTO) UnmarshalJSON(data []byte) (err error) {
 	varRiskLimitDTO := _RiskLimitDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varRiskLimitDTO)
 
 	if err != nil {

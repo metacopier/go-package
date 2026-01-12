@@ -841,7 +841,6 @@ func (o *FeatureSignalProviderDTO) UnmarshalJSON(data []byte) (err error) {
 	varFeatureSignalProviderDTO := _FeatureSignalProviderDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varFeatureSignalProviderDTO)
 
 	if err != nil {

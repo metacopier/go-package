@@ -143,7 +143,6 @@ func (o *ScaleTypeDTO) UnmarshalJSON(data []byte) (err error) {
 	varScaleTypeDTO := _ScaleTypeDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varScaleTypeDTO)
 
 	if err != nil {

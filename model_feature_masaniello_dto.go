@@ -1354,7 +1354,6 @@ func (o *FeatureMasanielloDTO) UnmarshalJSON(data []byte) (err error) {
 	varFeatureMasanielloDTO := _FeatureMasanielloDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varFeatureMasanielloDTO)
 
 	if err != nil {

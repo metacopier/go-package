@@ -248,7 +248,6 @@ func (o *FeatureMaintenanceWindowDTO) UnmarshalJSON(data []byte) (err error) {
 	varFeatureMaintenanceWindowDTO := _FeatureMaintenanceWindowDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varFeatureMaintenanceWindowDTO)
 
 	if err != nil {

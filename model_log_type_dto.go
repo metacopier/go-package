@@ -143,7 +143,6 @@ func (o *LogTypeDTO) UnmarshalJSON(data []byte) (err error) {
 	varLogTypeDTO := _LogTypeDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varLogTypeDTO)
 
 	if err != nil {

@@ -401,7 +401,6 @@ func (o *PositionRequestDTO) UnmarshalJSON(data []byte) (err error) {
 	varPositionRequestDTO := _PositionRequestDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varPositionRequestDTO)
 
 	if err != nil {

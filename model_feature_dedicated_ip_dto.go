@@ -108,7 +108,6 @@ func (o *FeatureDedicatedIpDTO) UnmarshalJSON(data []byte) (err error) {
 	varFeatureDedicatedIpDTO := _FeatureDedicatedIpDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varFeatureDedicatedIpDTO)
 
 	if err != nil {

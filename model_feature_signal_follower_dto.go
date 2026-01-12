@@ -341,7 +341,6 @@ func (o *FeatureSignalFollowerDTO) UnmarshalJSON(data []byte) (err error) {
 	varFeatureSignalFollowerDTO := _FeatureSignalFollowerDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varFeatureSignalFollowerDTO)
 
 	if err != nil {

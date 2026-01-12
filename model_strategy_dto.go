@@ -228,7 +228,6 @@ func (o *StrategyDTO) UnmarshalJSON(data []byte) (err error) {
 	varStrategyDTO := _StrategyDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varStrategyDTO)
 
 	if err != nil {

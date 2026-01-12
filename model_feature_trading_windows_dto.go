@@ -227,7 +227,6 @@ func (o *FeatureTradingWindowsDTO) UnmarshalJSON(data []byte) (err error) {
 	varFeatureTradingWindowsDTO := _FeatureTradingWindowsDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varFeatureTradingWindowsDTO)
 
 	if err != nil {

@@ -174,7 +174,6 @@ func (o *ApprovalDTO) UnmarshalJSON(data []byte) (err error) {
 	varApprovalDTO := _ApprovalDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varApprovalDTO)
 
 	if err != nil {

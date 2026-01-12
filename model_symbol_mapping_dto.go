@@ -333,7 +333,6 @@ func (o *SymbolMappingDTO) UnmarshalJSON(data []byte) (err error) {
 	varSymbolMappingDTO := _SymbolMappingDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varSymbolMappingDTO)
 
 	if err != nil {

@@ -175,7 +175,6 @@ func (o *TradingWindowDTO) UnmarshalJSON(data []byte) (err error) {
 	varTradingWindowDTO := _TradingWindowDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varTradingWindowDTO)
 
 	if err != nil {

@@ -320,7 +320,6 @@ func (o *FeatureDTO) UnmarshalJSON(data []byte) (err error) {
 	varFeatureDTO := _FeatureDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varFeatureDTO)
 
 	if err != nil {

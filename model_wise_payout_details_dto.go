@@ -108,7 +108,6 @@ func (o *WisePayoutDetailsDTO) UnmarshalJSON(data []byte) (err error) {
 	varWisePayoutDetailsDTO := _WisePayoutDetailsDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varWisePayoutDetailsDTO)
 
 	if err != nil {

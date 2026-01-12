@@ -143,7 +143,6 @@ func (o *RequestSymbolMappingsDTO) UnmarshalJSON(data []byte) (err error) {
 	varRequestSymbolMappingsDTO := _RequestSymbolMappingsDTO{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varRequestSymbolMappingsDTO)
 
 	if err != nil {
